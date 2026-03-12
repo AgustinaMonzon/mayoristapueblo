@@ -48,7 +48,6 @@
 
         <div class="flex md:flex-col gap-2 overflow-x-auto pb-2">
           <button
-            data-cat="TODOS"
             onclick="filtrar('TODOS', this)"
             class="categoria-btn bg-mayorista text-white px-4 py-2 rounded-lg font-bold w-full text-left"
           >
@@ -56,7 +55,6 @@
           </button>
 
           <button
-            data-cat="BELLEZA"
             onclick="filtrar('BELLEZA', this)"
             class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
           >
@@ -64,7 +62,6 @@
           </button>
 
           <button
-            data-cat="COCINA"
             onclick="filtrar('COCINA', this)"
             class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
           >
@@ -72,7 +69,6 @@
           </button>
 
           <button
-            data-cat="DECO"
             onclick="filtrar('DECO', this)"
             class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
           >
@@ -198,10 +194,10 @@ class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hove
       function activarBoton(btn) {
         document.querySelectorAll(".categoria-btn").forEach((b) => {
           b.classList.remove("bg-mayorista", "text-white");
-
           b.classList.add("bg-white");
         });
 
+        btn.classList.remove("bg-white");
         btn.classList.add("bg-mayorista", "text-white");
       }
 
