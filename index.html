@@ -48,29 +48,33 @@
 
         <div class="flex md:flex-col gap-2 overflow-x-auto pb-2">
           <button
-            onclick="filtrar('TODOS')"
-            class="bg-mayorista text-white px-4 py-2 rounded-lg font-bold w-full text-left"
+            data-cat="TODOS"
+            onclick="filtrar('TODOS', this)"
+            class="categoria-btn bg-mayorista text-white px-4 py-2 rounded-lg font-bold w-full text-left"
           >
             TODOS
           </button>
 
           <button
-            onclick="filtrar('BELLEZA')"
-            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition"
+            data-cat="BELLEZA"
+            onclick="filtrar('BELLEZA', this)"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
           >
             BELLEZA
           </button>
 
           <button
-            onclick="filtrar('COCINA')"
-            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition"
+            data-cat="COCINA"
+            onclick="filtrar('COCINA', this)"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
           >
             COCINA
           </button>
 
           <button
-            onclick="filtrar('DECO')"
-            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition"
+            data-cat="DECO"
+            onclick="filtrar('DECO', this)"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
           >
             DECO
           </button>
@@ -117,7 +121,7 @@
 
             <button
               onclick="enviarWhatsApp()"
-              class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-lg hover:bg-green-800 transition"
+              class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-lg hover:bg-green-800"
             >
               ENVIAR WHATSAPP
             </button>
@@ -162,7 +166,7 @@ src="${p.foto}"
 alt="${p.nombre}"
 loading="lazy"
 onclick="ampliar('${p.foto}')"
-class="w-full h-40 object-contain bg-white rounded-xl mb-4 cursor-zoom-in border p-2">
+class="w-full h-40 object-cover bg-white rounded-xl mb-4 cursor-zoom-in border p-2">
 
 <p class="text-[10px] font-mono text-gray-400">
 ${p.id}
@@ -178,7 +182,7 @@ $${precioARS(p.precio)}
 
 <button
 onclick="agregarAlCarrito('${p.id}')"
-class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hover:text-white transition">
+class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hover:text-white">
 
 + Agregar
 
@@ -189,6 +193,25 @@ class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hove
 `,
           )
           .join("");
+      }
+
+      function activarBoton(btn) {
+        document.querySelectorAll(".categoria-btn").forEach((b) => {
+          b.classList.remove("bg-mayorista", "text-white");
+
+          b.classList.add("bg-white");
+        });
+
+        btn.classList.add("bg-mayorista", "text-white");
+      }
+
+      function filtrar(c, btn) {
+        if (btn) activarBoton(btn);
+
+        const filtrados =
+          c === "TODOS" ? productos : productos.filter((p) => p.cat === c);
+
+        mostrarProductos(filtrados);
       }
 
       function agregarAlCarrito(id) {
@@ -296,13 +319,6 @@ Quitar
             p.nombre.toUpperCase().includes(t) ||
             p.id.toUpperCase().includes(t),
         );
-
-        mostrarProductos(filtrados);
-      }
-
-      function filtrar(c) {
-        const filtrados =
-          c === "TODOS" ? productos : productos.filter((p) => p.cat === c);
 
         mostrarProductos(filtrados);
       }
