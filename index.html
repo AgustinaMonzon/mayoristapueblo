@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mayorista Pueblo - Pedidos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .bg-mayorista {
+        background-color: #1a5d37;
+      }
+      .text-mayorista {
+        color: #1a5d37;
+      }
+      .border-mayorista {
+        border-color: #1a5d37;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-white p-6 shadow-sm flex justify-center">
+      <img
+        src="logo.png"
+        alt="Mayorista Pueblo"
+        class="h-32 md:h-40 object-contain"
+      />
+    </header>
+
+    <main class="flex flex-col md:flex-row flex-1 p-4 gap-6">
+      <aside class="w-full md:w-64 space-y-2">
+        <h2
+          class="font-bold text-mayorista mb-4 uppercase tracking-wider text-sm"
+        >
+          Categorías
+        </h2>
+        <div id="filtros" class="flex md:flex-col gap-2 overflow-x-auto pb-2">
+          <button
+            onclick="filtrar('TODOS')"
+            class="bg-mayorista text-white px-4 py-2 rounded-lg font-bold w-full text-left transition hover:opacity-90"
+          >
+            TODOS
+          </button>
+          <button
+            onclick="filtrar('BELLEZA')"
+            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-50 transition"
+          >
+            BELLEZA
+          </button>
+          <button
+            onclick="filtrar('COCINA')"
+            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-50 transition"
+          >
+            COCINA
+          </button>
+          <button
+            onclick="filtrar('DECO')"
+            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-50 transition"
+          >
+            DECO
+          </button>
+        </div>
+      </aside>
+
+      <section class="flex-1">
+        <input
+          type="text"
+          id="buscador"
+          onkeyup="buscar()"
+          placeholder="Buscar producto o código..."
+          class="w-full p-4 rounded-2xl border-2 mb-6 outline-none focus:border-mayorista transition shadow-sm"
+        />
+
+        <div
+          id="contenedor-productos"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        ></div>
+      </section>
+
+      <aside class="w-full md:w-80">
+        <div class="bg-white p-6 rounded-3xl shadow-xl sticky top-4">
+          <h2 class="font-black text-xl mb-4 text-mayorista">MI PEDIDO</h2>
+          <div
+            id="items-carrito"
+            class="space-y-3 mb-6 max-h-96 overflow-y-auto"
+          >
+            <p class="text-gray-400 italic">No hay productos aún.</p>
+          </div>
+          <div class="border-t pt-4">
+            <div class="flex justify-between text-2xl font-black mb-6">
+              <span>Total:</span>
+              <span id="total-pedido">$0</span>
+            </div>
+            <button
+              onclick="enviarWhatsApp()"
+              class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-lg hover:opacity-90 transition flex items-center justify-center gap-2"
+            >
+              <span>ENVIAR WHATSAPP</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <div
+      id="modal-foto"
+      onclick="this.style.display = 'none'"
+      class="fixed inset-0 bg-black/90 hidden z-50 items-center justify-center p-4 cursor-zoom-out"
+    >
+      <img
+        id="foto-ampliada"
+        src=""
+        class="max-w-full max-h-full rounded-lg shadow-2xl"
+      />
+    </div>
+
+    <script src="productos.js"></script>
+
+    <script>
+      let carrito = [];
+
+      function mostrarProductos(lista) {
+        const contenedor = document.getElementById("contenedor-productos");
+        contenedor.innerHTML = "";
+
+        // Verificación por si el archivo productos.js no cargó
+        if (typeof productos === "undefined") {
+          contenedor.innerHTML =
+            "<p class='text-red-500'>Error: No se encontró el archivo productos.js</p>";
+          return;
+        }
+
+        lista.forEach((p) => {
+          contenedor.innerHTML += `
+                    <div class="bg-white p-4 rounded-2xl border hover:border-mayorista transition shadow-sm">
+                        <img src="${p.foto}" onclick="ampliar('${p.foto}')" class="w-full h-48 object-cover rounded-xl mb-4 cursor-zoom-in border border-gray-100">
+                        <p class="text-[10px] font-mono text-gray-400">${p.id}</p>
+                        <h3 class="font-bold text-gray-800 h-12 overflow-hidden">${p.nombre}</h3>
+                        <p class="text-2xl font-black text-mayorista mt-2">$${p.precio}</p>
+                        <button onclick="agregarAlCarrito('${p.id}')" class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hover:text-white transition">+ Agregar</button>
+                    </div>
+                `;
+        });
+      }
+
+      function agregarAlCarrito(id) {
+        const prod = productos.find((p) => p.id === id);
+        const existe = carrito.find((item) => item.id === id);
+
+        if (existe) {
+          existe.cantidad++;
+        } else {
+          carrito.push({ ...prod, cantidad: 1 });
+        }
+        actualizarCarrito();
+      }
+
+      function actualizarCarrito() {
+        const lista = document.getElementById("items-carrito");
+        const totalTxt = document.getElementById("total-pedido");
+        lista.innerHTML = "";
+        let total = 0;
+
+        carrito.forEach((item) => {
+          total += item.precio * item.cantidad;
+          lista.innerHTML += `
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <div>
+                            <p class="font-bold text-sm leading-tight">${item.nombre}</p>
+                            <p class="text-xs text-gray-500">${item.cantidad} x $${item.precio}</p>
+                        </div>
+                        <button onclick="eliminar('${item.id}')" class="text-red-500 text-xs font-bold hover:underline">Quitar</button>
+                    </div>
+                `;
+        });
+
+        if (carrito.length === 0) {
+          lista.innerHTML =
+            '<p class="text-gray-400 italic text-center py-4">No hay productos aún.</p>';
+        }
+        totalTxt.innerText = `$${total}`;
+      }
+
+      function eliminar(id) {
+        carrito = carrito.filter((item) => item.id !== id);
+        actualizarCarrito();
+      }
+
+      function enviarWhatsApp() {
+        if (carrito.length === 0) return alert("¡Tu carrito está vacío!");
+
+        let mensaje =
+          "Hola Mayorista Pueblo, quiero hacer el siguiente pedido:\n\n";
+        let total = 0;
+
+        carrito.forEach((item) => {
+          mensaje += `• ${item.nombre} [Cod: ${item.id}] x ${item.cantidad} - $${item.precio * item.cantidad}\n`;
+          total += item.precio * item.cantidad;
+        });
+
+        mensaje += `\n*TOTAL ESTIMADO: $${total}*`;
+
+        const numero = "543413261010";
+        window.open(
+          `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`,
+        );
+      }
+
+      function ampliar(src) {
+        document.getElementById("foto-ampliada").src = src;
+        document.getElementById("modal-foto").style.display = "flex";
+      }
+
+      function buscar() {
+        const t = document.getElementById("buscador").value.toUpperCase();
+        const filtrados = productos.filter(
+          (p) =>
+            p.nombre.toUpperCase().includes(t) ||
+            p.id.toUpperCase().includes(t),
+        );
+        mostrarProductos(filtrados);
+      }
+
+      function filtrar(c) {
+        const filtrados =
+          c === "TODOS" ? productos : productos.filter((p) => p.cat === c);
+        mostrarProductos(filtrados);
+      }
+
+      // Ejecutar al cargar la página
+      window.onload = () => {
+        mostrarProductos(productos);
+      };
+    </script>
+  </body>
+</html>
