@@ -16,11 +16,9 @@
       .bg-mayorista {
         background: #1a5d37;
       }
-
       .text-mayorista {
         color: #1a5d37;
       }
-
       .border-mayorista {
         border-color: #1a5d37;
       }
@@ -37,7 +35,7 @@
     </header>
 
     <main class="flex flex-col md:flex-row flex-1 p-4 gap-6">
-      <!-- CATEGORÍAS -->
+      <!-- CATEGORIAS -->
 
       <aside class="w-full md:w-64 space-y-2">
         <h2
@@ -90,13 +88,13 @@
 
         <div
           id="contenedor-productos"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
         ></div>
       </section>
 
-      <!-- CARRITO -->
+      <!-- CARRITO PC -->
 
-      <aside class="w-full md:w-80">
+      <aside class="hidden md:block w-full md:w-80">
         <div class="bg-white p-6 rounded-3xl shadow-xl sticky top-4">
           <h2 class="font-black text-xl mb-4 text-mayorista">MI PEDIDO</h2>
 
@@ -125,6 +123,19 @@
         </div>
       </aside>
     </main>
+
+    <!-- BOTON FLOTANTE CELULAR -->
+
+    <div class="fixed bottom-4 left-4 right-4 md:hidden z-50">
+      <button
+        onclick="enviarWhatsApp()"
+        class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-xl flex justify-between px-6"
+      >
+        <span>Enviar pedido</span>
+
+        <span id="total-flotante">$0</span>
+      </button>
+    </div>
 
     <!-- MODAL FOTO -->
 
@@ -155,30 +166,30 @@
           .map(
             (p) => `
 
-<div class="bg-white p-4 rounded-2xl border hover:border-mayorista shadow-sm">
+<div class="bg-white p-2 md:p-4 rounded-2xl border hover:border-mayorista shadow-sm">
 
 <img
 src="${p.foto}"
 alt="${p.nombre}"
 loading="lazy"
 onclick="ampliar('${p.foto}')"
-class="w-full h-32 md:h-44 object-contain bg-white rounded-xl mb-4 cursor-zoom-in border p-2">
+class="w-full h-28 md:h-44 object-contain bg-white rounded-xl mb-2 md:mb-4 cursor-zoom-in border p-1 md:p-2">
 
 <p class="text-[10px] font-mono text-gray-400">
 ${p.id}
 </p>
 
-<h3 class="font-bold text-gray-800 h-12 overflow-hidden">
+<h3 class="font-bold text-gray-800 text-sm md:text-base h-10 md:h-12 overflow-hidden">
 ${p.nombre}
 </h3>
 
-<p class="text-2xl font-black text-mayorista mt-2">
+<p class="text-lg md:text-2xl font-black text-mayorista mt-1 md:mt-2">
 $${precioARS(p.precio)}
 </p>
 
 <button
 onclick="agregarAlCarrito('${p.id}')"
-class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hover:text-white">
+class="w-full mt-2 md:mt-4 bg-gray-100 py-2 md:py-3 rounded-xl font-bold text-sm md:text-base hover:bg-mayorista hover:text-white">
 
 + Agregar
 
@@ -226,6 +237,7 @@ class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hove
       function actualizarCarrito() {
         const lista = document.getElementById("items-carrito");
         const totalTxt = document.getElementById("total-pedido");
+        const totalFlotante = document.getElementById("total-flotante");
 
         lista.innerHTML = "";
         let total = 0;
@@ -268,6 +280,7 @@ Quitar
         }
 
         totalTxt.innerText = "$" + precioARS(total);
+        totalFlotante.innerText = "$" + precioARS(total);
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
       }
