@@ -16,9 +16,11 @@
       .bg-mayorista {
         background: #1a5d37;
       }
+
       .text-mayorista {
         color: #1a5d37;
       }
+
       .border-mayorista {
         border-color: #1a5d37;
       }
@@ -27,7 +29,11 @@
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <header class="bg-white p-6 shadow-sm flex justify-center">
-      <img src="Logo.png" class="h-32 md:h-40 object-contain" />
+      <img
+        src="Logo.png"
+        class="h-32 md:h-40 object-contain"
+        alt="Mayorista Pueblo"
+      />
     </header>
 
     <main class="flex flex-col md:flex-row flex-1 p-4 gap-6">
@@ -50,21 +56,21 @@
 
           <button
             onclick="filtrar('BELLEZA')"
-            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left"
+            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition"
           >
             BELLEZA
           </button>
 
           <button
             onclick="filtrar('COCINA')"
-            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left"
+            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition"
           >
             COCINA
           </button>
 
           <button
             onclick="filtrar('DECO')"
-            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left"
+            class="bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition"
           >
             DECO
           </button>
@@ -79,7 +85,7 @@
           id="buscador"
           onkeyup="buscar()"
           placeholder="Buscar producto o código..."
-          class="w-full p-4 rounded-2xl border-2 mb-6 outline-none focus:border-mayorista shadow-sm"
+          class="w-full p-3 rounded-xl border-2 mb-6 outline-none focus:border-mayorista shadow-sm"
         />
 
         <div
@@ -98,7 +104,9 @@
             id="items-carrito"
             class="space-y-3 mb-6 max-h-96 overflow-y-auto"
           >
-            <p class="text-gray-400 italic">No hay productos aún.</p>
+            <p class="text-gray-400 italic text-center py-4">
+              No hay productos aún.
+            </p>
           </div>
 
           <div class="border-t pt-4">
@@ -109,7 +117,7 @@
 
             <button
               onclick="enviarWhatsApp()"
-              class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-lg"
+              class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-lg hover:bg-green-800 transition"
             >
               ENVIAR WHATSAPP
             </button>
@@ -149,19 +157,28 @@
 
 <div class="bg-white p-4 rounded-2xl border hover:border-mayorista shadow-sm">
 
-<img src="${p.foto}" onclick="ampliar('${p.foto}')" 
-class="w-full h-48 object-cover rounded-xl mb-4 cursor-zoom-in border">
+<img
+src="${p.foto}"
+alt="${p.nombre}"
+loading="lazy"
+onclick="ampliar('${p.foto}')"
+class="w-full h-40 object-contain bg-white rounded-xl mb-4 cursor-zoom-in border p-2">
 
-<p class="text-[10px] font-mono text-gray-400">${p.id}</p>
+<p class="text-[10px] font-mono text-gray-400">
+${p.id}
+</p>
 
-<h3 class="font-bold text-gray-800 h-12 overflow-hidden">${p.nombre}</h3>
+<h3 class="font-bold text-gray-800 h-12 overflow-hidden">
+${p.nombre}
+</h3>
 
 <p class="text-2xl font-black text-mayorista mt-2">
 $${precioARS(p.precio)}
 </p>
 
-<button onclick="agregarAlCarrito('${p.id}')"
-class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hover:text-white">
+<button
+onclick="agregarAlCarrito('${p.id}')"
+class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hover:text-white transition">
 
 + Agregar
 
@@ -202,12 +219,23 @@ class="w-full mt-4 bg-gray-100 py-3 rounded-xl font-bold hover:bg-mayorista hove
 <div class="flex justify-between items-center border-b pb-2">
 
 <div>
-<p class="font-bold text-sm">${item.nombre}</p>
-<p class="text-xs text-gray-500">${item.cantidad} x $${precioARS(item.precio)}</p>
+
+<p class="font-bold text-sm">
+${item.nombre}
+</p>
+
+<p class="text-xs text-gray-500">
+${item.cantidad} x $${precioARS(item.precio)}
+</p>
+
 </div>
 
-<button onclick="eliminar('${item.id}')" class="text-red-500 text-xs font-bold">
+<button
+onclick="eliminar('${item.id}')"
+class="text-red-500 text-xs font-bold">
+
 Quitar
+
 </button>
 
 </div>
