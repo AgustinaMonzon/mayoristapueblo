@@ -1,4 +1,4 @@
-const CACHE_NAME = "mayorista-cache-v2";
+const CACHE_NAME = "mayorista-cache-v3";
 
 const urlsToCache = [
 "/",
