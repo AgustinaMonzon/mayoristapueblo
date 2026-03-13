@@ -3,15 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Mayorista Pueblo - Pedidos</title>
-
     <link rel="icon" href="Logo.png" />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#1a5d37" />
-
     <script src="https://cdn.tailwindcss.com"></script>
-
     <style>
       .bg-mayorista {
         background: #1a5d37;
@@ -22,68 +18,70 @@
       .border-mayorista {
         border-color: #1a5d37;
       }
-
       .hover-mayorista:hover {
         background-color: #144a2c;
         color: white;
       }
-
-      /* Estilo para los logos originales */
       .icon-social {
         transition: transform 0.2s;
       }
       .icon-social:hover {
         transform: scale(1.15);
       }
+      /* Scrollbar suave para el modal */
+      #items-carrito-movil::-webkit-scrollbar {
+        width: 4px;
+      }
+      #items-carrito-movil::-webkit-scrollbar-thumb {
+        background: #1a5d37;
+        border-radius: 10px;
+      }
     </style>
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <header
-      class="bg-white shadow-sm flex flex-col items-center pt-3 pb-4 px-4"
+      class="bg-white shadow-sm flex flex-col items-center pt-2 pb-4 px-4"
     >
       <div class="flex justify-center w-full">
         <img
           src="Logo.png"
-          class="h-36 md:h-48 object-contain"
+          class="h-28 md:h-48 object-contain"
           alt="Mayorista Pueblo"
         />
       </div>
-
-      <div class="flex items-center justify-center gap-6 -mt-6 md:-mt-8">
+      <div class="flex items-center justify-center gap-6 -mt-4 md:-mt-8">
         <a
           href="https://wa.me/543413261010"
           target="_blank"
-          class="icon-social transition-transform hover:scale-110"
+          class="icon-social"
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp"
-            style="width: 50px; height: 50px"
+            alt="WA"
+            style="width: 42px; height: 42px"
           />
         </a>
-
         <a
           href="https://www.instagram.com/mayoristapueblo/"
           target="_blank"
-          class="icon-social transition-transform hover:scale-110"
+          class="icon-social"
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
-            alt="Instagram"
-            style="width: 38px; height: 38px"
+            alt="IG"
+            style="width: 34px; height: 34px"
           />
         </a>
-
         <a
           href="https://www.facebook.com/profile.php?id=61587995854029"
           target="_blank"
-          class="icon-social transition-transform hover:scale-110"
+          class="icon-social"
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
-            alt="Facebook"
-            style="width: 38px; height: 38px"
+            alt="FB"
+            style="width: 34px; height: 34px"
           />
         </a>
       </div>
@@ -99,25 +97,25 @@
         <div class="flex md:flex-col gap-2 overflow-x-auto pb-2">
           <button
             onclick="filtrar('TODOS', this)"
-            class="categoria-btn bg-mayorista text-white px-4 py-2 rounded-lg font-bold w-full text-left"
+            class="categoria-btn bg-mayorista text-white px-4 py-2 rounded-lg font-bold w-full text-left whitespace-nowrap"
           >
             TODOS
           </button>
           <button
             onclick="filtrar('BELLEZA', this)"
-            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors whitespace-nowrap"
           >
             BELLEZA
           </button>
           <button
             onclick="filtrar('COCINA', this)"
-            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors whitespace-nowrap"
           >
             COCINA
           </button>
           <button
             onclick="filtrar('DECO', this)"
-            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors whitespace-nowrap"
           >
             DECO
           </button>
@@ -167,7 +165,15 @@
       </aside>
     </main>
 
-    <div class="fixed bottom-4 left-4 right-4 md:hidden z-50">
+    <div
+      class="fixed bottom-4 left-4 right-4 md:hidden z-50 flex flex-col gap-2"
+    >
+      <button
+        onclick="toggleCarritoMovil()"
+        class="bg-white text-mayorista border-2 border-mayorista py-2 rounded-xl font-bold shadow-xl text-sm"
+      >
+        VER DETALLE DEL PEDIDO
+      </button>
       <button
         onclick="enviarWhatsApp()"
         class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-xl flex justify-between px-6"
@@ -178,9 +184,41 @@
     </div>
 
     <div
+      id="modal-carrito"
+      class="fixed inset-0 bg-black/60 hidden z-[60] p-4 items-center justify-center"
+    >
+      <div
+        class="bg-white w-full max-w-sm rounded-3xl p-6 flex flex-col max-h-[85vh]"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="font-black text-xl text-mayorista">MI PEDIDO</h2>
+          <button onclick="toggleCarritoMovil()" class="text-gray-400 text-3xl">
+            &times;
+          </button>
+        </div>
+        <div
+          id="items-carrito-movil"
+          class="space-y-4 mb-6 overflow-y-auto pr-2"
+        ></div>
+        <div class="border-t pt-4">
+          <div class="flex justify-between text-2xl font-black mb-4">
+            <span>Total:</span>
+            <span id="total-pedido-movil">$0</span>
+          </div>
+          <button
+            onclick="toggleCarritoMovil()"
+            class="w-full bg-gray-100 py-3 rounded-xl font-bold text-gray-600"
+          >
+            CONTINUAR COMPRANDO
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
       id="modal-foto"
       onclick="this.style.display = 'none'"
-      class="fixed inset-0 bg-black/90 hidden z-50 items-center justify-center p-4"
+      class="fixed inset-0 bg-black/90 hidden z-[70] items-center justify-center p-4"
     >
       <img
         id="foto-ampliada"
@@ -191,7 +229,7 @@
     <a
       href="https://wa.me/543413261010"
       target="_blank"
-      class="fixed bottom-24 right-4 md:bottom-6 md:right-6 bg-[#25D366] text-white rounded-full shadow-xl flex items-center gap-3 px-5 py-3.5 z-50 transition-transform hover:scale-110"
+      class="fixed bottom-24 right-4 md:bottom-6 md:right-6 bg-[#25D366] text-white rounded-full shadow-xl flex items-center gap-3 px-5 py-3.5 z-40 transition-transform hover:scale-110"
     >
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
@@ -201,7 +239,7 @@
       <span class="font-bold tracking-wide">TE AYUDAMOS?</span>
     </a>
 
-    <script src="productos.js"></script>
+    <script src="productos.js?v=1.2"></script>
 
     <script>
       let carrito = [];
@@ -214,18 +252,18 @@
         cont.innerHTML = lista
           .map(
             (p) => `
-        <div class="bg-white p-2 md:p-4 rounded-2xl border hover:border-mayorista shadow-sm flex flex-col">
-          <div class="w-full h-24 md:h-44 bg-white rounded-xl mb-2 md:mb-4 border flex items-center justify-center p-2 md:p-3">
-            <img src="${p.foto}" alt="${p.nombre}" loading="lazy" onclick="ampliar('${p.foto}')" class="max-h-full max-w-full object-contain cursor-zoom-in">
-          </div>
-          <p class="text-[10px] font-mono text-gray-400">${p.id}</p>
-          <h3 class="font-bold text-gray-800 text-sm md:text-base min-h-[40px] md:min-h-[48px] overflow-hidden">${p.nombre}</h3>
-          <p class="text-lg md:text-2xl font-black text-mayorista mt-1 md:mt-2">$${precioARS(p.precio)}</p>
-          <button onclick="agregarAlCarrito('${p.id}')" class="w-full mt-2 md:mt-4 bg-gray-100 py-2 md:py-3 rounded-xl font-bold text-sm md:text-base hover:bg-mayorista hover:text-white transition-colors">
-            + Agregar
-          </button>
-        </div>
-      `,
+                <div class="bg-white p-2 md:p-4 rounded-2xl border hover:border-mayorista shadow-sm flex flex-col">
+                    <div class="w-full h-32 md:h-44 bg-white rounded-xl mb-2 md:mb-4 border flex items-center justify-center p-2">
+                        <img src="${p.foto}" alt="${p.nombre}" loading="lazy" onclick="ampliar('${p.foto}')" class="max-h-full max-w-full object-contain cursor-zoom-in aspect-square">
+                    </div>
+                    <p class="text-[10px] font-mono text-gray-400">${p.id}</p>
+                    <h3 class="font-bold text-gray-800 text-xs md:text-base min-h-[35px] md:min-h-[48px] leading-tight overflow-hidden">${p.nombre}</h3>
+                    <p class="text-base md:text-2xl font-black text-mayorista mt-1 md:mt-2">$${precioARS(p.precio)}</p>
+                    <button onclick="agregarAlCarrito('${p.id}')" class="w-full mt-2 md:mt-4 bg-gray-100 py-2 md:py-3 rounded-xl font-bold text-xs md:text-base hover:bg-mayorista hover:text-white transition-colors">
+                        + Agregar
+                    </button>
+                </div>
+            `,
           )
           .join("");
       }
@@ -258,31 +296,49 @@
       }
 
       function actualizarCarrito() {
-        const lista = document.getElementById("items-carrito");
+        const listaPC = document.getElementById("items-carrito");
+        const listaMovil = document.getElementById("items-carrito-movil");
         const totalTxt = document.getElementById("total-pedido");
+        const totalMovilTxt = document.getElementById("total-pedido-movil");
         const totalFlotante = document.getElementById("total-flotante");
-        lista.innerHTML = "";
+
+        let html = "";
         let total = 0;
+
         carrito.forEach((item) => {
           total += item.precio * item.cantidad;
-          lista.innerHTML += `
-          <div class="flex justify-between items-center border-b pb-2">
-            <div><p class="font-bold text-sm">${item.nombre}</p><p class="text-xs text-gray-500">${item.cantidad} x $${precioARS(item.precio)}</p></div>
-            <button onclick="eliminar('${item.id}')" class="text-red-500 text-xs font-bold">Quitar</button>
-          </div>`;
+          html += `
+                <div class="flex justify-between items-center border-b pb-2 gap-2">
+                    <div class="flex-1">
+                        <p class="font-bold text-sm leading-tight">${item.nombre}</p>
+                        <p class="text-xs text-gray-500">${item.cantidad} x $${precioARS(item.precio)}</p>
+                    </div>
+                    <button onclick="eliminar('${item.id}')" class="text-red-500 text-xs font-bold bg-red-50 px-2 py-1 rounded">Quitar</button>
+                </div>`;
         });
-        if (carrito.length === 0) {
-          lista.innerHTML =
-            '<p class="text-gray-400 italic text-center py-4">No hay productos aún.</p>';
-        }
-        totalTxt.innerText = "$" + precioARS(total);
-        totalFlotante.innerText = "$" + precioARS(total);
+
+        const vacio =
+          '<p class="text-gray-400 italic text-center py-4">No hay productos aún.</p>';
+        listaPC.innerHTML = carrito.length === 0 ? vacio : html;
+        listaMovil.innerHTML = carrito.length === 0 ? vacio : html;
+
+        const totalF = "$" + precioARS(total);
+        totalTxt.innerText = totalF;
+        totalMovilTxt.innerText = totalF;
+        totalFlotante.innerText = totalF;
+
         localStorage.setItem("carrito", JSON.stringify(carrito));
       }
 
       function eliminar(id) {
         carrito = carrito.filter((i) => i.id !== id);
         actualizarCarrito();
+      }
+
+      function toggleCarritoMovil() {
+        const modal = document.getElementById("modal-carrito");
+        modal.classList.toggle("hidden");
+        modal.classList.toggle("flex");
       }
 
       function enviarWhatsApp() {
