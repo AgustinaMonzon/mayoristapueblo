@@ -22,28 +22,80 @@
       .border-mayorista {
         border-color: #1a5d37;
       }
+
+      .hover-mayorista:hover {
+        background-color: #144a2c;
+        color: white;
+      }
+
+      /* Estilo para los logos originales */
+      .icon-social {
+        transition: transform 0.2s;
+      }
+      .icon-social:hover {
+        transform: scale(1.15);
+      }
     </style>
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <header class="bg-white p-6 shadow-sm flex justify-center">
-      <img
-        src="Logo.png"
-        class="h-32 md:h-40 object-contain"
-        alt="Mayorista Pueblo"
-      />
+    <header
+      class="bg-white shadow-sm flex flex-col items-center pt-3 pb-4 px-4"
+    >
+      <div class="flex justify-center w-full">
+        <img
+          src="Logo.png"
+          class="h-36 md:h-48 object-contain"
+          alt="Mayorista Pueblo"
+        />
+      </div>
+
+      <div class="flex items-center justify-center gap-6 -mt-6 md:-mt-8">
+        <a
+          href="https://wa.me/543413261010"
+          target="_blank"
+          class="icon-social transition-transform hover:scale-110"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            style="width: 50px; height: 50px"
+          />
+        </a>
+
+        <a
+          href="https://www.instagram.com/mayoristapueblo/"
+          target="_blank"
+          class="icon-social transition-transform hover:scale-110"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+            alt="Instagram"
+            style="width: 38px; height: 38px"
+          />
+        </a>
+
+        <a
+          href="https://www.facebook.com/profile.php?id=61587995854029"
+          target="_blank"
+          class="icon-social transition-transform hover:scale-110"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
+            alt="Facebook"
+            style="width: 38px; height: 38px"
+          />
+        </a>
+      </div>
     </header>
 
     <main class="flex flex-col md:flex-row flex-1 p-4 gap-6">
-      <!-- CATEGORIAS -->
-
       <aside class="w-full md:w-64 space-y-2">
         <h2
           class="font-bold text-mayorista mb-4 uppercase tracking-wider text-sm"
         >
           Categorías
         </h2>
-
         <div class="flex md:flex-col gap-2 overflow-x-auto pb-2">
           <button
             onclick="filtrar('TODOS', this)"
@@ -51,31 +103,26 @@
           >
             TODOS
           </button>
-
           <button
             onclick="filtrar('BELLEZA', this)"
-            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors"
           >
             BELLEZA
           </button>
-
           <button
             onclick="filtrar('COCINA', this)"
-            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors"
           >
             COCINA
           </button>
-
           <button
             onclick="filtrar('DECO', this)"
-            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white"
+            class="categoria-btn bg-white border px-4 py-2 rounded-lg font-bold w-full text-left hover:bg-green-800 hover:text-white transition-colors"
           >
             DECO
           </button>
         </div>
       </aside>
-
-      <!-- PRODUCTOS -->
 
       <section class="flex-1">
         <input
@@ -85,19 +132,17 @@
           placeholder="Buscar producto o código..."
           class="w-full p-3 rounded-xl border-2 mb-6 outline-none focus:border-mayorista shadow-sm"
         />
-
         <div
           id="contenedor-productos"
           class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
         ></div>
       </section>
 
-      <!-- CARRITO PC -->
-
       <aside class="hidden md:block w-full md:w-80">
-        <div class="bg-white p-6 rounded-3xl shadow-xl sticky top-4">
+        <div
+          class="bg-white p-6 rounded-3xl shadow-xl sticky top-4 border-none"
+        >
           <h2 class="font-black text-xl mb-4 text-mayorista">MI PEDIDO</h2>
-
           <div
             id="items-carrito"
             class="space-y-3 mb-6 max-h-96 overflow-y-auto"
@@ -106,13 +151,11 @@
               No hay productos aún.
             </p>
           </div>
-
           <div class="border-t pt-4">
             <div class="flex justify-between text-2xl font-black mb-6">
               <span>Total:</span>
               <span id="total-pedido">$0</span>
             </div>
-
             <button
               onclick="enviarWhatsApp()"
               class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-lg hover:bg-green-800"
@@ -124,8 +167,6 @@
       </aside>
     </main>
 
-    <!-- BOTON CELULAR -->
-
     <div class="fixed bottom-4 left-4 right-4 md:hidden z-50">
       <button
         onclick="enviarWhatsApp()"
@@ -135,8 +176,6 @@
         <span id="total-flotante">$0</span>
       </button>
     </div>
-
-    <!-- MODAL FOTO -->
 
     <div
       id="modal-foto"
@@ -149,58 +188,44 @@
       />
     </div>
 
+    <a
+      href="https://wa.me/543413261010"
+      target="_blank"
+      class="fixed bottom-24 right-4 md:bottom-6 md:right-6 bg-[#25D366] text-white rounded-full shadow-xl flex items-center gap-3 px-5 py-3.5 z-50 transition-transform hover:scale-110"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WA"
+        class="h-7 w-7"
+      />
+      <span class="font-bold tracking-wide">TE AYUDAMOS?</span>
+    </a>
+
     <script src="productos.js"></script>
 
     <script>
       let carrito = [];
-
       function precioARS(n) {
         return n.toLocaleString("es-AR");
       }
 
       function mostrarProductos(lista) {
         const cont = document.getElementById("contenedor-productos");
-
         cont.innerHTML = lista
           .map(
             (p) => `
-
-<div class="bg-white p-2 md:p-4 rounded-2xl border hover:border-mayorista shadow-sm flex flex-col">
-
-<div class="w-full h-24 md:h-44 bg-white rounded-xl mb-2 md:mb-4 border flex items-center justify-center p-2 md:p-3">
-
-<img
-src="${p.foto}"
-alt="${p.nombre}"
-loading="lazy"
-onclick="ampliar('${p.foto}')"
-class="max-h-full max-w-full object-contain cursor-zoom-in">
-
-</div>
-
-<p class="text-[10px] font-mono text-gray-400">
-${p.id}
-</p>
-
-<h3 class="font-bold text-gray-800 text-sm md:text-base min-h-[40px] md:min-h-[48px] overflow-hidden">
-${p.nombre}
-</h3>
-
-<p class="text-lg md:text-2xl font-black text-mayorista mt-1 md:mt-2">
-$${precioARS(p.precio)}
-</p>
-
-<button
-onclick="agregarAlCarrito('${p.id}')"
-class="w-full mt-2 md:mt-4 bg-gray-100 py-2 md:py-3 rounded-xl font-bold text-sm md:text-base hover:bg-mayorista hover:text-white">
-
-+ Agregar
-
-</button>
-
-</div>
-
-`,
+        <div class="bg-white p-2 md:p-4 rounded-2xl border hover:border-mayorista shadow-sm flex flex-col">
+          <div class="w-full h-24 md:h-44 bg-white rounded-xl mb-2 md:mb-4 border flex items-center justify-center p-2 md:p-3">
+            <img src="${p.foto}" alt="${p.nombre}" loading="lazy" onclick="ampliar('${p.foto}')" class="max-h-full max-w-full object-contain cursor-zoom-in">
+          </div>
+          <p class="text-[10px] font-mono text-gray-400">${p.id}</p>
+          <h3 class="font-bold text-gray-800 text-sm md:text-base min-h-[40px] md:min-h-[48px] overflow-hidden">${p.nombre}</h3>
+          <p class="text-lg md:text-2xl font-black text-mayorista mt-1 md:mt-2">$${precioARS(p.precio)}</p>
+          <button onclick="agregarAlCarrito('${p.id}')" class="w-full mt-2 md:mt-4 bg-gray-100 py-2 md:py-3 rounded-xl font-bold text-sm md:text-base hover:bg-mayorista hover:text-white transition-colors">
+            + Agregar
+          </button>
+        </div>
+      `,
           )
           .join("");
       }
@@ -210,30 +235,25 @@ class="w-full mt-2 md:mt-4 bg-gray-100 py-2 md:py-3 rounded-xl font-bold text-sm
           b.classList.remove("bg-mayorista", "text-white");
           b.classList.add("bg-white");
         });
-
         btn.classList.remove("bg-white");
         btn.classList.add("bg-mayorista", "text-white");
       }
 
       function filtrar(c, btn) {
         if (btn) activarBoton(btn);
-
         const filtrados =
           c === "TODOS" ? productos : productos.filter((p) => p.cat === c);
-
         mostrarProductos(filtrados);
       }
 
       function agregarAlCarrito(id) {
         const prod = productos.find((p) => p.id === id);
         const existe = carrito.find((i) => i.id === id);
-
         if (existe) {
           existe.cantidad++;
         } else {
           carrito.push({ ...prod, cantidad: 1 });
         }
-
         actualizarCarrito();
       }
 
@@ -241,50 +261,22 @@ class="w-full mt-2 md:mt-4 bg-gray-100 py-2 md:py-3 rounded-xl font-bold text-sm
         const lista = document.getElementById("items-carrito");
         const totalTxt = document.getElementById("total-pedido");
         const totalFlotante = document.getElementById("total-flotante");
-
         lista.innerHTML = "";
         let total = 0;
-
         carrito.forEach((item) => {
           total += item.precio * item.cantidad;
-
           lista.innerHTML += `
-
-<div class="flex justify-between items-center border-b pb-2">
-
-<div>
-
-<p class="font-bold text-sm">
-${item.nombre}
-</p>
-
-<p class="text-xs text-gray-500">
-${item.cantidad} x $${precioARS(item.precio)}
-</p>
-
-</div>
-
-<button
-onclick="eliminar('${item.id}')"
-class="text-red-500 text-xs font-bold">
-
-Quitar
-
-</button>
-
-</div>
-
-`;
+          <div class="flex justify-between items-center border-b pb-2">
+            <div><p class="font-bold text-sm">${item.nombre}</p><p class="text-xs text-gray-500">${item.cantidad} x $${precioARS(item.precio)}</p></div>
+            <button onclick="eliminar('${item.id}')" class="text-red-500 text-xs font-bold">Quitar</button>
+          </div>`;
         });
-
         if (carrito.length === 0) {
           lista.innerHTML =
             '<p class="text-gray-400 italic text-center py-4">No hay productos aún.</p>';
         }
-
         totalTxt.innerText = "$" + precioARS(total);
         totalFlotante.innerText = "$" + precioARS(total);
-
         localStorage.setItem("carrito", JSON.stringify(carrito));
       }
 
@@ -298,22 +290,16 @@ Quitar
           alert("Tu carrito está vacío");
           return;
         }
-
         let mensaje =
           "Hola Mayorista Pueblo, quiero hacer el siguiente pedido:\n\n";
         let total = 0;
-
         carrito.forEach((item) => {
           mensaje += `• ${item.nombre} [${item.id}] x ${item.cantidad} - $${precioARS(item.precio * item.cantidad)}\n`;
           total += item.precio * item.cantidad;
         });
-
         mensaje += `\nTOTAL ESTIMADO: $${precioARS(total)}`;
-
-        const numero = "543413261010";
-
         window.open(
-          `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`,
+          `https://wa.me/543413261010?text=${encodeURIComponent(mensaje)}`,
         );
       }
 
@@ -324,30 +310,22 @@ Quitar
 
       function buscar() {
         const t = document.getElementById("buscador").value.toUpperCase();
-
         const filtrados = productos.filter(
           (p) =>
             p.nombre.toUpperCase().includes(t) ||
             p.id.toUpperCase().includes(t),
         );
-
         mostrarProductos(filtrados);
       }
 
       window.onload = () => {
         const guardado = localStorage.getItem("carrito");
-
         if (guardado) {
           carrito = JSON.parse(guardado);
         }
-
         mostrarProductos(productos);
         actualizarCarrito();
       };
-
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("service-worker.js");
-      }
     </script>
   </body>
 </html>
