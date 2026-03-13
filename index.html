@@ -28,7 +28,6 @@
       .icon-social:hover {
         transform: scale(1.15);
       }
-      /* Scrollbar suave para el modal */
       #items-carrito-movil::-webkit-scrollbar {
         width: 4px;
       }
@@ -132,7 +131,7 @@
         />
         <div
           id="contenedor-productos"
-          class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
+          class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 pb-24 md:pb-0"
         ></div>
       </section>
 
@@ -166,20 +165,22 @@
     </main>
 
     <div
-      class="fixed bottom-4 left-4 right-4 md:hidden z-50 flex flex-col gap-2"
+      id="btn-flotante-container"
+      class="fixed bottom-6 left-4 right-4 md:hidden z-50 hidden"
     >
       <button
         onclick="toggleCarritoMovil()"
-        class="bg-white text-mayorista border-2 border-mayorista py-2 rounded-xl font-bold shadow-xl text-sm"
+        class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-2xl flex justify-between px-6 items-center"
       >
-        VER DETALLE DEL PEDIDO
-      </button>
-      <button
-        onclick="enviarWhatsApp()"
-        class="w-full bg-mayorista text-white py-4 rounded-2xl font-bold shadow-xl flex justify-between px-6"
-      >
-        <span>Enviar pedido</span>
-        <span id="total-flotante">$0</span>
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white text-mayorista rounded-full w-6 h-6 flex items-center justify-center text-xs"
+            id="cantidad-flotante"
+            >0</span
+          >
+          <span>Ver Pedido</span>
+        </div>
+        <span id="total-flotante" class="text-lg">$0</span>
       </button>
     </div>
 
@@ -188,10 +189,10 @@
       class="fixed inset-0 bg-black/60 hidden z-[60] p-4 items-center justify-center"
     >
       <div
-        class="bg-white w-full max-w-sm rounded-3xl p-6 flex flex-col max-h-[85vh]"
+        class="bg-white w-full max-w-sm rounded-3xl p-6 flex flex-col max-h-[85vh] shadow-2xl"
       >
         <div class="flex justify-between items-center mb-4">
-          <h2 class="font-black text-xl text-mayorista">MI PEDIDO</h2>
+          <h2 class="font-black text-xl text-mayorista">TU PEDIDO</h2>
           <button onclick="toggleCarritoMovil()" class="text-gray-400 text-3xl">
             &times;
           </button>
@@ -205,12 +206,20 @@
             <span>Total:</span>
             <span id="total-pedido-movil">$0</span>
           </div>
-          <button
-            onclick="toggleCarritoMovil()"
-            class="w-full bg-gray-100 py-3 rounded-xl font-bold text-gray-600"
-          >
-            CONTINUAR COMPRANDO
-          </button>
+          <div class="flex flex-col gap-2">
+            <button
+              onclick="enviarWhatsApp()"
+              class="w-full bg-mayorista text-white py-4 rounded-xl font-bold shadow-lg"
+            >
+              CONFIRMAR POR WHATSAPP
+            </button>
+            <button
+              onclick="toggleCarritoMovil()"
+              class="w-full bg-gray-100 py-3 rounded-xl font-bold text-gray-500 text-sm"
+            >
+              SEGUIR COMPRANDO
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -226,20 +235,7 @@
       />
     </div>
 
-    <a
-      href="https://wa.me/543413261010"
-      target="_blank"
-      class="fixed bottom-24 right-4 md:bottom-6 md:right-6 bg-[#25D366] text-white rounded-full shadow-xl flex items-center gap-3 px-5 py-3.5 z-40 transition-transform hover:scale-110"
-    >
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WA"
-        class="h-7 w-7"
-      />
-      <span class="font-bold tracking-wide">TE AYUDAMOS?</span>
-    </a>
-
-    <script src="productos.js?v=1.2"></script>
+    <script src="productos.js?v=1.3"></script>
 
     <script>
       let carrito = [];
@@ -301,21 +297,31 @@
         const totalTxt = document.getElementById("total-pedido");
         const totalMovilTxt = document.getElementById("total-pedido-movil");
         const totalFlotante = document.getElementById("total-flotante");
+        const cantidadFlotante = document.getElementById("cantidad-flotante");
+        const btnContenedor = document.getElementById("btn-flotante-container");
 
         let html = "";
         let total = 0;
+        let cantidadTotal = 0;
 
         carrito.forEach((item) => {
           total += item.precio * item.cantidad;
+          cantidadTotal += item.cantidad;
           html += `
-                <div class="flex justify-between items-center border-b pb-2 gap-2">
+                <div class="flex justify-between items-center border-b pb-3 gap-2">
                     <div class="flex-1">
-                        <p class="font-bold text-sm leading-tight">${item.nombre}</p>
+                        <p class="font-bold text-sm leading-tight text-gray-800">${item.nombre}</p>
                         <p class="text-xs text-gray-500">${item.cantidad} x $${precioARS(item.precio)}</p>
                     </div>
-                    <button onclick="eliminar('${item.id}')" class="text-red-500 text-xs font-bold bg-red-50 px-2 py-1 rounded">Quitar</button>
+                    <button onclick="eliminar('${item.id}')" class="text-red-500 text-xs font-bold bg-red-50 px-3 py-2 rounded-lg">Quitar</button>
                 </div>`;
         });
+
+        if (carrito.length > 0) {
+          btnContenedor.classList.remove("hidden");
+        } else {
+          btnContenedor.classList.add("hidden");
+        }
 
         const vacio =
           '<p class="text-gray-400 italic text-center py-4">No hay productos aún.</p>';
@@ -326,6 +332,7 @@
         totalTxt.innerText = totalF;
         totalMovilTxt.innerText = totalF;
         totalFlotante.innerText = totalF;
+        cantidadFlotante.innerText = cantidadTotal;
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
       }
