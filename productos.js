@@ -49,12 +49,28 @@ const productos = [
 { id: "AUR01", nombre: "AURICULAR", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/1.png" },
 { id: "AUR02", nombre: "AURICULAR", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/2.png" },
 { id: "AUR03", nombre: "AURICULAR", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/3.png" },
+// Continuación de AURICULARES en productos.js
+{ id: "AUR04", nombre: "AURICULAR INFANTIL CON OREJITAS", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/4.png" },
+{ id: "AUR05", nombre: "AURICULAR VINCHA COLOR", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/5.png" },
+{ id: "AUR06", nombre: "AURICULAR VINCHA GAMER", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/6.png" },
+{ id: "AUR07", nombre: "AURICULAR VINCHA BLUETOOTH", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/7.png" },
+{ id: "AUR08", nombre: "AURICULARES IN-EAR COLORES", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/8.png" },
+{ id: "AUR09", nombre: "AURICULARES IN-EAR INFANTILES", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/9.png" },
+{ id: "AUR10", nombre: "AURICULARES IN-EAR CON ESTUCHE", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/10.png" },
+{ id: "AUR11", nombre: "AURICULARES INPODS TWS BLANCO", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/11.png" },
+{ id: "AUR12", nombre: "AURICULARES TWS DEPORTIVOS", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/12.png" },
+{ id: "AUR13", nombre: "AURICULARES TWS CON DISPLAY", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/13.png" },
+{ id: "AUR14", nombre: "AURICULARES TWS GAMER LED", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/14.png" },
+{ id: "AUR15", nombre: "AURICULARES TWS PREMIUM", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/15.png" },
+{ id: "AUR16", nombre: "AURICULARES IN-EAR CON MIC", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/16.png" },
+{ id: "AUR17", nombre: "AURICULARES INPODS COLORES", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/17.png" },
+{ id: "AUR18", nombre: "AURICULARES IN-EAR MANOS LIBRES", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/18.png" },
+
   // Cargadores
   //Deportivo
   //Informatica
    { id: "INF01", nombre: "TV BOX", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/1.png" },
    { id: "INF02", nombre: "TV BOX", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/2.png" },
-   // Continuación de INFORMÁTICA en productos.js
 { id: "INF03", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/3.png" },
 { id: "INF04", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/4.png" },
 { id: "INF05", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/5.png" },
@@ -76,7 +92,6 @@ const productos = [
 { id: "JUG05", nombre: "SET PISTOLA LANZA DARDOS CON ACCESORIOS", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/5.png" },
 { id: "JUG06", nombre: "PISTOLA LANZA DARDOS AUTOMÁTICA", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/6.png" },
   //Libreria
-  // Agrega esto a la sección de LIBRERÍA en productos.js
 { id: "LIB01", nombre: "SET DE RESALTADORES FRAGANCIA", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/1.png" },
 { id: "LIB02", nombre: "MOCHILA INFANTIL DINO", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/2.png" },
 { id: "LIB03", nombre: "MOCHILA INFANTIL LECHUZA", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/3.png" },
