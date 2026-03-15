@@ -1,20 +1,109 @@
 const productos = [
-  { id: "HOGS01", nombre: "SECADOR DE PELO ZAFIRE", precio: 50000, cat: "BELLEZA", foto: "fotos/secador.png" },
-  { id: "HOGS02", nombre: "PLANCHITA DE PELO PROFESIONAL", precio: 48000, cat: "BELLEZA", foto: "fotos/planchita.png" },
-  { id: "HOGS03", nombre: "CEPILLO ALISADOR", precio: 21000, cat: "BELLEZA", foto: "fotos/cepillo.png" },
-  { id: "HOGS04", nombre: "FREIDORA DE AIRE", precio: 100000, cat: "COCINA", foto: "fotos/freidora.jpg" },
-  { id: "HOGS05", nombre: "HORNO ELÉCTRICO 17 L", precio: 80000, cat: "COCINA", foto: "fotos/horno.png" },
-  { id: "HOGS06", nombre: "CAFETERA", precio: 140000, cat: "COCINA", foto: "fotos/cafetera.png" },
-  { id: "DECO07", nombre: "LÁMPARA ATARDECER", precio: 10000, cat: "DECO", foto: "fotos/lamparasunset.jpg"  },
-  { id: "DECO08", nombre: "HUMIFICADOR LLAMA", precio: 26000, cat: "DECO", foto: "fotos/humificador.jpg" },
-  { id: "DECO09", nombre: "HUMIFICADOR HONGO", precio: 10000, cat: "DECO", foto: "fotos/hongo.jpg" }
+  //Belleza
+  { id: "BELL01", nombre: "SECADOR DE PELO ZAFIRE", precio: 50000, cat: "BELLEZA", foto: "fotos/BELLEZA/4.png" },
+  { id: "BELL02", nombre: "PLANCHITA DE PELO PROFESIONAL", precio: 48000, cat: "BELLEZA", foto: "fotos/BELLEZA/3.png" },
+  { id: "BELL03", nombre: "CEPILLO ALISADOR", precio: 21000, cat: "BELLEZA", foto: "fotos/BELLEZA/cepillo.png" },
+  { id: "BELL05", nombre: "AFEITADORA", precio: 99, cat: "BELLEZA", foto: "fotos/BELLEZA/1.png" },
+  { id: "BELL06", nombre: "AFEITADORA", precio: 99, cat: "BELLEZA", foto: "fotos/BELLEZA/2.png" },
+  //Hogar
+  { id: "HOG01", nombre: "FREIDORA DE AIRE", precio: 100000, cat: "HOGAR", foto: "fotos/HOGAR/freidora.jpg" },
+  { id: "HOG02", nombre: "HORNO ELÉCTRICO 17 L", precio: 80000, cat: "HOGAR", foto: "fotos/HOGAR/horno.png" },
+  { id: "HOG03", nombre: "CAFETERA", precio: 140000, cat: "HOGAR", foto: "fotos/HOGAR/cafetera.png" },
+ //Deco
+  { id: "DEC01", nombre: "LÁMPARA ATARDECER", precio: 10000, cat: "DECO", foto: "fotos/DECO/1.jpg" },
+  { id: "DEC02", nombre: "HUMIFICADOR LLAMA", precio: 26000, cat: "DECO", foto: "fotos/DECO/2.jpg" },
+  { id: "DEC03", nombre: "HUMIFICADOR HONGO", precio: 10000, cat: "DECO", foto: "fotos/DECO/3.jpg" },
+{ id: "DEC04", nombre: "VELADOR GATITO FLEXIBLE", precio: 99, cat: "DECO", foto: "fotos/DECO/4.png" },
+{ id: "DEC05", nombre: "VELADOR ASTRONAUTA EN LA LUNA", precio: 99, cat: "DECO", foto: "fotos/DECO/5.png" },
+{ id: "DEC06", nombre: "LÁMPARA DE MESA NÓRDICA", precio: 99, cat: "DECO", foto: "fotos/DECO/6.png" },
+{ id: "DEC07", nombre: "PROYECTOR ASTRONAUTA GALAXIA", precio: 99, cat: "DECO", foto: "fotos/DECO/7.png" },
+{ id: "DEC08", nombre: "VELADOR LED MINIMALISTA CON CARGA", precio: 99, cat: "DECO", foto: "fotos/DECO/8.png" },
+{ id: "DEC09", nombre: "HUMIDIFICADOR LÁMPARA MADERA", precio: 99, cat: "DECO", foto: "fotos/DECO/9.png" },
+{ id: "DEC10", nombre: "VELADOR LED ESCRITORIO", precio: 99, cat: "DECO", foto: "fotos/DECO/10.png" },
+{ id: "DEC11", nombre: "VELADOR CANGREJO INFANTIL", precio: 99, cat: "DECO", foto: "fotos/DECO/11.png" },
+{ id: "DEC12", nombre: "VELADOR CARACOL INFANTIL", precio: 99, cat: "DECO", foto: "fotos/DECO/12.png" },
+{ id: "DEC13", nombre: "LÁMPARA DE PARED MODERNA", precio: 99, cat: "DECO", foto: "fotos/DECO/13.png" },
+{ id: "DEC14", nombre: "VELADOR CARPINCHO / CAPYBARA", precio: 99, cat: "DECO", foto: "fotos/DECO/14.png" },
+{ id: "DEC15", nombre: "LÁMPARA ESCRITORIO CARGA INALÁMBRICA", precio: 99, cat: "DECO", foto: "fotos/DECO/15.png" },
+{ id: "DEC16", nombre: "PROYECTOR PARLANTE ASTRONAUTA", precio: 99, cat: "DECO", foto: "fotos/DECO/16.png" },
+{ id: "DEC17", nombre: "PROYECTOR ESTRELLAS GIRATORIO", precio: 99, cat: "DECO", foto: "fotos/DECO/17.png" },
+{ id: "DEC18", nombre: "VELADOR CARACOL DOBLE", precio: 99, cat: "DECO", foto: "fotos/DECO/18.png" },
+  // Parlantes
+  { id: "PAR01", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/1.png" },
+  { id: "PAR02", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/2.png" },
+  { id: "PAR03", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/3.png" },
+  { id: "PAR04", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/4.png" },
+  { id: "PAR05", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/5.png" },
+  { id: "PAR06", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/6.png" },
+  { id: "PAR07", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/7.png" },
+{ id: "PAR08", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/8.png" },
+  { id: "PAR09", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/9.png" },
+{ id: "PAR10", nombre: "PARLANTE", precio: 99, cat: "PARLANTES", foto: "fotos/PARLANTES/10.png" },
+  // Micrófonos 
+{ id: "MIC01", nombre: "MICRÓFONO", precio: 99, cat: "MICRÓFONOS", foto: "fotos/MICROFONOS/1.png" },
+{ id: "MIC02", nombre: "MICRÓFONO", precio: 99, cat: "MICRÓFONOS", foto: "fotos/MICROFONOS/2.png" },
+{ id: "MIC03", nombre: "MICRÓFONO", precio: 99, cat: "MICRÓFONOS", foto: "fotos/MICROFONOS/3.png" },
+{ id: "MIC04", nombre: "MICRÓFONO", precio: 99, cat: "MICRÓFONOS", foto: "fotos/MICROFONOS/4.png" },
+{ id: "MIC05", nombre: "MICRÓFONO", precio: 99, cat: "MICRÓFONOS", foto: "fotos/MICROFONOS/5.png" },
+  // Auriculares
+{ id: "AUR01", nombre: "AURICULAR", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/1.png" },
+{ id: "AUR02", nombre: "AURICULAR", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/2.png" },
+{ id: "AUR03", nombre: "AURICULAR", precio: 99, cat: "AURICULARES", foto: "fotos/AURICULARES/3.png" },
+  // Cargadores
+  //Deportivo
+  //Informatica
+   { id: "INF01", nombre: "TV BOX", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/1.png" },
+   { id: "INF02", nombre: "TV BOX", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/2.png" },
+   // Continuación de INFORMÁTICA en productos.js
+{ id: "INF03", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/3.png" },
+{ id: "INF04", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/4.png" },
+{ id: "INF05", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/5.png" },
+{ id: "INF06", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/6.png" },
+{ id: "INF07", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/7.png" },
+{ id: "INF08", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/8.png" },
+{ id: "INF09", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/9.png" },
+{ id: "INF10", nombre: "CALCULADORA", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/10.png" },
+{ id: "INF11", nombre: "CALCULADORA", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/11.png" },
+{ id: "INF12", nombre: "CALCULADORA", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/12.png" },
+{ id: "INF13", nombre: "CALCULADORA", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/13.png" },
+{ id: "INF14", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/14.png" },
+{ id: "INF15", nombre: "MOUSE / TECLADO", precio: 99, cat: "INFORMÁTICA", foto: "fotos/INFORMATICA/15.png" },
+  //Juguetes
+{ id: "JUG01", nombre: "CÁMARA DIGITAL INFANTIL", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/1.png" },
+{ id: "JUG02", nombre: "CAMIÓN DE CONSTRUCCIÓN", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/2.png" },
+{ id: "JUG03", nombre: "PISTOLA LANZA DARDOS REVOLVER", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/3.png" },
+{ id: "JUG04", nombre: "AMETRALLADORA LANZA DARDOS DORADA", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/4.png" },
+{ id: "JUG05", nombre: "SET PISTOLA LANZA DARDOS CON ACCESORIOS", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/5.png" },
+{ id: "JUG06", nombre: "PISTOLA LANZA DARDOS AUTOMÁTICA", precio: 99, cat: "JUGUETES", foto: "fotos/JUGUETES/6.png" },
+  //Libreria
+  // Agrega esto a la sección de LIBRERÍA en productos.js
+{ id: "LIB01", nombre: "SET DE RESALTADORES FRAGANCIA", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/1.png" },
+{ id: "LIB02", nombre: "MOCHILA INFANTIL DINO", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/2.png" },
+{ id: "LIB03", nombre: "MOCHILA INFANTIL LECHUZA", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/3.png" },
+{ id: "LIB04", nombre: "MOCHILA ESCOLAR ESPACIAL", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/4.png" },
+{ id: "LIB05", nombre: "SET DE LAPICERAS DE COLORES", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/5.png" },
+{ id: "LIB06", nombre: "SET DE MARCADORES DOBLE PUNTA X60", precio: 99, cat: "LIBRERÍA", foto: "fotos/LIBRERIA/6.png" },
+  //Proyectores
+{ id: "PRO01", nombre: "PROYECTOR", precio: 99, cat: "PROYECTORES", foto: "fotos/PROYECTORES/1.png" },
+{ id: "PRO02", nombre: "PROYECTOR", precio: 99, cat: "PROYECTORES", foto: "fotos/PROYECTORES/2.png" },
+  //Relojes
+{ id: "REL01", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/1.png" },
+{ id: "REL02", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/2.png" },
+{ id: "REL03", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/3.png" },
+{ id: "REL04", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/4.png" },
+{ id: "REL05", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/5.png" },
+{ id: "REL06", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/6.png" },
+{ id: "REL07", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/7.png" },
+{ id: "REL08", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/8.png" },
+{ id: "REL09", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/9.png" },
+{ id: "REL10", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/10.png" },
+{ id: "REL11", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/11.png" },
+{ id: "REL12", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/12.png" },
+{ id: "REL13", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/13.png" },
+{ id: "REL14", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/14.png" },
+{ id: "REL15", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/15.png" },
+{ id: "REL16", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/16.png" },
+{ id: "REL17", nombre: "RELOJ", precio: 99, cat: "RELOJES", foto: "fotos/RELOJES/17.png" },
+
 ];
 
-
-
-
-
-
-
-
-// COPIAR Y PEGAR ESTO PARA AGOTAR UN PRODUCTO: , stock: false
