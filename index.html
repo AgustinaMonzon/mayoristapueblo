@@ -7,7 +7,6 @@
     <link rel="icon" href="logo.webp" />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#1a5d37" />
-
     <meta
       http-equiv="cache-control"
       content="no-cache, must-revalidate, post-check=0, pre-check=0"
@@ -26,12 +25,24 @@
       .border-pueblo {
         border-color: #1a5d37;
       }
-
-      .icon-social {
-        transition: transform 0.2s;
+      .btn-ya-agregado {
+        background-color: #2da44e !important;
+        transform: scale(0.98);
       }
-      .icon-social:hover {
-        transform: scale(1.15);
+
+      @keyframes pop {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .animar-pop {
+        animation: pop 0.3s ease-out;
       }
 
       .scroll-hidden::-webkit-scrollbar {
@@ -40,14 +51,6 @@
       .scroll-hidden {
         -ms-overflow-style: none;
         scrollbar-width: none;
-      }
-
-      #items-carrito-movil::-webkit-scrollbar {
-        width: 4px;
-      }
-      #items-carrito-movil::-webkit-scrollbar-thumb {
-        background: #1a5d37;
-        border-radius: 10px;
       }
 
       .btn-whatsapp-flotante {
@@ -64,7 +67,6 @@
         gap: 8px;
         font-weight: bold;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s;
       }
 
       @media (min-width: 768px) {
@@ -73,8 +75,6 @@
           padding: 10px 20px;
         }
       }
-
-      /* Espacio extra abajo para que el botón del carrito no tape productos */
       #contenedor-productos {
         padding-bottom: 150px;
       }
@@ -88,7 +88,7 @@
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <a
-      href="https://wa.me/543413261010?text=Hola!%20Estoy%20viendo%20el%20catálogo%20y%20tengo%20una%20consulta"
+      href="https://wa.me/543413261010?text=Hola!%20Tengo%20una%20consulta"
       target="_blank"
       class="btn-whatsapp-flotante"
     >
@@ -104,47 +104,29 @@
     <header
       class="bg-white shadow-sm flex flex-col items-center pt-2 pb-4 px-4"
     >
-      <div class="flex justify-center w-full">
-        <img
-          src="logo.webp"
-          class="h-28 md:h-40 object-contain"
-          alt="Tienda Pueblo"
-        />
-      </div>
+      <img
+        src="logo.webp"
+        class="h-28 md:h-40 object-contain"
+        alt="Tienda Pueblo"
+      />
       <div class="flex items-center justify-center gap-6 -mt-4 md:-mt-6">
-        <a
-          href="https://wa.me/543413261010"
-          target="_blank"
-          class="icon-social"
-        >
-          <img
+        <a href="https://wa.me/543413261010" target="_blank"
+          ><img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WA"
-            style="width: 35px"
-          />
-        </a>
-        <a
-          href="https://www.instagram.com/mayoristapueblo/"
-          target="_blank"
-          class="icon-social"
-        >
-          <img
+            width="35"
+        /></a>
+        <a href="https://www.instagram.com/mayoristapueblo/" target="_blank"
+          ><img
             src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
-            alt="IG"
-            style="width: 28px"
-          />
-        </a>
+            width="28"
+        /></a>
         <a
           href="https://www.facebook.com/profile.php?id=61587995854029"
           target="_blank"
-          class="icon-social"
-        >
-          <img
+          ><img
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
-            alt="FB"
-            style="width: 28px"
-          />
-        </a>
+            width="28"
+        /></a>
       </div>
     </header>
 
@@ -152,93 +134,88 @@
       class="flex flex-col md:flex-row flex-1 p-4 gap-4 max-w-[1400px] mx-auto w-full"
     >
       <aside class="w-full md:w-48 space-y-2">
-        <h2
-          class="font-bold text-pueblo mb-4 uppercase tracking-wider text-xs hidden md:block"
-        >
-          Categorías
-        </h2>
         <div class="flex md:flex-col gap-2 overflow-x-auto pb-2 scroll-hidden">
           <button
             onclick="filtrar('TODOS', this)"
-            class="categoria-btn bg-pueblo text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border shadow-sm transition-all"
+            class="categoria-btn bg-pueblo text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border shadow-sm"
           >
             TODOS
           </button>
           <button
             onclick="filtrar('AURICULARES', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             AURICULARES
           </button>
           <button
             onclick="filtrar('BELLEZA', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             BELLEZA
           </button>
           <button
             onclick="filtrar('CARGADORES', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             CARGADORES
           </button>
           <button
             onclick="filtrar('CELULARES', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             CELULARES
           </button>
           <button
             onclick="filtrar('DECO', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             DECO
           </button>
           <button
             onclick="filtrar('DEPORTIVO', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             DEPORTIVO
           </button>
           <button
             onclick="filtrar('HOGAR', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             HOGAR
           </button>
           <button
             onclick="filtrar('INFORMÁTICA', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             INFORMÁTICA
           </button>
           <button
             onclick="filtrar('JUGUETES', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             JUGUETES
           </button>
           <button
             onclick="filtrar('LIBRERÍA', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             LIBRERÍA
           </button>
           <button
             onclick="filtrar('PARLANTES', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             PARLANTES
           </button>
           <button
             onclick="filtrar('VARIOS', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             VARIOS
           </button>
           <button
             onclick="filtrar('SALE', this)"
-            class="categoria-btn bg-red-600 text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border shadow-sm mt-2"
+            class="categoria-btn bg-red-600 text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm mt-2 shadow-sm"
           >
             🔥 SALE / OFERTAS
           </button>
@@ -247,33 +224,31 @@
 
       <section class="flex-1">
         <div class="flex flex-col md:flex-row gap-2 mb-6 items-center">
-          <div class="relative flex-1 w-full">
+          <div class="flex-1 w-full relative">
             <input
               type="text"
               id="buscador"
               onkeyup="buscar()"
-              placeholder="Buscar producto o código..."
+              placeholder="Buscar producto..."
               class="w-full p-3 rounded-xl border-2 outline-none focus:border-pueblo shadow-sm"
             />
           </div>
           <button
             onclick="filtrar('FAVORITOS', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-3 rounded-xl border-2 font-bold flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm"
+            class="categoria-btn bg-white text-gray-700 w-full md:w-32 py-3 rounded-xl border-2 font-bold flex items-center justify-center gap-2 shadow-sm shrink-0"
           >
-            <span class="text-yellow-500 text-lg">⭐</span>
-            <span>Favoritos</span>
+            <span class="text-yellow-500">⭐</span> <span>Favoritos</span>
           </button>
           <select
             id="ordenar"
             onchange="aplicarFiltros()"
-            class="w-full md:w-auto p-3 rounded-xl border-2 outline-none bg-white font-bold text-gray-600 shadow-sm"
+            class="w-full md:w-auto p-3 rounded-xl border-2 outline-none bg-white font-bold text-gray-600 shadow-sm shrink-0"
           >
             <option value="predeterminado">Ordenar por</option>
-            <option value="menor">Precio: Menor a Mayor</option>
-            <option value="mayor">Precio: Mayor a Menor</option>
+            <option value="menor">Menor Precio</option>
+            <option value="mayor">Mayor Precio</option>
           </select>
         </div>
-
         <div
           id="contenedor-productos"
           class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5"
@@ -329,7 +304,7 @@
       class="fixed inset-0 bg-black/60 hidden z-[60] p-4 items-center justify-center"
     >
       <div
-        class="bg-white w-full max-w-sm rounded-3xl p-6 flex flex-col max-h-[85vh] shadow-2xl"
+        class="bg-white w-full max-w-sm rounded-3xl p-6 flex flex-col max-h-[85vh]"
       >
         <div class="flex justify-between items-center mb-4">
           <h2 class="font-black text-xl text-pueblo uppercase">Tu Carrito</h2>
@@ -351,12 +326,6 @@
           >
             Confirmar por WhatsApp
           </button>
-          <button
-            onclick="toggleCarritoMovil()"
-            class="w-full bg-gray-100 py-3 rounded-xl font-bold text-gray-500 text-sm"
-          >
-            SEGUIR COMPRANDO
-          </button>
         </div>
       </div>
     </div>
@@ -375,15 +344,6 @@
         const prodScript = document.createElement("script");
         prodScript.src = `productos.js?v=${v}`;
         document.body.appendChild(prodScript);
-
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker
-            .register(`service-worker.js?v=${v}`)
-            .then((reg) => {
-              reg.update();
-              console.log("SW registrado con versión:", v);
-            });
-        }
       })();
     </script>
 
@@ -407,40 +367,41 @@
       function mostrarProductos(lista) {
         const cont = document.getElementById("contenedor-productos");
         if (lista.length === 0) {
-          cont.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400 text-sm italic">No se encontraron productos.</div>`;
+          cont.innerHTML = `<p class="col-span-full text-center py-20 text-gray-400">No hay productos.</p>`;
           return;
         }
+
         cont.innerHTML = lista
           .map((p) => {
             const hayStock = p.stock !== false;
             const esFav = favoritos.includes(p.id);
-            const tieneOferta = p.oferta && p.precioAnterior;
-            const precioHTML = tieneOferta
-              ? `<div class="flex flex-col"><span class="text-gray-400 line-through text-[10px] md:text-sm">$${precioARS(p.precioAnterior)}</span><span class="text-red-600 font-black text-base md:text-xl animate-pulse">$${precioARS(p.precio)}</span></div>`
-              : `<p class="text-base md:text-xl font-black text-pueblo">${typeof p.precio === "number" ? "$" + precioARS(p.precio) : p.precio}</p>`;
+            const yaEsta = carrito.find((item) => item.id === p.id);
+            const cantidadAMostrar = yaEsta ? yaEsta.cantidad : 1;
+            const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
+            const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
 
             return `
-            <div class="bg-white p-2 md:p-4 rounded-2xl border ${hayStock ? "hover:border-pueblo" : "opacity-60"} shadow-sm flex flex-col relative">
-              <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+            <div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}">
+               <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
               </button>
-              <div class="w-full aspect-square bg-white rounded-xl mb-2 md:mb-4 border flex items-center justify-center overflow-hidden relative">
+              <div class="w-full aspect-square bg-white rounded-xl mb-2 border flex items-center justify-center overflow-hidden">
                 <img src="${p.foto}" loading="lazy" onclick="ampliar('${p.foto}')" class="w-full h-full object-cover cursor-zoom-in">
-                ${!hayStock ? '<span class="absolute top-2 right-2 bg-red-600 text-white text-[8px] px-2 py-1 rounded-full font-bold">AGOTADO</span>' : ""}
-                ${p.oferta ? '<span class="absolute top-2 right-2 bg-red-500 text-white text-[8px] px-2 py-1 rounded-full font-bold">OFERTA</span>' : ""}
               </div>
               <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
               <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1">${p.nombre}</h3>
-              ${precioHTML}
+              <p class="text-base md:text-xl font-black text-pueblo">$${precioARS(p.precio)}</p>
               ${
                 hayStock
                   ? `
                 <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
                   <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo">-</button>
-                  <span id="cant-${p.id}" class="font-bold text-xs">1</span>
+                  <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
                   <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo">+</button>
                 </div>
-                <button onclick="prepararAlta('${p.id}')" class="w-full mt-2 bg-pueblo text-white py-2 rounded-xl font-bold text-[10px] uppercase">Agregar</button>
+                <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">
+                  ${btnTexto}
+                </button>
               `
                   : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2 rounded-xl font-bold text-[10px]">Sin Stock</button>`
               }
@@ -449,81 +410,26 @@
           .join("");
       }
 
-      function filtrar(c, btn) {
-        categoriaActual = c;
-        document.querySelectorAll(".categoria-btn").forEach((b) => {
-          b.classList.remove("bg-pueblo", "bg-red-600", "text-white");
-          b.classList.add("bg-white", "text-gray-700");
-        });
-        if (c === "SALE") btn.classList.add("bg-red-600", "text-white");
-        else btn.classList.add("bg-pueblo", "text-white");
-        btn.classList.remove("bg-white", "text-gray-700");
-        aplicarFiltros();
-      }
-
-      function aplicarFiltros() {
-        const texto = document.getElementById("buscador").value.toUpperCase();
-        const orden = document.getElementById("ordenar").value;
-        let filtrados =
-          typeof productos !== "undefined"
-            ? JSON.parse(JSON.stringify(productos))
-            : [];
-
-        if (categoriaActual === "SALE")
-          filtrados = filtrados.filter((p) => p.oferta);
-        else if (categoriaActual === "FAVORITOS")
-          filtrados = filtrados.filter((p) => favoritos.includes(p.id));
-        else if (categoriaActual !== "TODOS")
-          filtrados = filtrados.filter((p) => p.cat === categoriaActual);
-
-        if (texto)
-          filtrados = filtrados.filter(
-            (p) =>
-              p.nombre.toUpperCase().includes(texto) ||
-              p.id.toUpperCase().includes(texto),
-          );
-        if (orden === "menor") filtrados.sort((a, b) => a.precio - b.precio);
-        else if (orden === "mayor")
-          filtrados.sort((a, b) => b.precio - a.precio);
-
-        mostrarProductos(filtrados);
-      }
-
-      function buscar() {
-        aplicarFiltros();
-      }
-
-      function cambiarCantCarta(id, cambio) {
-        const el = document.getElementById(`cant-${id}`);
-        if (el) {
-          let actual = parseInt(el.innerText);
-          if (actual + cambio >= 1) el.innerText = actual + cambio;
-        }
-      }
-
-      function prepararAlta(id) {
+      function prepararAlta(id, btn) {
         const cantEl = document.getElementById(`cant-${id}`);
-        if (cantEl) {
-          agregarAlCarrito(id, parseInt(cantEl.innerText));
-          cantEl.innerText = "1";
+        if (cantEl && btn) {
+          const cantidad = parseInt(cantEl.innerText);
+          agregarAlCarrito(id, cantidad);
+          btn.classList.add("animar-pop");
+          setTimeout(() => btn.classList.remove("animar-pop"), 300);
         }
       }
 
       function agregarAlCarrito(id, cantidad) {
         const prod = productos.find((p) => p.id === id);
         const existe = carrito.find((i) => i.id === id);
-        if (existe) existe.cantidad += cantidad;
-        else carrito.push({ ...prod, cantidad: cantidad });
-        actualizarCarrito();
-      }
-
-      function modificarEnCarrito(id, cambio) {
-        const item = carrito.find((i) => i.id === id);
-        if (item) {
-          item.cantidad += cambio;
-          if (item.cantidad <= 0) eliminar(id);
-          else actualizarCarrito();
+        if (existe) {
+          // Si ya existe, actualizamos directamente a la cantidad que dice la tarjeta
+          existe.cantidad = cantidad;
+        } else {
+          carrito.push({ ...prod, cantidad });
         }
+        actualizarCarrito();
       }
 
       function actualizarCarrito() {
@@ -531,33 +437,55 @@
         const listaMovil = document.getElementById("items-carrito-movil");
         let html = "";
         let total = 0;
-        let cantidadTotal = 0;
+        let cantTotal = 0;
+
+        // Reset visual de botones (por si borramos algo)
+        document.querySelectorAll("[id^='btn-add-']").forEach((b) => {
+          b.innerText = "AGREGAR";
+          b.classList.remove("btn-ya-agregado");
+          b.classList.add("bg-pueblo");
+        });
+        document
+          .querySelectorAll("[id^='cant-']")
+          .forEach((el) => (el.innerText = "1"));
 
         carrito.forEach((item) => {
-          const subtotal =
-            typeof item.precio === "number" ? item.precio * item.cantidad : 0;
-          total += subtotal;
-          cantidadTotal += item.cantidad;
-          html += `
-            <div class="flex justify-between items-center border-b py-3 gap-2">
-              <div class="flex-1 text-xs">
-                <p class="font-bold text-gray-800">${item.nombre}</p>
-                <p class="text-pueblo font-bold">${subtotal > 0 ? "$" + precioARS(subtotal) : item.precio}</p>
-              </div>
-              <div class="flex items-center gap-2 bg-gray-50 p-1 rounded-lg">
-                <button onclick="modificarEnCarrito('${item.id}', -1)" class="bg-white border px-2 rounded font-bold text-pueblo">-</button>
-                <span class="font-bold w-4 text-center">${item.cantidad}</span>
-                <button onclick="modificarEnCarrito('${item.id}', 1)" class="bg-white border px-2 rounded font-bold text-pueblo">+</button>
-              </div>
-              <button onclick="eliminar('${item.id}')" class="text-red-400 font-bold text-lg px-1">&times;</button>
-            </div>`;
+          const sub = item.precio * item.cantidad;
+          total += sub;
+          cantTotal += item.cantidad;
+
+          // Sincronizar Tarjeta
+          const cantEnTarjeta = document.getElementById(`cant-${item.id}`);
+          if (cantEnTarjeta) cantEnTarjeta.innerText = item.cantidad;
+
+          const btn = document.getElementById(`btn-add-${item.id}`);
+          if (btn) {
+            btn.innerText = "AGREGADO ✓";
+            btn.classList.remove("bg-pueblo");
+            btn.classList.add("btn-ya-agregado");
+          }
+
+          html += `<div class="flex justify-between items-center border-b py-2 text-xs">
+            <div class="flex-1 font-bold">${item.nombre}</div>
+            <div class="flex items-center gap-2 mx-2">
+              <button onclick="modificarEnCarrito('${item.id}', -1)" class="px-1 border rounded">-</button>
+              <span class="font-bold">${item.cantidad}</span>
+              <button onclick="modificarEnCarrito('${item.id}', 1)" class="px-1 border rounded">+</button>
+            </div>
+            <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">X</button>
+          </div>`;
         });
 
-        const vacio =
-          '<p class="text-gray-400 italic text-center py-4 text-sm">El carrito está vacío.</p>';
-        if (listaPC) listaPC.innerHTML = carrito.length === 0 ? vacio : html;
+        if (listaPC)
+          listaPC.innerHTML =
+            carrito.length === 0
+              ? '<p class="text-center text-gray-400 py-4">Carrito Vacío</p>'
+              : html;
         if (listaMovil)
-          listaMovil.innerHTML = carrito.length === 0 ? vacio : html;
+          listaMovil.innerHTML =
+            carrito.length === 0
+              ? '<p class="text-center text-gray-400 py-4">Carrito Vacío</p>'
+              : html;
 
         document.getElementById("total-pedido").innerText =
           "$" + precioARS(total);
@@ -565,43 +493,98 @@
           "$" + precioARS(total);
         document.getElementById("total-flotante").innerText =
           "$" + precioARS(total);
-        document.getElementById("cantidad-flotante").innerText = cantidadTotal;
+        document.getElementById("cantidad-flotante").innerText = cantTotal;
         document
           .getElementById("btn-flotante-container")
           .classList.toggle("hidden", carrito.length === 0);
-
         localStorage.setItem("carrito_pueblo", JSON.stringify(carrito));
+      }
+
+      function modificarEnCarrito(id, c) {
+        const item = carrito.find((i) => i.id === id);
+        if (item) {
+          item.cantidad += c;
+          if (item.cantidad <= 0) eliminar(id);
+          else actualizarCarrito();
+        }
       }
 
       function eliminar(id) {
         carrito = carrito.filter((i) => i.id !== id);
         actualizarCarrito();
+        aplicarFiltros();
+      }
+
+      function filtrar(cat, btn) {
+        categoriaActual = cat;
+        document.querySelectorAll(".categoria-btn").forEach((b) => {
+          b.classList.remove("bg-pueblo", "text-white");
+          b.classList.add("bg-white", "text-gray-700");
+        });
+        btn.classList.add("bg-pueblo", "text-white");
+        btn.classList.remove("bg-white", "text-gray-700");
+        aplicarFiltros();
+      }
+
+      function aplicarFiltros() {
+        const txt = document.getElementById("buscador").value.toUpperCase();
+        let f =
+          typeof productos !== "undefined"
+            ? JSON.parse(JSON.stringify(productos))
+            : [];
+        if (categoriaActual === "FAVORITOS")
+          f = f.filter((p) => favoritos.includes(p.id));
+        else if (categoriaActual !== "TODOS")
+          f = f.filter((p) => p.cat === categoriaActual);
+        if (txt)
+          f = f.filter(
+            (p) =>
+              p.nombre.toUpperCase().includes(txt) ||
+              p.id.toUpperCase().includes(txt),
+          );
+        const orden = document.getElementById("ordenar").value;
+        if (orden === "menor") f.sort((a, b) => a.precio - b.precio);
+        if (orden === "mayor") f.sort((a, b) => b.precio - a.precio);
+        mostrarProductos(f);
+      }
+
+      function buscar() {
+        aplicarFiltros();
+      }
+
+      function cambiarCantCarta(id, c) {
+        const el = document.getElementById(`cant-${id}`);
+        let a = parseInt(el.innerText);
+        if (a + c >= 1) {
+          el.innerText = a + c;
+          // Si el producto ya está en el carrito, actualizamos al tocar los botones de la tarjeta
+          const existe = carrito.find((i) => i.id === id);
+          if (existe) {
+            existe.cantidad = a + c;
+            actualizarCarrito();
+          }
+        }
       }
 
       function toggleCarritoMovil() {
-        const m = document.getElementById("modal-carrito");
-        m.classList.toggle("hidden");
-        m.classList.toggle("flex");
+        document.getElementById("modal-carrito").classList.toggle("hidden");
+      }
+      function ampliar(s) {
+        document.getElementById("foto-ampliada").src = s;
+        document.getElementById("modal-foto").classList.remove("hidden");
+        document.getElementById("modal-foto").classList.add("flex");
       }
 
       function enviarWhatsApp() {
         if (carrito.length === 0) return;
-        let m = "Hola Tienda Pueblo, quiero realizar este pedido:\n\n";
-        let total = 0;
+        let m = "Hola Tienda Pueblo, mi pedido:\n\n";
+        let t = 0;
         carrito.forEach((i) => {
-          const subtotal =
-            typeof i.precio === "number" ? i.precio * i.cantidad : 0;
-          m += `• [${i.id}] ${i.nombre} (x${i.cantidad}) - ${subtotal > 0 ? "$" + precioARS(subtotal) : i.precio}\n`;
-          total += subtotal;
+          m += `• [${i.id}] ${i.nombre} (x${i.cantidad}) - $${precioARS(i.precio * i.cantidad)}\n`;
+          t += i.precio * i.cantidad;
         });
-        m += `\nTOTAL: $${precioARS(total)}`;
+        m += `\nTOTAL: $${precioARS(t)}`;
         window.open(`https://wa.me/543413261010?text=${encodeURIComponent(m)}`);
-      }
-
-      function ampliar(src) {
-        document.getElementById("foto-ampliada").src = src;
-        document.getElementById("modal-foto").classList.remove("hidden");
-        document.getElementById("modal-foto").classList.add("flex");
       }
 
       window.onload = () => {
@@ -609,7 +592,7 @@
         if (g) carrito = JSON.parse(g);
         setTimeout(() => {
           if (typeof productos !== "undefined") mostrarProductos(productos);
-        }, 150);
+        }, 200);
         actualizarCarrito();
       };
     </script>
