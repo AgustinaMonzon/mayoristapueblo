@@ -26,12 +26,14 @@
       .border-pueblo {
         border-color: #1a5d37;
       }
+
       .icon-social {
         transition: transform 0.2s;
       }
       .icon-social:hover {
         transform: scale(1.15);
       }
+
       .scroll-hidden::-webkit-scrollbar {
         display: none;
       }
@@ -39,6 +41,7 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
+
       #items-carrito-movil::-webkit-scrollbar {
         width: 4px;
       }
@@ -49,48 +52,53 @@
 
       .btn-whatsapp-flotante {
         position: fixed;
-        bottom: 100px;
-        right: 20px;
+        bottom: 90px;
+        right: 15px;
         background-color: #25d366;
         color: white;
         border-radius: 50px;
-        padding: 10px 20px;
+        padding: 8px 15px;
         z-index: 100;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         font-weight: bold;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         transition: all 0.3s;
       }
+
       @media (min-width: 768px) {
         .btn-whatsapp-flotante {
           bottom: 30px;
+          padding: 10px 20px;
+        }
+      }
+
+      /* Espacio extra abajo para que el botón del carrito no tape productos */
+      #contenedor-productos {
+        padding-bottom: 150px;
+      }
+      @media (min-width: 768px) {
+        #contenedor-productos {
+          padding-bottom: 20px;
         }
       }
     </style>
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
-<a
-  href="https://wa.me/543413261010?text=Hola!%20Estoy%20viendo%20el%20catálogo%20y%20tengo%20una%20consulta"
-  target="_blank"
-  class="btn-whatsapp-flotante"
->
-  <img
-    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-    width="25"
-    height="25"
-    alt="WA"
-  />
-  <span class="text-sm">CHATEA CON NOSOTROS</span>
-</a>      <img
+    <a
+      href="https://wa.me/543413261010?text=Hola!%20Estoy%20viendo%20el%20catálogo%20y%20tengo%20una%20consulta"
+      target="_blank"
+      class="btn-whatsapp-flotante"
+    >
+      <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        width="25"
-        height="25"
+        width="22"
+        height="22"
         alt="WA"
       />
-      <span class="text-sm">CHATEA CON NOSOTROS</span>
+      <span class="text-xs md:text-sm">CHATEA CON NOSOTROS</span>
     </a>
 
     <header
@@ -112,7 +120,7 @@
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
             alt="WA"
-            style="width: 38px; height: 38px"
+            style="width: 35px"
           />
         </a>
         <a
@@ -123,7 +131,7 @@
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
             alt="IG"
-            style="width: 30px; height: 30px"
+            style="width: 28px"
           />
         </a>
         <a
@@ -134,7 +142,7 @@
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
             alt="FB"
-            style="width: 30px; height: 30px"
+            style="width: 28px"
           />
         </a>
       </div>
@@ -217,28 +225,10 @@
             LIBRERÍA
           </button>
           <button
-            onclick="filtrar('MICRÓFONOS', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
-          >
-            MICRÓFONOS
-          </button>
-          <button
             onclick="filtrar('PARLANTES', this)"
             class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
           >
             PARLANTES
-          </button>
-          <button
-            onclick="filtrar('PROYECTORES', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
-          >
-            PROYECTORES
-          </button>
-          <button
-            onclick="filtrar('RELOJES', this)"
-            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border hover:bg-gray-50 transition-all"
-          >
-            RELOJES
           </button>
           <button
             onclick="filtrar('VARIOS', this)"
@@ -246,7 +236,6 @@
           >
             VARIOS
           </button>
-
           <button
             onclick="filtrar('SALE', this)"
             class="categoria-btn bg-red-600 text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border shadow-sm mt-2"
@@ -267,15 +256,13 @@
               class="w-full p-3 rounded-xl border-2 outline-none focus:border-pueblo shadow-sm"
             />
           </div>
-
           <button
             onclick="filtrar('FAVORITOS', this)"
             class="categoria-btn bg-white text-gray-700 px-4 py-3 rounded-xl border-2 font-bold flex items-center gap-2 hover:bg-gray-50 transition-all shadow-sm"
           >
             <span class="text-yellow-500 text-lg">⭐</span>
-            <span class="whitespace-nowrap">Favoritos</span>
+            <span>Favoritos</span>
           </button>
-
           <select
             id="ordenar"
             onchange="aplicarFiltros()"
@@ -289,7 +276,7 @@
 
         <div
           id="contenedor-productos"
-          class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 pb-24 md:pb-0"
+          class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5"
         ></div>
       </section>
 
@@ -384,20 +371,16 @@
 
     <script>
       (function () {
-        const v = Date.now(); // Genera un número único basado en la hora actual
-
-        // Cargar productos.js
+        const v = Date.now();
         const prodScript = document.createElement("script");
         prodScript.src = `productos.js?v=${v}`;
         document.body.appendChild(prodScript);
 
-        // Cargar service-worker.js (esto es para el script de registro, no el registro en sí)
-        // Pero lo más importante es registrar el SW con la nueva lógica:
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker
             .register(`service-worker.js?v=${v}`)
             .then((reg) => {
-              reg.update(); // Fuerza al navegador a buscar cambios en el SW
+              reg.update();
               console.log("SW registrado con versión:", v);
             });
         }
@@ -414,11 +397,9 @@
       }
 
       function toggleFavorito(id) {
-        if (favoritos.includes(id)) {
+        if (favoritos.includes(id))
           favoritos = favoritos.filter((f) => f !== id);
-        } else {
-          favoritos.push(id);
-        }
+        else favoritos.push(id);
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
         aplicarFiltros();
       }
@@ -426,46 +407,42 @@
       function mostrarProductos(lista) {
         const cont = document.getElementById("contenedor-productos");
         if (lista.length === 0) {
-          cont.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400 text-sm italic">No se encontraron productos en esta sección.</div>`;
+          cont.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400 text-sm italic">No se encontraron productos.</div>`;
           return;
         }
         cont.innerHTML = lista
           .map((p) => {
             const hayStock = p.stock !== false;
             const esFav = favoritos.includes(p.id);
-
             const tieneOferta = p.oferta && p.precioAnterior;
             const precioHTML = tieneOferta
-              ? `<div class="flex flex-col">
-                  <span class="text-gray-400 line-through text-[10px] md:text-sm">$${precioARS(p.precioAnterior)}</span>
-                  <span class="text-red-600 font-black text-base md:text-xl animate-pulse">$${precioARS(p.precio)}</span>
-                 </div>`
+              ? `<div class="flex flex-col"><span class="text-gray-400 line-through text-[10px] md:text-sm">$${precioARS(p.precioAnterior)}</span><span class="text-red-600 font-black text-base md:text-xl animate-pulse">$${precioARS(p.precio)}</span></div>`
               : `<p class="text-base md:text-xl font-black text-pueblo">${typeof p.precio === "number" ? "$" + precioARS(p.precio) : p.precio}</p>`;
 
             return `
             <div class="bg-white p-2 md:p-4 rounded-2xl border ${hayStock ? "hover:border-pueblo" : "opacity-60"} shadow-sm flex flex-col relative">
-              <button onclick="toggleFavorito('${p.id}')" class="absolute top-4 left-4 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>
+              <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
               </button>
               <div class="w-full aspect-square bg-white rounded-xl mb-2 md:mb-4 border flex items-center justify-center overflow-hidden relative">
                 <img src="${p.foto}" loading="lazy" onclick="ampliar('${p.foto}')" class="w-full h-full object-cover cursor-zoom-in">
-                ${!hayStock ? '<span class="absolute top-2 right-2 bg-red-600 text-white text-[10px] px-2 py-1 rounded-full font-bold">AGOTADO</span>' : ""}
-                ${p.oferta ? '<span class="absolute top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-1 rounded-full font-bold animate-pulse">OFERTA</span>' : ""}
+                ${!hayStock ? '<span class="absolute top-2 right-2 bg-red-600 text-white text-[8px] px-2 py-1 rounded-full font-bold">AGOTADO</span>' : ""}
+                ${p.oferta ? '<span class="absolute top-2 right-2 bg-red-500 text-white text-[8px] px-2 py-1 rounded-full font-bold">OFERTA</span>' : ""}
               </div>
-              <p class="text-[10px] font-mono text-gray-400 uppercase">${p.id}</p>
-              <h3 class="font-bold text-gray-800 text-xs md:text-base min-h-[35px] md:min-h-[48px] leading-tight mb-2">${p.nombre}</h3>
+              <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
+              <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1">${p.nombre}</h3>
               ${precioHTML}
               ${
                 hayStock
                   ? `
-                <div class="flex items-center justify-between mt-3 bg-gray-50 rounded-xl p-1 border">
-                  <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded-lg font-bold text-pueblo shadow-sm">-</button>
-                  <span id="cant-${p.id}" class="font-bold text-sm">1</span>
-                  <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded-lg font-bold text-pueblo shadow-sm">+</button>
+                <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
+                  <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo">-</button>
+                  <span id="cant-${p.id}" class="font-bold text-xs">1</span>
+                  <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo">+</button>
                 </div>
-                <button onclick="prepararAlta('${p.id}')" class="w-full mt-2 bg-pueblo text-white py-2 rounded-xl font-bold text-xs uppercase">Agregar</button>
+                <button onclick="prepararAlta('${p.id}')" class="w-full mt-2 bg-pueblo text-white py-2 rounded-xl font-bold text-[10px] uppercase">Agregar</button>
               `
-                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2 rounded-xl font-bold text-xs">Sin Stock</button>`
+                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2 rounded-xl font-bold text-[10px]">Sin Stock</button>`
               }
             </div>`;
           })
@@ -487,23 +464,24 @@
       function aplicarFiltros() {
         const texto = document.getElementById("buscador").value.toUpperCase();
         const orden = document.getElementById("ordenar").value;
-        let filtrados = JSON.parse(JSON.stringify(productos));
+        let filtrados =
+          typeof productos !== "undefined"
+            ? JSON.parse(JSON.stringify(productos))
+            : [];
 
         if (categoriaActual === "SALE")
-          filtrados = filtrados.filter((p) => p.oferta === true);
+          filtrados = filtrados.filter((p) => p.oferta);
         else if (categoriaActual === "FAVORITOS")
           filtrados = filtrados.filter((p) => favoritos.includes(p.id));
         else if (categoriaActual !== "TODOS")
           filtrados = filtrados.filter((p) => p.cat === categoriaActual);
 
-        if (texto) {
+        if (texto)
           filtrados = filtrados.filter(
             (p) =>
               p.nombre.toUpperCase().includes(texto) ||
               p.id.toUpperCase().includes(texto),
           );
-        }
-
         if (orden === "menor") filtrados.sort((a, b) => a.precio - b.precio);
         else if (orden === "mayor")
           filtrados.sort((a, b) => b.precio - a.precio);
@@ -608,22 +586,15 @@
 
       function enviarWhatsApp() {
         if (carrito.length === 0) return;
-
         let m = "Hola Tienda Pueblo, quiero realizar este pedido:\n\n";
         let total = 0;
-
         carrito.forEach((i) => {
           const subtotal =
             typeof i.precio === "number" ? i.precio * i.cantidad : 0;
-
           m += `• [${i.id}] ${i.nombre} (x${i.cantidad}) - ${subtotal > 0 ? "$" + precioARS(subtotal) : i.precio}\n`;
-
           total += subtotal;
         });
-
         m += `\nTOTAL: $${precioARS(total)}`;
-
-        // Abrir WhatsApp con el nuevo formato
         window.open(`https://wa.me/543413261010?text=${encodeURIComponent(m)}`);
       }
 
@@ -636,14 +607,9 @@
       window.onload = () => {
         const g = localStorage.getItem("carrito_pueblo");
         if (g) carrito = JSON.parse(g);
-
-        // Esperamos un segundo para asegurar que productos.js cargó (por la carga dinámica)
         setTimeout(() => {
-          if (typeof productos !== "undefined") {
-            mostrarProductos(productos);
-          }
-        }, 100);
-
+          if (typeof productos !== "undefined") mostrarProductos(productos);
+        }, 150);
         actualizarCarrito();
       };
     </script>
