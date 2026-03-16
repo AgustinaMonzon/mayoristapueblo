@@ -29,7 +29,6 @@
         background-color: #2da44e !important;
         transform: scale(0.98);
       }
-
       @keyframes pop {
         0% {
           transform: scale(1);
@@ -44,7 +43,6 @@
       .animar-pop {
         animation: pop 0.3s ease-out;
       }
-
       .scroll-hidden::-webkit-scrollbar {
         display: none;
       }
@@ -52,7 +50,6 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
-
       .btn-whatsapp-flotante {
         position: fixed;
         bottom: 90px;
@@ -68,7 +65,6 @@
         font-weight: bold;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
-
       @media (min-width: 768px) {
         .btn-whatsapp-flotante {
           bottom: 30px;
@@ -196,16 +192,34 @@
             JUGUETES
           </button>
           <button
-            onclick="filtrar('LIBRERÍA', this)"
+            onclick="filtrar('LIBRERIA', this)"
             class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             LIBRERÍA
+          </button>
+          <button
+            onclick="filtrar('MICROFONOS', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            MICRÓFONOS
           </button>
           <button
             onclick="filtrar('PARLANTES', this)"
             class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             PARLANTES
+          </button>
+          <button
+            onclick="filtrar('PROYECTORES', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            PROYECTORES
+          </button>
+          <button
+            onclick="filtrar('RELOJES', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            RELOJES
           </button>
           <button
             onclick="filtrar('VARIOS', this)"
@@ -224,15 +238,13 @@
 
       <section class="flex-1">
         <div class="flex flex-col md:flex-row gap-2 mb-6 items-center">
-          <div class="flex-1 w-full relative">
-            <input
-              type="text"
-              id="buscador"
-              onkeyup="buscar()"
-              placeholder="Buscar producto..."
-              class="w-full p-3 rounded-xl border-2 outline-none focus:border-pueblo shadow-sm"
-            />
-          </div>
+          <input
+            type="text"
+            id="buscador"
+            onkeyup="buscar()"
+            placeholder="Buscar producto..."
+            class="flex-1 w-full p-3 rounded-xl border-2 outline-none focus:border-pueblo shadow-sm"
+          />
           <button
             onclick="filtrar('FAVORITOS', this)"
             class="categoria-btn bg-white text-gray-700 w-full md:w-32 py-3 rounded-xl border-2 font-bold flex items-center justify-center gap-2 shadow-sm shrink-0"
@@ -289,13 +301,13 @@
       >
         <div class="flex items-center gap-2">
           <span
-            class="bg-white text-pueblo rounded-full w-6 h-6 flex items-center justify-center text-xs"
+            class="bg-white text-pueblo rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold"
             id="cantidad-flotante"
             >0</span
           >
           <span>Ver Mi Carrito</span>
         </div>
-        <span id="total-flotante" class="text-lg">$0</span>
+        <span id="total-flotante" class="text-lg font-bold">$0</span>
       </button>
     </div>
 
@@ -332,10 +344,17 @@
 
     <div
       id="modal-foto"
-      onclick="this.style.display = 'none'"
+      onclick="
+        this.classList.add('hidden');
+        this.classList.remove('flex');
+      "
       class="fixed inset-0 bg-black/90 hidden z-[70] items-center justify-center p-4"
     >
-      <img id="foto-ampliada" class="max-w-full max-h-full rounded-lg" />
+      <img
+        id="foto-ampliada"
+        class="max-w-full max-h-full rounded-lg"
+        alt="Ampliada"
+      />
     </div>
 
     <script>
@@ -367,7 +386,7 @@
       function mostrarProductos(lista) {
         const cont = document.getElementById("contenedor-productos");
         if (lista.length === 0) {
-          cont.innerHTML = `<p class="col-span-full text-center py-20 text-gray-400">No hay productos.</p>`;
+          cont.innerHTML = `<p class="col-span-full text-center py-20 text-gray-400 font-bold">No hay productos.</p>`;
           return;
         }
 
@@ -379,31 +398,33 @@
             const cantidadAMostrar = yaEsta ? yaEsta.cantidad : 1;
             const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
             const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
+            // Usamos la carpeta fotos/ y el ID como nombre de archivo
+            const fotoRuta = p.foto || `fotos/${p.id}.webp`;
 
             return `
             <div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}">
-               <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+              <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
               </button>
-              <div class="w-full aspect-square bg-white rounded-xl mb-2 border flex items-center justify-center overflow-hidden">
-                <img src="${p.foto}" loading="lazy" onclick="ampliar('${p.foto}')" class="w-full h-full object-cover cursor-zoom-in">
+              <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden">
+                <img src="${fotoRuta}" loading="lazy" onclick="ampliar('${fotoRuta}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">
               </div>
               <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
-              <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1">${p.nombre}</h3>
+              <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
               <p class="text-base md:text-xl font-black text-pueblo">$${precioARS(p.precio)}</p>
               ${
                 hayStock
                   ? `
                 <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
-                  <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo">-</button>
+                  <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
                   <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
-                  <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo">+</button>
+                  <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
                 </div>
-                <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">
+                <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">
                   ${btnTexto}
                 </button>
               `
-                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2 rounded-xl font-bold text-[10px]">Sin Stock</button>`
+                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px]">Sin Stock</button>`
               }
             </div>`;
           })
@@ -424,7 +445,6 @@
         const prod = productos.find((p) => p.id === id);
         const existe = carrito.find((i) => i.id === id);
         if (existe) {
-          // Si ya existe, actualizamos directamente a la cantidad que dice la tarjeta
           existe.cantidad = cantidad;
         } else {
           carrito.push({ ...prod, cantidad });
@@ -439,52 +459,44 @@
         let total = 0;
         let cantTotal = 0;
 
-        // Reset visual de botones (por si borramos algo)
         document.querySelectorAll("[id^='btn-add-']").forEach((b) => {
           b.innerText = "AGREGAR";
           b.classList.remove("btn-ya-agregado");
           b.classList.add("bg-pueblo");
         });
-        document
-          .querySelectorAll("[id^='cant-']")
-          .forEach((el) => (el.innerText = "1"));
 
         carrito.forEach((item) => {
-          const sub = item.precio * item.cantidad;
-          total += sub;
+          total += item.precio * item.cantidad;
           cantTotal += item.cantidad;
-
-          // Sincronizar Tarjeta
-          const cantEnTarjeta = document.getElementById(`cant-${item.id}`);
-          if (cantEnTarjeta) cantEnTarjeta.innerText = item.cantidad;
-
           const btn = document.getElementById(`btn-add-${item.id}`);
           if (btn) {
             btn.innerText = "AGREGADO ✓";
-            btn.classList.remove("bg-pueblo");
-            btn.classList.add("btn-ya-agregado");
+            btn.classList.replace("bg-pueblo", "btn-ya-agregado");
           }
+          const cantEnTarjeta = document.getElementById(`cant-${item.id}`);
+          if (cantEnTarjeta) cantEnTarjeta.innerText = item.cantidad;
 
-          html += `<div class="flex justify-between items-center border-b py-2 text-xs">
-            <div class="flex-1 font-bold">${item.nombre}</div>
-            <div class="flex items-center gap-2 mx-2">
-              <button onclick="modificarEnCarrito('${item.id}', -1)" class="px-1 border rounded">-</button>
-              <span class="font-bold">${item.cantidad}</span>
-              <button onclick="modificarEnCarrito('${item.id}', 1)" class="px-1 border rounded">+</button>
-            </div>
-            <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">X</button>
-          </div>`;
+          html += `
+            <div class="flex justify-between items-center border-b py-2 text-xs">
+              <div class="flex-1 font-bold pr-2">${item.nombre}</div>
+              <div class="flex items-center gap-2">
+                <button onclick="modificarEnCarrito('${item.id}', -1)" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
+                <span class="font-bold w-4 text-center">${item.cantidad}</span>
+                <button onclick="modificarEnCarrito('${item.id}', 1)" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
+              </div>
+              <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">✕</button>
+            </div>`;
         });
 
         if (listaPC)
           listaPC.innerHTML =
             carrito.length === 0
-              ? '<p class="text-center text-gray-400 py-4">Carrito Vacío</p>'
+              ? '<p class="text-center text-gray-400 py-4 italic">Carrito Vacío</p>'
               : html;
         if (listaMovil)
           listaMovil.innerHTML =
             carrito.length === 0
-              ? '<p class="text-center text-gray-400 py-4">Carrito Vacío</p>'
+              ? '<p class="text-center text-gray-400 py-4 italic">Carrito Vacío</p>'
               : html;
 
         document.getElementById("total-pedido").innerText =
@@ -512,7 +524,8 @@
       function eliminar(id) {
         carrito = carrito.filter((i) => i.id !== id);
         actualizarCarrito();
-        aplicarFiltros();
+        const cantTxt = document.getElementById(`cant-${id}`);
+        if (cantTxt) cantTxt.innerText = "1";
       }
 
       function filtrar(cat, btn) {
@@ -554,10 +567,10 @@
 
       function cambiarCantCarta(id, c) {
         const el = document.getElementById(`cant-${id}`);
+        if (!el) return;
         let a = parseInt(el.innerText);
         if (a + c >= 1) {
           el.innerText = a + c;
-          // Si el producto ya está en el carrito, actualizamos al tocar los botones de la tarjeta
           const existe = carrito.find((i) => i.id === id);
           if (existe) {
             existe.cantidad = a + c;
@@ -569,10 +582,12 @@
       function toggleCarritoMovil() {
         document.getElementById("modal-carrito").classList.toggle("hidden");
       }
-      function ampliar(s) {
-        document.getElementById("foto-ampliada").src = s;
-        document.getElementById("modal-foto").classList.remove("hidden");
-        document.getElementById("modal-foto").classList.add("flex");
+
+      function ampliar(url) {
+        const modal = document.getElementById("modal-foto");
+        document.getElementById("foto-ampliada").src = url;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
       }
 
       function enviarWhatsApp() {
@@ -588,11 +603,11 @@
       }
 
       window.onload = () => {
-        const g = localStorage.getItem("carrito_pueblo");
-        if (g) carrito = JSON.parse(g);
+        const saved = localStorage.getItem("carrito_pueblo");
+        if (saved) carrito = JSON.parse(saved);
         setTimeout(() => {
-          if (typeof productos !== "undefined") mostrarProductos(productos);
-        }, 200);
+          if (typeof productos !== "undefined") aplicarFiltros();
+        }, 300);
         actualizarCarrito();
       };
     </script>
