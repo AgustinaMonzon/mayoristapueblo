@@ -72,12 +72,19 @@
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <a
-      href="https://wa.me/543413261010"
-      target="_blank"
-      class="btn-whatsapp-flotante"
-    >
-      <img
+<a
+  href="https://wa.me/543413261010?text=Hola!%20Estoy%20viendo%20el%20catálogo%20y%20tengo%20una%20consulta"
+  target="_blank"
+  class="btn-whatsapp-flotante"
+>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    width="25"
+    height="25"
+    alt="WA"
+  />
+  <span class="text-sm">CHATEA CON NOSOTROS</span>
+</a>      <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
         width="25"
         height="25"
@@ -601,15 +608,22 @@
 
       function enviarWhatsApp() {
         if (carrito.length === 0) return;
+
         let m = "Hola Tienda Pueblo, quiero realizar este pedido:\n\n";
         let total = 0;
+
         carrito.forEach((i) => {
           const subtotal =
             typeof i.precio === "number" ? i.precio * i.cantidad : 0;
-          m += `• ${i.nombre} (x${i.cantidad}) - ${subtotal > 0 ? "$" + precioARS(subtotal) : i.precio}\n`;
+
+          m += `• [${i.id}] ${i.nombre} (x${i.cantidad}) - ${subtotal > 0 ? "$" + precioARS(subtotal) : i.precio}\n`;
+
           total += subtotal;
         });
+
         m += `\nTOTAL: $${precioARS(total)}`;
+
+        // Abrir WhatsApp con el nuevo formato
         window.open(`https://wa.me/543413261010?text=${encodeURIComponent(m)}`);
       }
 
