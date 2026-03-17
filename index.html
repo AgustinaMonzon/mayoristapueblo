@@ -7,6 +7,12 @@
     <link rel="icon" href="logo.webp" />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#1a5d37" />
+    <meta
+      http-equiv="cache-control"
+      content="no-cache, must-revalidate, post-check=0, pre-check=0"
+    />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="pragma" content="no-cache" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -24,13 +30,12 @@
         transform: scale(0.98);
       }
 
-      /* Animaciones */
       @keyframes pop {
         0% {
           transform: scale(1);
         }
         50% {
-          transform: scale(1.05);
+          transform: scale(1.08);
         }
         100% {
           transform: scale(1);
@@ -41,12 +46,14 @@
       }
 
       @keyframes titileo {
-        0%,
-        100% {
+        0% {
           opacity: 1;
         }
         50% {
-          opacity: 0.4;
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
         }
       }
       .oferta-titilando {
@@ -55,20 +62,12 @@
         font-weight: 800;
       }
 
-      /* Scroll invisible */
       .scroll-hidden::-webkit-scrollbar {
         display: none;
       }
       .scroll-hidden {
         -ms-overflow-style: none;
         scrollbar-width: none;
-      }
-
-      /* Ajuste de imagen en el modal */
-      #foto-ampliada {
-        max-height: 45vh; /* Evita que la imagen sea demasiado grande verticalmente */
-        width: auto;
-        object-fit: contain;
       }
 
       .btn-whatsapp-flotante {
@@ -79,7 +78,7 @@
         color: white;
         border-radius: 50px;
         padding: 8px 15px;
-        z-index: 50;
+        z-index: 100;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -89,6 +88,16 @@
       @media (min-width: 768px) {
         .btn-whatsapp-flotante {
           bottom: 30px;
+          padding: 10px 20px;
+        }
+      }
+
+      #contenedor-productos {
+        padding-bottom: 150px;
+      }
+      @media (min-width: 768px) {
+        #contenedor-productos {
+          padding-bottom: 20px;
         }
       }
     </style>
@@ -96,7 +105,7 @@
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <a
-      href="https://wa.me/543413261010?text=Hola%20Tienda%20Pueblo!"
+      href="https://wa.me/543413261010?text=Hola!%20Tengo%20una%20consulta"
       target="_blank"
       class="btn-whatsapp-flotante"
     >
@@ -106,7 +115,7 @@
         height="22"
         alt="WA"
       />
-      <span class="text-xs md:text-sm">CONSULTAS</span>
+      <span class="text-xs md:text-sm">CHATEA CON NOSOTROS</span>
     </a>
 
     <header
@@ -121,19 +130,19 @@
         <a href="https://wa.me/543413261010" target="_blank"
           ><img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            width="30"
+            width="35"
         /></a>
         <a href="https://www.instagram.com/mayoristapueblo/" target="_blank"
           ><img
             src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
-            width="25"
+            width="28"
         /></a>
         <a
           href="https://www.facebook.com/profile.php?id=61587995854029"
           target="_blank"
           ><img
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
-            width="25"
+            width="28"
         /></a>
       </div>
     </header>
@@ -174,33 +183,99 @@
             CELULARES
           </button>
           <button
+            onclick="filtrar('DECO', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            DECO
+          </button>
+          <button
+            onclick="filtrar('DEPORTIVO', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            DEPORTIVO
+          </button>
+          <button
+            onclick="filtrar('HOGAR', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            HOGAR
+          </button>
+          <button
+            onclick="filtrar('INFORMÁTICA', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            INFORMÁTICA
+          </button>
+          <button
+            onclick="filtrar('JUGUETES', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            JUGUETES
+          </button>
+          <button
+            onclick="filtrar('LIBRERIA', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            LIBRERÍA
+          </button>
+          <button
+            onclick="filtrar('MICROFONOS', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            MICRÓFONOS
+          </button>
+          <button
+            onclick="filtrar('PARLANTES', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            PARLANTES
+          </button>
+          <button
+            onclick="filtrar('PROYECTORES', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            PROYECTORES
+          </button>
+          <button
             onclick="filtrar('RELOJES', this)"
             class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             RELOJES
           </button>
           <button
-            onclick="filtrar('SALE', this)"
-            class="categoria-btn bg-red-600 text-white px-4 py-2 rounded-lg font-bold md:w-full text-left mt-2 shadow-md"
+            onclick="filtrar('VARIOS', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
-            🔥 SALE
+            VARIOS
+          </button>
+          <button
+            onclick="filtrar('SALE', this)"
+            class="categoria-btn bg-red-600 text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm mt-2 shadow-sm"
+          >
+            🔥 SALE / OFERTAS
           </button>
         </div>
       </aside>
 
       <section class="flex-1">
-        <div class="flex flex-col md:flex-row gap-2 mb-6">
+        <div class="flex flex-col md:flex-row gap-2 mb-6 items-center">
           <input
             type="text"
             id="buscador"
             onkeyup="buscar()"
-            placeholder="Buscar por nombre o ID..."
-            class="flex-1 p-3 rounded-xl border-2 outline-none focus:border-pueblo shadow-sm"
+            placeholder="Buscar producto..."
+            class="flex-1 w-full p-3 rounded-xl border-2 outline-none focus:border-pueblo shadow-sm"
           />
+          <button
+            onclick="filtrar('FAVORITOS', this)"
+            class="categoria-btn bg-white text-gray-700 w-full md:w-32 py-3 rounded-xl border-2 font-bold flex items-center justify-center gap-2 shadow-sm shrink-0"
+          >
+            <span class="text-yellow-500">⭐</span> <span>Favoritos</span>
+          </button>
           <select
             id="ordenar"
             onchange="aplicarFiltros()"
-            class="p-3 rounded-xl border-2 bg-white font-bold text-gray-600"
+            class="w-full md:w-auto p-3 rounded-xl border-2 outline-none bg-white font-bold text-gray-600 shadow-sm shrink-0"
           >
             <option value="predeterminado">Ordenar por</option>
             <option value="menor">Menor Precio</option>
@@ -209,28 +284,26 @@
         </div>
         <div
           id="contenedor-productos"
-          class="grid grid-cols-2 lg:grid-cols-3 gap-4"
+          class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5"
         ></div>
       </section>
 
       <aside class="hidden md:block w-72">
-        <div class="bg-white p-5 rounded-2xl shadow-lg sticky top-4 border">
-          <h2
-            class="font-black text-lg mb-4 text-pueblo uppercase tracking-tighter"
-          >
+        <div class="bg-white p-6 rounded-3xl shadow-xl sticky top-4 border">
+          <h2 class="font-black text-xl mb-4 text-pueblo uppercase">
             Mi Carrito
           </h2>
           <div
             id="items-carrito"
-            class="space-y-3 mb-6 max-h-[60vh] overflow-y-auto scroll-hidden"
+            class="space-y-3 mb-6 max-h-[50vh] overflow-y-auto scroll-hidden"
           ></div>
           <div class="border-t pt-4">
-            <div class="flex justify-between text-xl font-black mb-4">
+            <div class="flex justify-between text-2xl font-black mb-6">
               <span>Total:</span><span id="total-pedido">$0</span>
             </div>
             <button
               onclick="enviarWhatsApp()"
-              class="w-full bg-pueblo text-white py-3 rounded-xl font-bold shadow-lg hover:bg-green-800 transition-all uppercase"
+              class="w-full bg-pueblo text-white py-4 rounded-2xl font-bold shadow-lg hover:bg-green-900 transition-colors uppercase"
             >
               Enviar Pedido
             </button>
@@ -240,200 +313,176 @@
     </main>
 
     <div
-      id="modal-foto"
-      class="fixed inset-0 bg-black/80 hidden z-[70] items-center justify-center p-4"
-      onclick="cerrarModal()"
+      id="btn-flotante-container"
+      class="fixed bottom-6 left-4 right-4 md:hidden z-50 hidden"
+    >
+      <button
+        onclick="toggleCarritoMovil()"
+        class="w-full bg-pueblo text-white py-4 rounded-2xl font-bold shadow-2xl flex justify-between px-6 items-center"
+      >
+        <div class="flex items-center gap-2">
+          <span
+            class="bg-white text-pueblo rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold"
+            id="cantidad-flotante"
+            >0</span
+          >
+          <span>Ver Mi Carrito</span>
+        </div>
+        <span id="total-flotante" class="text-lg font-bold">$0</span>
+      </button>
+    </div>
+
+    <div
+      id="modal-carrito"
+      class="fixed inset-0 bg-black/60 hidden z-[60] p-4 items-center justify-center"
     >
       <div
-        class="bg-white rounded-3xl max-w-lg w-full overflow-hidden flex flex-col animate-pop"
-        onclick="event.stopPropagation()"
+        class="bg-white w-full max-w-sm rounded-3xl p-6 flex flex-col max-h-[85vh]"
       >
-        <div
-          class="relative bg-gray-50 flex items-center justify-center p-4"
-          style="min-height: 300px"
-        >
-          <img id="foto-ampliada" src="" alt="Producto" />
-          <button
-            onclick="cerrarModal()"
-            class="absolute top-4 right-4 bg-white/90 text-gray-800 w-10 h-10 rounded-full flex items-center justify-center shadow-lg font-bold text-xl"
-          >
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="font-black text-xl text-pueblo uppercase">Tu Carrito</h2>
+          <button onclick="toggleCarritoMovil()" class="text-gray-400 text-3xl">
             &times;
           </button>
         </div>
-        <div class="p-6">
-          <p
-            id="id-ampliado"
-            class="text-[10px] font-mono text-gray-400 uppercase mb-1"
-          ></p>
-          <h2
-            id="titulo-ampliado"
-            class="text-xl font-bold text-gray-800 leading-tight mb-3"
-          ></h2>
-          <div class="max-h-32 overflow-y-auto mb-6 pr-2">
-            <p
-              id="desc-ampliada"
-              class="text-gray-600 text-sm leading-relaxed"
-            ></p>
+        <div
+          id="items-carrito-movil"
+          class="space-y-4 mb-6 overflow-y-auto pr-2"
+        ></div>
+        <div class="border-t pt-4">
+          <div class="flex justify-between text-2xl font-black mb-4">
+            <span>Total:</span><span id="total-pedido-movil">$0</span>
           </div>
-          <div class="flex justify-between items-center border-t pt-4">
-            <span
-              id="precio-ampliado"
-              class="text-2xl font-black text-pueblo"
-            ></span>
-            <button
-              id="btn-modal-agregar"
-              class="bg-pueblo text-white px-8 py-3 rounded-xl font-bold uppercase shadow-md active:scale-95"
-            >
-              Agregar
-            </button>
-          </div>
+          <button
+            onclick="enviarWhatsApp()"
+            class="w-full bg-pueblo text-white py-4 rounded-xl font-bold mb-2 uppercase"
+          >
+            Confirmar por WhatsApp
+          </button>
         </div>
       </div>
+    </div>
+
+    <div
+      id="modal-foto"
+      onclick="
+        this.classList.add('hidden');
+        this.classList.remove('flex');
+      "
+      class="fixed inset-0 bg-black/90 hidden z-[70] items-center justify-center p-4"
+    >
+      <img
+        id="foto-ampliada"
+        class="max-w-full max-h-full rounded-lg"
+        alt="Ampliada"
+      />
     </div>
 
     <script>
       (function () {
         const v = Date.now();
-        const s = document.createElement("script");
-        s.src = `productos.js?v=${v}`;
-        document.body.appendChild(s);
+        const prodScript = document.createElement("script");
+        prodScript.src = `productos.js?v=${v}`;
+        document.body.appendChild(prodScript);
       })();
     </script>
 
     <script>
-      let carrito = JSON.parse(localStorage.getItem("carrito_pueblo")) || [];
-      let categoriaActual = "TODOS";
+      let carrito = [];
       let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+      let categoriaActual = "TODOS";
 
       function precioARS(n) {
-        return n.toLocaleString("es-AR");
+        return typeof n === "number" ? n.toLocaleString("es-AR") : n;
+      }
+
+      function toggleFavorito(id) {
+        if (favoritos.includes(id))
+          favoritos = favoritos.filter((f) => f !== id);
+        else favoritos.push(id);
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+        aplicarFiltros();
       }
 
       function mostrarProductos(lista) {
         const cont = document.getElementById("contenedor-productos");
+        if (lista.length === 0) {
+          cont.innerHTML = `<p class="col-span-full text-center py-20 text-gray-400 font-bold">No hay productos.</p>`;
+          return;
+        }
+
         cont.innerHTML = lista
           .map((p) => {
             const hayStock = p.stock !== false;
-            const yaEsta = carrito.find((i) => i.id === p.id);
-            const foto = p.foto || `fotos/${p.id}.webp`;
+            const esFav = favoritos.includes(p.id);
+            const yaEsta = carrito.find((item) => item.id === p.id);
+            const cantidadAMostrar = yaEsta ? yaEsta.cantidad : 1;
+            const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
+            const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
+            const fotoRuta = p.foto || `fotos/${p.id}.webp`;
+
+            // Lógica de Precios y Oferta
+            const precioHtml =
+              p.oferta && p.precioAnterior
+                ? `<div class="flex flex-col">
+                  <span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span>
+                    <span class="oferta-titilando text-[10px] uppercase">¡Oferta!</span>
+                  </div>
+                 </div>`
+                : `<p class="text-base md:text-xl font-black text-pueblo">$${precioARS(p.precio)}</p>`;
 
             return `
-            <div class="bg-white p-3 rounded-2xl border shadow-sm flex flex-col ${!hayStock ? "opacity-50" : ""}">
-              <div class="aspect-square mb-2 relative flex items-center justify-center overflow-hidden bg-white">
-                <img src="${foto}" onclick="ampliar('${p.id}')" class="cursor-pointer object-contain h-full w-full">
-                ${!hayStock ? '<span class="absolute bg-black/70 text-white px-2 py-1 rounded text-[10px] font-bold">AGOTADO</span>' : ""}
+            <div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}">
+              <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
+              </button>
+              <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+                <img src="${fotoRuta}" loading="lazy" onclick="ampliar('${fotoRuta}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">
+                ${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}
               </div>
-              <p class="text-[9px] font-mono text-gray-400">${p.id}</p>
-              <h3 class="font-bold text-gray-800 text-xs h-8 line-clamp-2 mb-1">${p.nombre}</h3>
-              <p class="text-pueblo font-black text-lg">$${precioARS(p.precio)}</p>
+              <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
+              <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
+              
+              ${precioHtml}
+
               ${
                 hayStock
-                  ? `
-                <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
-                   <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
-                   <span id="cant-${p.id}" class="font-bold text-xs">${yaEsta ? yaEsta.cantidad : 1}</span>
-                   <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
-                </div>
-                <button id="btn-add-${p.id}" onclick="agregarAlCarrito('${p.id}')" class="w-full mt-2 ${yaEsta ? "btn-ya-agregado" : "bg-pueblo"} text-white py-2 rounded-xl font-bold text-[10px] uppercase transition-all">
-                  ${yaEsta ? "AGREGADO ✓" : "AGREGAR"}
-                </button>
-              `
-                  : ""
+                  ? `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
+                    <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
+                    <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
+                    <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
+                  </div>
+                  <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">
+                    ${btnTexto}
+                  </button>`
+                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase">Agotado</button>`
               }
             </div>`;
           })
           .join("");
       }
 
-      function ampliar(id) {
-        const p = productos.find((x) => x.id === id);
-        if (!p) return;
-        document.getElementById("foto-ampliada").src =
-          p.foto || `fotos/${p.id}.webp`;
-        document.getElementById("id-ampliado").innerText = p.id;
-        document.getElementById("titulo-ampliado").innerText = p.nombre;
-        document.getElementById("desc-ampliada").innerText =
-          p.descripcion || p.desc || "Sin descripción disponible.";
-        document.getElementById("precio-ampliado").innerText =
-          "$" + precioARS(p.precio);
-
-        const btn = document.getElementById("btn-modal-agregar");
-        btn.onclick = () => {
-          agregarAlCarrito(p.id);
-          cerrarModal();
-        };
-
-        const modal = document.getElementById("modal-foto");
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-      }
-
-      function cerrarModal() {
-        document.getElementById("modal-foto").classList.add("hidden");
-      }
-
-      function agregarAlCarrito(id) {
-        const prod = productos.find((p) => p.id === id);
-        const cant = parseInt(document.getElementById(`cant-${id}`).innerText);
-        const existe = carrito.find((i) => i.id === id);
-
-        if (existe) existe.cantidad = cant;
-        else carrito.push({ ...prod, cantidad: cant });
-
-        actualizarCarrito();
-      }
-
-      function actualizarCarrito() {
-        const cont = document.getElementById("items-carrito");
-        let html = "";
-        let total = 0;
-
-        carrito.forEach((item) => {
-          total += item.precio * item.cantidad;
-          html += `
-            <div class="flex justify-between items-center border-b pb-2 text-[11px]">
-              <div class="flex-1 font-bold truncate pr-2">${item.nombre}</div>
-              <div class="flex items-center gap-2">
-                <span class="font-bold">${item.cantidad}u</span>
-                <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold">✕</button>
-              </div>
-            </div>`;
-        });
-
-        cont.innerHTML = carrito.length
-          ? html
-          : '<p class="text-center text-gray-400 py-4 italic">Vacío</p>';
-        document.getElementById("total-pedido").innerText =
-          "$" + precioARS(total);
-        localStorage.setItem("carrito_pueblo", JSON.stringify(carrito));
-        aplicarFiltros();
-      }
-
-      function cambiarCantCarta(id, c) {
-        const el = document.getElementById(`cant-${id}`);
-        let n = parseInt(el.innerText) + c;
-        if (n >= 1) el.innerText = n;
-      }
-
-      function eliminar(id) {
-        carrito = carrito.filter((i) => i.id !== id);
-        actualizarCarrito();
-      }
-
       function aplicarFiltros() {
-        let f = [...productos];
-        const busqueda = document
-          .getElementById("buscador")
-          .value.toUpperCase();
-        if (categoriaActual !== "TODOS") {
-          if (categoriaActual === "SALE") f = f.filter((p) => p.oferta);
-          else f = f.filter((p) => p.cat === categoriaActual);
-        }
-        if (busqueda)
+        const txt = document.getElementById("buscador").value.toUpperCase();
+        let f =
+          typeof productos !== "undefined"
+            ? JSON.parse(JSON.stringify(productos))
+            : [];
+
+        if (categoriaActual === "FAVORITOS")
+          f = f.filter((p) => favoritos.includes(p.id));
+        else if (categoriaActual === "SALE")
+          f = f.filter((p) => p.oferta === true);
+        else if (categoriaActual !== "TODOS")
+          f = f.filter((p) => p.cat === categoriaActual);
+
+        if (txt)
           f = f.filter(
             (p) =>
-              p.nombre.toUpperCase().includes(busqueda) ||
-              p.id.toUpperCase().includes(busqueda),
+              p.nombre.toUpperCase().includes(txt) ||
+              p.id.toUpperCase().includes(txt),
           );
 
         const orden = document.getElementById("ordenar").value;
@@ -443,12 +492,111 @@
         mostrarProductos(f);
       }
 
+      // Resto de funciones auxiliares (prepararAlta, agregarAlCarrito, actualizarCarrito, etc. se mantienen igual que tu versión funcional)
+      function prepararAlta(id, btn) {
+        const cantEl = document.getElementById(`cant-${id}`);
+        if (cantEl && btn) {
+          const cantidad = parseInt(cantEl.innerText);
+          agregarAlCarrito(id, cantidad);
+          btn.classList.add("animar-pop");
+          setTimeout(() => btn.classList.remove("animar-pop"), 300);
+        }
+      }
+
+      function agregarAlCarrito(id, cantidad) {
+        const prod = productos.find((p) => p.id === id);
+        const existe = carrito.find((i) => i.id === id);
+        if (existe) {
+          existe.cantidad = cantidad;
+        } else {
+          carrito.push({ ...prod, cantidad });
+        }
+        actualizarCarrito();
+      }
+
+      function actualizarCarrito() {
+        const listaPC = document.getElementById("items-carrito");
+        const listaMovil = document.getElementById("items-carrito-movil");
+        let html = "";
+        let total = 0;
+        let cantTotal = 0;
+
+        document.querySelectorAll("[id^='btn-add-']").forEach((b) => {
+          b.innerText = "AGREGAR";
+          b.classList.remove("btn-ya-agregado");
+          b.classList.add("bg-pueblo");
+        });
+
+        carrito.forEach((item) => {
+          total += item.precio * item.cantidad;
+          cantTotal += item.cantidad;
+          const btn = document.getElementById(`btn-add-${item.id}`);
+          if (btn) {
+            btn.innerText = "AGREGADO ✓";
+            btn.classList.replace("bg-pueblo", "btn-ya-agregado");
+          }
+          const cantEnTarjeta = document.getElementById(`cant-${item.id}`);
+          if (cantEnTarjeta) cantEnTarjeta.innerText = item.cantidad;
+
+          html += `<div class="flex justify-between items-center border-b py-2 text-xs">
+                    <div class="flex-1 font-bold pr-2">${item.nombre}</div>
+                    <div class="flex items-center gap-2">
+                      <button onclick="modificarEnCarrito('${item.id}', -1)" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
+                      <span class="font-bold w-4 text-center">${item.cantidad}</span>
+                      <button onclick="modificarEnCarrito('${item.id}', 1)" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
+                    </div>
+                    <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">✕</button>
+                  </div>`;
+        });
+
+        if (listaPC)
+          listaPC.innerHTML =
+            carrito.length === 0
+              ? '<p class="text-center text-gray-400 py-4 italic">Carrito Vacío</p>'
+              : html;
+        if (listaMovil)
+          listaMovil.innerHTML =
+            carrito.length === 0
+              ? '<p class="text-center text-gray-400 py-4 italic">Carrito Vacío</p>'
+              : html;
+
+        document.getElementById("total-pedido").innerText =
+          "$" + precioARS(total);
+        document.getElementById("total-pedido-movil").innerText =
+          "$" + precioARS(total);
+        document.getElementById("total-flotante").innerText =
+          "$" + precioARS(total);
+        document.getElementById("cantidad-flotante").innerText = cantTotal;
+        document
+          .getElementById("btn-flotante-container")
+          .classList.toggle("hidden", carrito.length === 0);
+        localStorage.setItem("carrito_pueblo", JSON.stringify(carrito));
+      }
+
+      function modificarEnCarrito(id, c) {
+        const item = carrito.find((i) => i.id === id);
+        if (item) {
+          item.cantidad += c;
+          if (item.cantidad <= 0) eliminar(id);
+          else actualizarCarrito();
+        }
+      }
+
+      function eliminar(id) {
+        carrito = carrito.filter((i) => i.id !== id);
+        actualizarCarrito();
+        const cantTxt = document.getElementById(`cant-${id}`);
+        if (cantTxt) cantTxt.innerText = "1";
+      }
+
       function filtrar(cat, btn) {
         categoriaActual = cat;
-        document
-          .querySelectorAll(".categoria-btn")
-          .forEach((b) => b.classList.replace("bg-pueblo", "bg-white"));
-        btn.classList.replace("bg-white", "bg-pueblo");
+        document.querySelectorAll(".categoria-btn").forEach((b) => {
+          b.classList.remove("bg-pueblo", "text-white");
+          b.classList.add("bg-white", "text-gray-700");
+        });
+        btn.classList.add("bg-pueblo", "text-white");
+        btn.classList.remove("bg-white", "text-gray-700");
         aplicarFiltros();
       }
 
@@ -456,20 +604,49 @@
         aplicarFiltros();
       }
 
+      function cambiarCantCarta(id, c) {
+        const el = document.getElementById(`cant-${id}`);
+        if (!el) return;
+        let a = parseInt(el.innerText);
+        if (a + c >= 1) {
+          el.innerText = a + c;
+          const existe = carrito.find((i) => i.id === id);
+          if (existe) {
+            existe.cantidad = a + c;
+            actualizarCarrito();
+          }
+        }
+      }
+
+      function toggleCarritoMovil() {
+        document.getElementById("modal-carrito").classList.toggle("hidden");
+      }
+
+      function ampliar(url) {
+        const modal = document.getElementById("modal-foto");
+        document.getElementById("foto-ampliada").src = url;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
       function enviarWhatsApp() {
-        if (!carrito.length) return;
-        let msg = "Hola Tienda Pueblo, mi pedido:\n\n";
-        carrito.forEach((i) => (msg += `• ${i.nombre} (x${i.cantidad})\n`));
-        msg += `\nTotal: ${document.getElementById("total-pedido").innerText}`;
-        window.open(
-          `https://wa.me/543413261010?text=${encodeURIComponent(msg)}`,
-        );
+        if (carrito.length === 0) return;
+        let m = "Hola Tienda Pueblo, mi pedido:\n\n";
+        let t = 0;
+        carrito.forEach((i) => {
+          m += `• [${i.id}] ${i.nombre} (x${i.cantidad}) - $${precioARS(i.precio * i.cantidad)}\n`;
+          t += i.precio * i.cantidad;
+        });
+        m += `\nTOTAL: $${precioARS(t)}`;
+        window.open(`https://wa.me/543413261010?text=${encodeURIComponent(m)}`);
       }
 
       window.onload = () => {
+        const saved = localStorage.getItem("carrito_pueblo");
+        if (saved) carrito = JSON.parse(saved);
         setTimeout(() => {
           if (typeof productos !== "undefined") aplicarFiltros();
-        }, 500);
+        }, 300);
         actualizarCarrito();
       };
     </script>
