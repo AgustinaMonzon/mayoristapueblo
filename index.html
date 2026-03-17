@@ -78,7 +78,7 @@
         color: white;
         border-radius: 50px;
         padding: 8px 15px;
-        z-index: 100;
+        z-index: 50;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -105,7 +105,7 @@
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
     <a
-      href="https://wa.me/543413261010?text=Hola!%20Tengo%20una%20consulta"
+      href="https://wa.me/543413261010?text=Hola%20Tienda%20Pueblo!%20Tengo%20una%20consulta"
       target="_blank"
       class="btn-whatsapp-flotante"
     >
@@ -249,6 +249,7 @@
             VARIOS
           </button>
           <button
+            id="btn-sale"
             onclick="filtrar('SALE', this)"
             class="categoria-btn bg-red-600 text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm mt-2 shadow-sm"
           >
@@ -379,6 +380,7 @@
     </div>
 
     <script>
+      // Carga dinámica de productos para evitar cache
       (function () {
         const v = Date.now();
         const prodScript = document.createElement("script");
@@ -421,16 +423,15 @@
             const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
             const fotoRuta = p.foto || `fotos/${p.id}.webp`;
 
-            // Lógica de Precios y Oferta
             const precioHtml =
               p.oferta && p.precioAnterior
                 ? `<div class="flex flex-col">
-                  <span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span>
-                  <div class="flex items-center gap-2">
-                    <span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span>
-                    <span class="oferta-titilando text-[10px] uppercase">¡Oferta!</span>
-                  </div>
-                 </div>`
+                <span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span>
+                  <span class="oferta-titilando text-[10px] uppercase">¡Oferta!</span>
+                </div>
+              </div>`
                 : `<p class="text-base md:text-xl font-black text-pueblo">$${precioARS(p.precio)}</p>`;
 
             return `
@@ -444,19 +445,17 @@
               </div>
               <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
               <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
-              
               ${precioHtml}
-
               ${
                 hayStock
-                  ? `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
-                    <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
-                    <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
-                    <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
-                  </div>
-                  <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">
-                    ${btnTexto}
-                  </button>`
+                  ? `
+                <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
+                  <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
+                  <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
+                  <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
+                </div>
+                <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">${btnTexto}</button>
+              `
                   : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase">Agotado</button>`
               }
             </div>`;
@@ -492,7 +491,27 @@
         mostrarProductos(f);
       }
 
-      // Resto de funciones auxiliares (prepararAlta, agregarAlCarrito, actualizarCarrito, etc. se mantienen igual que tu versión funcional)
+      function filtrar(cat, btn) {
+        categoriaActual = cat;
+        document.querySelectorAll(".categoria-btn").forEach((b) => {
+          b.classList.remove("bg-pueblo", "text-white");
+          b.classList.add("bg-white", "text-gray-700");
+        });
+        btn.classList.add("bg-pueblo", "text-white");
+        btn.classList.remove("bg-white", "text-gray-700");
+
+        const btnSale = document.getElementById("btn-sale");
+        if (btnSale) {
+          btnSale.classList.remove("bg-pueblo", "bg-white", "text-gray-700");
+          btnSale.classList.add("bg-red-600", "text-white");
+        }
+        aplicarFiltros();
+      }
+
+      function buscar() {
+        aplicarFiltros();
+      }
+
       function prepararAlta(id, btn) {
         const cantEl = document.getElementById(`cant-${id}`);
         if (cantEl && btn) {
@@ -506,11 +525,8 @@
       function agregarAlCarrito(id, cantidad) {
         const prod = productos.find((p) => p.id === id);
         const existe = carrito.find((i) => i.id === id);
-        if (existe) {
-          existe.cantidad = cantidad;
-        } else {
-          carrito.push({ ...prod, cantidad });
-        }
+        if (existe) existe.cantidad = cantidad;
+        else carrito.push({ ...prod, cantidad });
         actualizarCarrito();
       }
 
@@ -521,6 +537,7 @@
         let total = 0;
         let cantTotal = 0;
 
+        // Resetear visualmente botones de agregar
         document.querySelectorAll("[id^='btn-add-']").forEach((b) => {
           b.innerText = "AGREGAR";
           b.classList.remove("btn-ya-agregado");
@@ -538,27 +555,23 @@
           const cantEnTarjeta = document.getElementById(`cant-${item.id}`);
           if (cantEnTarjeta) cantEnTarjeta.innerText = item.cantidad;
 
-          html += `<div class="flex justify-between items-center border-b py-2 text-xs">
-                    <div class="flex-1 font-bold pr-2">${item.nombre}</div>
-                    <div class="flex items-center gap-2">
-                      <button onclick="modificarEnCarrito('${item.id}', -1)" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
-                      <span class="font-bold w-4 text-center">${item.cantidad}</span>
-                      <button onclick="modificarEnCarrito('${item.id}', 1)" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
-                    </div>
-                    <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">✕</button>
-                  </div>`;
+          html += `
+            <div class="flex justify-between items-center border-b py-2 text-xs">
+              <div class="flex-1 font-bold pr-2">${item.nombre}</div>
+              <div class="flex items-center gap-2">
+                <button onclick="modificarEnCarrito('${item.id}', -1)" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
+                <span class="font-bold w-4 text-center">${item.cantidad}</span>
+                <button onclick="modificarEnCarrito('${item.id}', 1)" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
+              </div>
+              <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">✕</button>
+            </div>`;
         });
 
-        if (listaPC)
-          listaPC.innerHTML =
-            carrito.length === 0
-              ? '<p class="text-center text-gray-400 py-4 italic">Carrito Vacío</p>'
-              : html;
+        const emptyMsg =
+          '<p class="text-center text-gray-400 py-4 italic">Carrito Vacío</p>';
+        if (listaPC) listaPC.innerHTML = carrito.length === 0 ? emptyMsg : html;
         if (listaMovil)
-          listaMovil.innerHTML =
-            carrito.length === 0
-              ? '<p class="text-center text-gray-400 py-4 italic">Carrito Vacío</p>'
-              : html;
+          listaMovil.innerHTML = carrito.length === 0 ? emptyMsg : html;
 
         document.getElementById("total-pedido").innerText =
           "$" + precioARS(total);
@@ -570,6 +583,7 @@
         document
           .getElementById("btn-flotante-container")
           .classList.toggle("hidden", carrito.length === 0);
+
         localStorage.setItem("carrito_pueblo", JSON.stringify(carrito));
       }
 
@@ -587,21 +601,6 @@
         actualizarCarrito();
         const cantTxt = document.getElementById(`cant-${id}`);
         if (cantTxt) cantTxt.innerText = "1";
-      }
-
-      function filtrar(cat, btn) {
-        categoriaActual = cat;
-        document.querySelectorAll(".categoria-btn").forEach((b) => {
-          b.classList.remove("bg-pueblo", "text-white");
-          b.classList.add("bg-white", "text-gray-700");
-        });
-        btn.classList.add("bg-pueblo", "text-white");
-        btn.classList.remove("bg-white", "text-gray-700");
-        aplicarFiltros();
-      }
-
-      function buscar() {
-        aplicarFiltros();
       }
 
       function cambiarCantCarta(id, c) {
