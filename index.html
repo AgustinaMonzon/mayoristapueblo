@@ -29,6 +29,7 @@
         background-color: #2da44e !important;
         transform: scale(0.98);
       }
+
       @keyframes pop {
         0% {
           transform: scale(1);
@@ -43,6 +44,24 @@
       .animar-pop {
         animation: pop 0.3s ease-out;
       }
+
+      @keyframes titileo {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .oferta-titilando {
+        animation: titileo 1s infinite;
+        color: #e11d48;
+        font-weight: 800;
+      }
+
       .scroll-hidden::-webkit-scrollbar {
         display: none;
       }
@@ -50,6 +69,7 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
+
       .btn-whatsapp-flotante {
         position: fixed;
         bottom: 90px;
@@ -71,6 +91,7 @@
           padding: 10px 20px;
         }
       }
+
       #contenedor-productos {
         padding-bottom: 150px;
       }
@@ -398,39 +419,80 @@
             const cantidadAMostrar = yaEsta ? yaEsta.cantidad : 1;
             const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
             const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
-            // Usamos la carpeta fotos/ y el ID como nombre de archivo
             const fotoRuta = p.foto || `fotos/${p.id}.webp`;
+
+            // Lógica de Precios y Oferta
+            const precioHtml =
+              p.oferta && p.precioAnterior
+                ? `<div class="flex flex-col">
+                  <span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span>
+                  <div class="flex items-center gap-2">
+                    <span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span>
+                    <span class="oferta-titilando text-[10px] uppercase">¡Oferta!</span>
+                  </div>
+                 </div>`
+                : `<p class="text-base md:text-xl font-black text-pueblo">$${precioARS(p.precio)}</p>`;
 
             return `
             <div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}">
               <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
               </button>
-              <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden">
+              <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
                 <img src="${fotoRuta}" loading="lazy" onclick="ampliar('${fotoRuta}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">
+                ${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}
               </div>
               <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
               <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
-              <p class="text-base md:text-xl font-black text-pueblo">$${precioARS(p.precio)}</p>
+              
+              ${precioHtml}
+
               ${
                 hayStock
-                  ? `
-                <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
-                  <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
-                  <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
-                  <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
-                </div>
-                <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">
-                  ${btnTexto}
-                </button>
-              `
-                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px]">Sin Stock</button>`
+                  ? `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
+                    <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
+                    <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
+                    <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
+                  </div>
+                  <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">
+                    ${btnTexto}
+                  </button>`
+                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase">Agotado</button>`
               }
             </div>`;
           })
           .join("");
       }
 
+      function aplicarFiltros() {
+        const txt = document.getElementById("buscador").value.toUpperCase();
+        let f =
+          typeof productos !== "undefined"
+            ? JSON.parse(JSON.stringify(productos))
+            : [];
+
+        if (categoriaActual === "FAVORITOS")
+          f = f.filter((p) => favoritos.includes(p.id));
+        else if (categoriaActual === "SALE")
+          f = f.filter((p) => p.oferta === true);
+        else if (categoriaActual !== "TODOS")
+          f = f.filter((p) => p.cat === categoriaActual);
+
+        if (txt)
+          f = f.filter(
+            (p) =>
+              p.nombre.toUpperCase().includes(txt) ||
+              p.id.toUpperCase().includes(txt),
+          );
+
+        const orden = document.getElementById("ordenar").value;
+        if (orden === "menor") f.sort((a, b) => a.precio - b.precio);
+        if (orden === "mayor") f.sort((a, b) => b.precio - a.precio);
+
+        mostrarProductos(f);
+      }
+
+      // Resto de funciones auxiliares (prepararAlta, agregarAlCarrito, actualizarCarrito, etc. se mantienen igual que tu versión funcional)
       function prepararAlta(id, btn) {
         const cantEl = document.getElementById(`cant-${id}`);
         if (cantEl && btn) {
@@ -476,16 +538,15 @@
           const cantEnTarjeta = document.getElementById(`cant-${item.id}`);
           if (cantEnTarjeta) cantEnTarjeta.innerText = item.cantidad;
 
-          html += `
-            <div class="flex justify-between items-center border-b py-2 text-xs">
-              <div class="flex-1 font-bold pr-2">${item.nombre}</div>
-              <div class="flex items-center gap-2">
-                <button onclick="modificarEnCarrito('${item.id}', -1)" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
-                <span class="font-bold w-4 text-center">${item.cantidad}</span>
-                <button onclick="modificarEnCarrito('${item.id}', 1)" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
-              </div>
-              <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">✕</button>
-            </div>`;
+          html += `<div class="flex justify-between items-center border-b py-2 text-xs">
+                    <div class="flex-1 font-bold pr-2">${item.nombre}</div>
+                    <div class="flex items-center gap-2">
+                      <button onclick="modificarEnCarrito('${item.id}', -1)" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
+                      <span class="font-bold w-4 text-center">${item.cantidad}</span>
+                      <button onclick="modificarEnCarrito('${item.id}', 1)" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
+                    </div>
+                    <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">✕</button>
+                  </div>`;
         });
 
         if (listaPC)
@@ -537,28 +598,6 @@
         btn.classList.add("bg-pueblo", "text-white");
         btn.classList.remove("bg-white", "text-gray-700");
         aplicarFiltros();
-      }
-
-      function aplicarFiltros() {
-        const txt = document.getElementById("buscador").value.toUpperCase();
-        let f =
-          typeof productos !== "undefined"
-            ? JSON.parse(JSON.stringify(productos))
-            : [];
-        if (categoriaActual === "FAVORITOS")
-          f = f.filter((p) => favoritos.includes(p.id));
-        else if (categoriaActual !== "TODOS")
-          f = f.filter((p) => p.cat === categoriaActual);
-        if (txt)
-          f = f.filter(
-            (p) =>
-              p.nombre.toUpperCase().includes(txt) ||
-              p.id.toUpperCase().includes(txt),
-          );
-        const orden = document.getElementById("ordenar").value;
-        if (orden === "menor") f.sort((a, b) => a.precio - b.precio);
-        if (orden === "mayor") f.sort((a, b) => b.precio - a.precio);
-        mostrarProductos(f);
       }
 
       function buscar() {
