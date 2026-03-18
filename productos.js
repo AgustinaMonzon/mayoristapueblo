@@ -126,7 +126,7 @@ const productos = [
   { id: 'INF09', nombre: 'COMBO TECLADO + MOUSE INALÁMBRICO', precio: 20000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/9.webp', oferta: false, stock: true },
   { id: 'INF14', nombre: 'MOUSE CON CABLE', precio: 5000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/14.webp', oferta: false, stock: true },
   { id: 'INF15', nombre: 'MOUSE INALÁMBRICO', precio: 8000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/15.webp', oferta: false, stock: true },
-
+{ id: 'INF16', nombre: 'CARGADOR UNIVERSAL PARA NOTEBOOK 8 PINES 90W', precio: 32000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/ACCESORIOS CELULARES/14.webp', oferta: false, stock: true },
   // --- JUGUETES ---
   { id: 'JUG01', nombre: 'CÁMARA DIGITAL INFANTIL', precio: 11000, precioAnterior: 0, cat: 'JUGUETES', foto: 'fotos/JUGUETES/1.webp', oferta: false, stock: true },
   { id: 'JUG02', nombre: 'CAMIÓN DE CONSTRUCCIÓN BLOQUES', precio: 14000, precioAnterior: 0, cat: 'JUGUETES', foto: 'fotos/JUGUETES/2.webp', oferta: false, stock: true },
@@ -166,23 +166,21 @@ const productos = [
   { id: 'REL16', nombre: 'RELOJ FEMENINO 8061', precio: 8000, precioAnterior: 0, cat: 'RELOJES', foto: 'fotos/RELOJES/16.webp', oferta: false, stock: true },
   { id: 'REL17', nombre: 'SMART WATCH A58 + JOYERIA', precio: 34000, precioAnterior: 48000, cat: 'RELOJES', foto: 'fotos/RELOJES/17.webp', oferta: true, stock: true },
 
-  // --- CARGADORES ---
-  { id: 'CAR01', nombre: 'CARGADOR 1', precio: 8500, precioAnterior: 11000, cat: 'CARGADORES', foto: 'fotos/CARGADORES/1.webp', oferta:false, stock: true },
-  { id: 'CAR02', nombre: 'CARGADOR 2', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/2.webp', oferta: false, stock: true },
-  { id: 'CAR03', nombre: 'CARGADOR 3', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/3.webp', oferta: false, stock: true },
-  { id: 'CAR04', nombre: 'CARGADOR 4', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/4.webp', oferta: false, stock: true },
-  { id: 'CAR05', nombre: 'CARGADOR 5', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/5.webp', oferta: false, stock: true },
-  { id: 'CAR06', nombre: 'CARGADOR 6', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/6.webp', oferta: false, stock: true },
-  { id: 'CAR07', nombre: 'CARGADOR 7', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/7.webp', oferta: false, stock: true },
-  { id: 'CAR08', nombre: 'CARGADOR 8', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/8.webp', oferta: false, stock: true },
-  { id: 'CAR09', nombre: 'CARGADOR 9', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/9.webp', oferta: false, stock: true },
-  { id: 'CAR10', nombre: 'CARGADOR 10', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/10.webp', oferta: false, stock: true },
-  { id: 'CAR11', nombre: 'CARGADOR 11', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/11.webp', oferta: false, stock: true },
-  { id: 'CAR12', nombre: 'CARGADOR 12', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/12.webp', oferta: false, stock: true },
-  { id: 'CAR13', nombre: 'CARGADOR 13', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/13.webp', oferta: false, stock: true },
-  { id: 'CAR14', nombre: 'CARGADOR 14', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/14.webp', oferta: false, stock: true },
-  { id: 'CAR15', nombre: 'CARGADOR 15', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/15.webp', oferta: false, stock: true },
-  { id: 'CAR16', nombre: 'CARGADOR 16', precio: 99, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/16.webp', oferta: false, stock: true },
+  // --- ACCESORIOS CELULARES ---
+  { id: 'CAR01', nombre: 'CARGADOR PARA AUTO 12V POWERED V8 ', precio: 5000, precioAnterior: 11000, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/1.webp', oferta:false, stock: true },
+  
+  { id: 'CAR03', nombre: 'CARGADOR WIRELESS ION / MAGSAFE 15W', precio: 7000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/3.webp', oferta: false, stock: true },
+  { id: 'CAR04', nombre: 'CARGADOR CARGA RÁPIDA 45W TIPO C + PD', precio: 8000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/4.webp', oferta: false, stock: true },
+  { id: 'CAR05', nombre: 'CARGADOR USB CON CABLE V8', precio: 3000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/5.webp', oferta: false, stock: true },
+  
+  { id: 'CAR07', nombre: 'LÁMPARA INALÁMBRICA + CARGA RÁPIDA 15W', precio: 16000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/7.webp', oferta: false, stock: true },
+  { id: 'CAR08', nombre: 'CARGADOR CARGA RÁPIDA 55W 1 USB + 1TIPO C', precio: 18000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/8.webp', oferta: false, stock: true },
+  
+  { id: 'CAR10', nombre: 'CARGADOR WIRELESS 3 EN 1 PARA APPLE 25W', precio: 18000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/10.webp', oferta: false, stock: true },
+  { id: 'CAR13', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 3 EN 1 15W', precio: 32000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/13.webp', oferta: false, stock: true },
+  { id: 'VAR14', nombre: 'CARGADOR CARGA RÁPIDA 65W 1 USB + 2TIPO C ', precio: 21000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/11.webp', oferta: false, stock: true },
+  { id: 'CAR15', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 4 EN 1 15W', precio: 40000, precioAnterior: 56000, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/15.webp', oferta: true, stock: true },
+  { id: 'CAR16', nombre: 'CARGADOR DE AUTO V8', precio: 4000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/16.webp', oferta: false, stock: true },
 
   // --- CELULARES ---
   { id: 'CEL01', nombre: 'NOKIA 106', precio: 48000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/1.webp', oferta: false, stock: true },
@@ -193,22 +191,33 @@ const productos = [
   { id: 'CEL06', nombre: 'LÍNEA MOTOROLA (Consultar modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/6.webp', oferta: false, stock: true },
 
   // --- DEPORTIVO ---
-  { id: 'DEP01', nombre: 'RIÑONERA DEPORTIVA SLIM', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/1.webp', oferta: false, stock: true },
-  { id: 'DEP02', nombre: 'RIÑONERA ELÁSTICA REFLECTANTE', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/2.webp', oferta: false, stock: true },
-  { id: 'DEP03', nombre: 'PORTA CELULAR BRAZO', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/3.webp', oferta: false, stock: true },
-  { id: 'DEP04', nombre: 'PORTA CELULAR BRAZO', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/4.webp', oferta: false, stock: true },
-  { id: 'DEP05', nombre: 'LUZ LED SEGURIDAD BIBI', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/5.webp', oferta: false, stock: true },
-  { id: 'DEP06', nombre: 'FUNDA CELULAR IMPERMEABLE', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/6.webp', oferta: false, stock: true },
-  { id: 'DEP07', nombre: 'BOTELLA SET X 3', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/7.webp', oferta: false, stock: true },
-  { id: 'DEP08', nombre: 'BOTELLA SPORT 800ML', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/8.webp', oferta: false, stock: true },
-  { id: 'DEP09', nombre: 'BOTELLA 600 ML', precio: 99, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/9.webp', oferta: false, stock: true },
-
+  { id: 'DEP01', nombre: 'RIÑONERA + PORTABOTELLA', precio: 6000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/1.webp', oferta: false, stock: true },
+  { id: 'DEP02', nombre: 'RIÑONERA ELÁSTICA', precio: 5000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/2.webp', oferta: false, stock: true },
+  { id: 'DEP03', nombre: 'BRAZALLETE PORTA CELULAR', precio: 2000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/3.webp', oferta: false, stock: true },
+  { id: 'DEP04', nombre: 'BRAZALLETE PORTA CELULAR', precio: 4000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/4.webp', oferta: false, stock: true },
+  { id: 'DEP10', nombre: 'BRAZALLETE PORTA CELULAR 2 ESPACIOS CIERRES', precio: 5000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/10.webp', oferta: false, stock: true },
+  { id: 'DEP05', nombre: 'LUZ LED SEGURIDAD BICI', precio: 9000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/5.webp', oferta: false, stock: true },
+  { id: 'DEP07', nombre: 'BOTELLA SET X 3 2000ML 900ML 300ML', precio: 13000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/7.webp', oferta: false, stock: true },
+  { id: 'DEP08', nombre: 'BOTELLA SPORT 800ML', precio: 9000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/8.webp', oferta: false, stock: true },
+  { id: 'DEP09', nombre: 'BOTELLA 600 ML', precio: 10000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/9.webp', oferta: false, stock: true },
   // --- VARIOS ---
-  { id: 'VAR01', nombre: 'ARO LED 26 CM', precio: 99, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/1.webp', oferta: false, stock: true },
-  { id: 'VAR02', nombre: 'NAVAJA MULTIFUNCIÓN', precio: 99, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/8.webp', oferta: false, stock: true },
-  { id: 'VAR03', nombre: 'AFILADOR CUCHILLOS PLEGABLE', precio: 99, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/9.webp', oferta: false, stock: true },
-  { id: 'VAR04', nombre: 'CALCULADORA CIENTÍFICA', precio: 99, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/10.webp', oferta: false, stock: true },
-  { id: 'VAR05', nombre: 'CALCULADORA ESCRITORIO', precio: 99, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/11.webp', oferta: false, stock: true },
-  { id: 'VAR06', nombre: 'CALCULADORA 12', precio: 99, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/12.webp', oferta: false, stock: true },
-  { id: 'VAR07', nombre: 'CALCULADORA 13', precio: 99, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/13.webp', oferta: false, stock: true },
+  { id: 'VAR01', nombre: 'ARO LED 26 CM 3 TONOS DE LUZ 12W', precio: 8000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/1.webp', oferta: false, stock: true },
+  { id: 'VAR02', nombre: 'NAVAJA MULTIFUNCIÓN', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/8.webp', oferta: false, stock: true },
+  { id: 'VAR03', nombre: 'AFILADOR CUCHILLOS PLEGABLE', precio: 8000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/9.webp', oferta: false, stock: true },
+  { id: 'VAR04', nombre: 'CALCULADORA GRANDE', precio: 11000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/10.webp', oferta: false, stock: true },
+  { id: 'VAR05', nombre: 'CALCULADORA CLÁSICA GRANDE', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/11.webp', oferta: false, stock: true },
+  { id: 'VAR06', nombre: 'CALCULADORA DE BOLSILLO CON TAPA', precio: 4000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/12.webp', oferta: false, stock: true },
+  { id: 'VAR07', nombre: 'CALCULADORA CHICA', precio: 8000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/13.webp', oferta: false, stock: true },
+  { id: 'VAR08', nombre: 'CORREA CROSSBODY', precio: 4000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/DEPORTIVO/6.webp', oferta: false, stock: true },
+  { id: 'VAR09', nombre: 'KIT FUNDA Y COMECABLE PARA CARGADOR', precio: 9000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/4.webp', oferta: false, stock: true },
+  { id: 'VAR10', nombre: 'BOTELLA INFANTIL 640ML', precio: 11000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/2.webp', oferta: false, stock: true },
+  { id: 'VAR11', nombre: 'ORGANIZADOR DE CABLES CHICO', precio: 5000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/5.webp', oferta: false, stock: true },
+  { id: 'VAR12', nombre: 'ORGANIZADOR DE CABLES GRANDE', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/3.webp', oferta: false, stock: true },
+{ id: 'VAR13', nombre: 'CARGADOR DE PILAS CUÁDRUPLE TIPO C', precio: 14000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/6.webp', oferta: false, stock: true },
+
+{ id: 'VAR15', nombre: 'CARGADOR PARA 4 PILAS CON USB', precio: 21000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/12.webp', oferta: false, stock: true },
+{ id: 'VAR16', nombre: 'CARGADOR DE PILAS DOBLE USB-C', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/2.webp', oferta: false, stock: true },
+{ id: 'VAR17', nombre: 'CARGADOR DE PILAS DOBLE', precio: 16000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/9.webp', oferta: false, stock: true },
+
+
 ];
