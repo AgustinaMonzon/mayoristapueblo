@@ -218,10 +218,10 @@ const productos = [
   // --- CELULARES ---
   { id: 'CEL01', nombre: 'NOKIA 106', precio: 48000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/1.webp', oferta: false, stock: true },
   { id: 'CEL02', nombre: 'NOKIA 2660 FLIP', precio: 98000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/2.webp', oferta: false, stock: true },
-  { id: 'CEL03', nombre: 'LÍNEA IPHONE (Consultar modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/3.webp', oferta: false, stock: true },
-  { id: 'CEL04', nombre: 'LÍNEA SAMSUNG (Consultar modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/4.webp', oferta: false, stock: true },
-  { id: 'CEL05', nombre: 'LÍNEA XIAOMI (Consultar modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/5.webp', oferta: false, stock: true },
-  { id: 'CEL06', nombre: 'LÍNEA MOTOROLA (Consultar modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/6.webp', oferta: false, stock: true },
+  { id: 'CEL03', nombre: 'LÍNEA IPHONE (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/3.webp', oferta: false, stock: true },
+  { id: 'CEL04', nombre: 'LÍNEA SAMSUNG (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/4.webp', oferta: false, stock: true },
+  { id: 'CEL05', nombre: 'LÍNEA XIAOMI (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/5.webp', oferta: false, stock: true },
+  { id: 'CEL06', nombre: 'LÍNEA MOTOROLA (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/6.webp', oferta: false, stock: true },
 
   // --- DEPORTIVO ---
   { id: 'DEP01', nombre: 'RIÑONERA + PORTABOTELLA', precio: 6000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/1.webp', oferta: false, stock: true },

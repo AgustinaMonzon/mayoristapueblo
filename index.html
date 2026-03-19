@@ -16,119 +16,7 @@
     <meta http-equiv="pragma" content="no-cache" />
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .bg-pueblo {
-        background: #1a5d37;
-      }
-      .text-pueblo {
-        color: #1a5d37;
-      }
-      .border-pueblo {
-        border-color: #1a5d37;
-      }
-      .btn-ya-agregado {
-        background-color: #2da44e !important;
-        transform: scale(0.98);
-      }
-
-      @keyframes pop {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-      .animar-pop {
-        animation: pop 0.3s ease-out;
-      }
-
-      @keyframes titileo {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.4;
-        }
-      }
-      .oferta-titilando {
-        animation: titileo 1s infinite;
-        color: #e11d48;
-        font-weight: 800;
-      }
-
-      .spinner {
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top: 2px solid #fff;
-        width: 14px;
-        height: 14px;
-        animation: spin 0.8s linear infinite;
-        display: inline-block;
-      }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      .scroll-hidden::-webkit-scrollbar {
-        display: none;
-      }
-      .scroll-hidden {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-
-      /* Estilo para el scroll interno de la descripción en el modal */
-      .scroll-dark::-webkit-scrollbar {
-        width: 4px;
-      }
-      .scroll-dark::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .scroll-dark::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-      }
-
-      .btn-whatsapp-flotante {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #25d366;
-        color: white;
-        border-radius: 50px;
-        padding: 10px 18px;
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 12px;
-        font-weight: bold;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
-      }
-      .btn-whatsapp-flotante:active {
-        transform: scale(0.9);
-      }
-
-      #contenedor-productos {
-        padding-bottom: 150px;
-      }
-      @media (min-width: 768px) {
-        #contenedor-productos {
-          padding-bottom: 20px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
@@ -330,6 +218,7 @@
           <select
             id="ordenar"
             onchange="aplicarFiltros()"
+            title="Seleccionar orden de precios"
             class="w-full md:w-auto p-3 rounded-xl border-2 outline-none bg-white font-bold text-gray-600 shadow-sm shrink-0"
           >
             <option value="predeterminado">Ordenar por</option>
@@ -421,15 +310,16 @@
     <div
       id="modal-foto"
       onclick="cerrarModalFoto(event)"
-      class="fixed inset-0 bg-black/95 hidden z-[70] items-center justify-center p-0 md:p-4"
+      class="fixed inset-0 bg-black/95 hidden z-[100] items-center justify-center p-0 md:p-4 animate-fadeIn"
     >
       <div
-        class="relative bg-zinc-950 w-full max-w-4xl h-full md:h-auto md:max-h-[90vh] flex flex-col rounded-t-3xl md:rounded-3xl overflow-hidden shadow-2xl"
+        class="relative bg-zinc-950 w-full max-w-4xl h-full md:h-auto md:max-h-[90vh] flex flex-col rounded-t-3xl md:rounded-3xl overflow-hidden shadow-2xl border-t border-white/10 md:border-none"
         onclick="event.stopPropagation()"
       >
         <button
           onclick="cerrarModalFoto()"
-          class="absolute top-4 right-4 z-[80] text-white/50 hover:text-white text-4xl font-light"
+          class="absolute top-4 right-4 z-[110] text-white/40 hover:text-white text-4xl font-light w-12 h-12 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-sm transition-all"
+          aria-label="Cerrar"
         >
           &times;
         </button>
@@ -439,31 +329,37 @@
         >
           <img
             id="foto-ampliada"
-            class="max-w-full max-h-[55vh] md:max-h-[60vh] object-contain drop-shadow-2xl"
+            class="max-w-full max-h-[50vh] md:max-h-[60vh] object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-transform duration-300"
             alt="Producto ampliado"
           />
         </div>
 
         <div
           id="descripcion-producto"
-          class="w-full bg-zinc-950 p-6 border-t border-white/5 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]"
+          class="w-full bg-zinc-950 p-6 md:p-8 border-t border-white/5 shadow-[0_-15px_40px_rgba(0,0,0,0.7)]"
         >
           <div
-            class="max-h-[25vh] overflow-y-auto pr-2 scroll-dark text-center space-y-2"
+            class="max-h-[30vh] overflow-y-auto pr-2 scroll-dark text-center space-y-3"
           >
             <h4
               id="desc-titulo"
-              class="text-2xl md:text-3xl font-black uppercase tracking-tight text-white leading-tight"
+              class="text-xl md:text-2xl font-bold uppercase tracking-tight text-white leading-tight"
             ></h4>
+
+            <div
+              class="w-12 h-1 bg-pueblo mx-auto rounded-full opacity-50"
+            ></div>
+
             <p
               id="desc-texto"
-              class="text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed font-light italic"
+              class="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed font-light italic"
             ></p>
           </div>
-          <div class="w-full flex justify-center mt-4">
+
+          <div class="w-full flex justify-center mt-6">
             <button
               onclick="cerrarModalFoto()"
-              class="border border-white/20 hover:bg-white hover:text-black transition-all px-8 py-2 rounded-full text-[10px] uppercase tracking-widest text-white font-bold"
+              class="bg-white text-black hover:bg-pueblo hover:text-white transition-all duration-300 px-10 py-3 rounded-full text-xs uppercase tracking-[0.2em] font-black shadow-lg"
             >
               Volver a la tienda
             </button>
@@ -475,6 +371,8 @@
     <button
       onclick="volverArriba()"
       id="btn-subir"
+      title="Volver arriba"
+      aria-label="Volver al inicio de la página"
       class="fixed bottom-24 left-4 bg-pueblo text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center z-[50] transition-opacity duration-300 opacity-0 pointer-events-none"
     >
       <svg
@@ -605,44 +503,66 @@
 
         mostrarProductos(f);
       }
-
       function filtrar(cat, btn) {
+        // 1. Scroll al inicio (prioridad para usabilidad)
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
         categoriaActual = cat;
         localStorage.setItem("categoria_actual", cat);
-        document.getElementById("buscador").value = "";
 
-        // Manejo visual de botones
-        const botones = document.querySelectorAll(".categoria-btn");
-        botones.forEach((b) => {
-          // Si NO es el botón de SALE, resetear a blanco
-          if (!b.getAttribute("onclick").includes("'SALE'")) {
-            b.classList.remove("bg-pueblo", "text-white");
-            b.classList.add("bg-white", "text-gray-700");
-          } else {
-            // SALE siempre rojo
+        // Limpiar buscador al cambiar de categoría
+        const buscador = document.getElementById("buscador");
+        if (buscador) buscador.value = "";
+
+        // 2. SELECCIÓN QUIRÚRGICA: Solo botones del menú lateral/móvil
+        // Usamos el ID del contenedor para no tocar la barra de búsqueda superior
+        const botonesCategorias = document.querySelectorAll(
+          "#lista-categorias .categoria-btn",
+        );
+
+        botonesCategorias.forEach((b) => {
+          // Quitamos el resaltado de "activo" a todos
+          b.classList.remove(
+            "bg-pueblo",
+            "text-white",
+            "ring-2",
+            "ring-red-400",
+          );
+
+          // Devolvemos el estado base (blanco para normales, rojo para SALE)
+          if (b.innerText.includes("SALE")) {
             b.classList.add("bg-red-600", "text-white");
+          } else {
+            b.classList.add("bg-white", "text-gray-700");
           }
         });
 
-        // Resaltar el botón activo
-        if (cat === "SALE") {
-          btn.classList.add("bg-red-600", "text-white");
-        } else {
-          btn.classList.remove("bg-white", "text-gray-700");
-          btn.classList.add("bg-pueblo", "text-white");
+        // 3. Resaltar el botón clickeado
+        if (btn) {
+          if (cat === "SALE") {
+            btn.classList.add("ring-2", "ring-red-400");
+          } else if (cat !== "FAVORITOS") {
+            // Usamos tus clases del CSS
+            btn.classList.remove("bg-white", "text-gray-700");
+            btn.classList.add("bg-pueblo", "text-white");
+          }
         }
 
-        if (btn)
-          btn.scrollIntoView({
-            behavior: "smooth",
-            inline: "center",
-            block: "nearest",
-          });
-
         aplicarFiltros();
-      }
 
-      // --- El resto de funciones (Carrito, WhatsApp, etc) ---
+        // 4. Ajuste para móviles: centrar el botón en el scroll horizontal
+        if (btn && window.innerWidth < 768) {
+          setTimeout(() => {
+            btn.scrollIntoView({
+              behavior: "smooth",
+              inline: "center",
+              block: "nearest",
+            });
+          }, 100);
+        }
+      }
 
       function prepararAlta(id, btn) {
         if (btn.innerText.includes("✓")) {
@@ -663,10 +583,29 @@
 
       function agregarAlCarrito(id, cantidad) {
         const prod = productos.find((p) => p.id === id);
+        if (!prod) return; // Seguridad: Si no existe el producto, no hace nada
+
         const existe = carrito.find((i) => i.id === id);
-        if (existe) existe.cantidad = cantidad;
-        else carrito.push({ ...prod, cantidad });
+
+        if (existe) {
+          existe.cantidad = cantidad;
+        } else {
+          carrito.push({ ...prod, cantidad });
+        }
+
+        // --- Feedback para el usuario ---
+
+        // 1. Vibración (solo en dispositivos compatibles)
+        // Usamos 80ms para que sea un toque sutil y profesional
+        if (navigator.vibrate) {
+          navigator.vibrate(80);
+        }
+
+        // 2. Actualizar la interfaz
         actualizarCarrito();
+
+        // Opcional: Podés imprimir en consola para debuguear durante el desarrollo
+        // console.log(`Agregado: ${prod.nombre} - Cantidad: ${cantidad}`);
       }
 
       function actualizarCarrito() {
@@ -766,12 +705,21 @@
       function ampliar(id) {
         const prod = productos.find((p) => p.id === id);
         if (!prod) return;
+
         const modal = document.getElementById("modal-foto");
+
+        // RESET DE SCROLL: Importante para que no abra "por la mitad"
+        const scrollContainer = modal.querySelector(".overflow-y-auto");
+        if (scrollContainer) scrollContainer.scrollTop = 0;
+        modal.scrollTop = 0;
+
+        // Carga de datos
         document.getElementById("foto-ampliada").src =
           prod.foto || `fotos/${prod.id}.webp`;
         document.getElementById("desc-titulo").innerText = prod.nombre;
         document.getElementById("desc-texto").innerText =
-          prod.descripcion || "";
+          prod.descripcion || "Sin descripción disponible.";
+
         modal.classList.remove("hidden");
         modal.classList.add("flex");
         document.body.style.overflow = "hidden";
