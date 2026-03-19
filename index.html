@@ -36,7 +36,7 @@
           transform: scale(1);
         }
         50% {
-          transform: scale(1.08);
+          transform: scale(1.05);
         }
         100% {
           transform: scale(1);
@@ -47,20 +47,36 @@
       }
 
       @keyframes titileo {
-        0% {
+        0%,
+        100% {
           opacity: 1;
         }
         50% {
-          opacity: 0.3;
-        }
-        100% {
-          opacity: 1;
+          opacity: 0.4;
         }
       }
       .oferta-titilando {
         animation: titileo 1s infinite;
         color: #e11d48;
         font-weight: 800;
+      }
+
+      .spinner {
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 2px solid #fff;
+        width: 14px;
+        height: 14px;
+        animation: spin 0.8s linear infinite;
+        display: inline-block;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       .scroll-hidden::-webkit-scrollbar {
@@ -71,26 +87,37 @@
         scrollbar-width: none;
       }
 
+      /* Estilo para el scroll interno de la descripción en el modal */
+      .scroll-dark::-webkit-scrollbar {
+        width: 4px;
+      }
+      .scroll-dark::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .scroll-dark::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+      }
+
       .btn-whatsapp-flotante {
         position: fixed;
-        bottom: 90px;
-        right: 15px;
+        bottom: 20px;
+        right: 20px;
         background-color: #25d366;
         color: white;
         border-radius: 50px;
-        padding: 8px 15px;
+        padding: 10px 18px;
         z-index: 100;
         display: flex;
         align-items: center;
         gap: 8px;
+        font-size: 12px;
         font-weight: bold;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
       }
-      @media (min-width: 768px) {
-        .btn-whatsapp-flotante {
-          bottom: 30px;
-          padding: 10px 20px;
-        }
+      .btn-whatsapp-flotante:active {
+        transform: scale(0.9);
       }
 
       #contenedor-productos {
@@ -115,7 +142,7 @@
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
         width="22"
         height="22"
-        alt="Logo de WhatsApp"
+        alt="WA"
       />
       <span class="text-xs md:text-sm">CHATEA CON NOSOTROS</span>
     </a>
@@ -126,38 +153,35 @@
       <img
         src="logo.webp"
         class="h-28 md:h-40 object-contain"
-        alt="Logotipo de Tienda Pueblo"
+        alt="Tienda Pueblo"
       />
       <div class="flex items-center justify-center gap-6 -mt-4 md:-mt-6">
         <a
           href="https://wa.me/543413261010"
           target="_blank"
           rel="noopener noreferrer"
-          title="WhatsApp Mayorista"
           ><img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
             width="35"
-            alt="WhatsApp"
+            alt="WA"
         /></a>
         <a
           href="https://www.instagram.com/mayoristapueblo/"
           target="_blank"
           rel="noopener noreferrer"
-          title="Instagram Mayorista"
           ><img
             src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
             width="28"
-            alt="Instagram"
+            alt="IG"
         /></a>
         <a
           href="https://www.facebook.com/profile.php?id=61587995854029"
           target="_blank"
           rel="noopener noreferrer"
-          title="Facebook Mayorista"
           ><img
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
             width="28"
-            alt="Facebook"
+            alt="FB"
         /></a>
       </div>
     </header>
@@ -166,7 +190,10 @@
       class="flex flex-col md:flex-row flex-1 p-4 gap-4 max-w-[1400px] mx-auto w-full"
     >
       <aside class="w-full md:w-48 space-y-2">
-        <div class="flex md:flex-col gap-2 overflow-x-auto pb-2 scroll-hidden">
+        <div
+          id="lista-categorias"
+          class="flex md:flex-col gap-2 overflow-x-auto pb-2 scroll-hidden"
+        >
           <button
             onclick="filtrar('TODOS', this)"
             class="categoria-btn bg-pueblo text-white px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border shadow-sm"
@@ -190,6 +217,19 @@
             class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
           >
             CARGADORES
+          </button>
+
+          <button
+            onclick="filtrar('ACCESORIOS_CELULARES', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            ACCESORIOS CELULARES
+          </button>
+          <button
+            onclick="filtrar('CABLES', this)"
+            class="categoria-btn bg-white text-gray-700 px-4 py-2 rounded-lg font-bold md:w-full text-left whitespace-nowrap text-sm border"
+          >
+            CABLES
           </button>
           <button
             onclick="filtrar('CELULARES', this)"
@@ -279,7 +319,6 @@
             id="buscador"
             onkeyup="buscar()"
             placeholder="Buscar producto..."
-            aria-label="Buscar productos"
             class="flex-1 w-full p-3 rounded-xl border-2 outline-none focus:border-pueblo shadow-sm"
           />
           <button
@@ -291,7 +330,6 @@
           <select
             id="ordenar"
             onchange="aplicarFiltros()"
-            title="Ordenar productos"
             class="w-full md:w-auto p-3 rounded-xl border-2 outline-none bg-white font-bold text-gray-600 shadow-sm shrink-0"
           >
             <option value="predeterminado">Ordenar por</option>
@@ -358,11 +396,7 @@
       >
         <div class="flex justify-between items-center mb-4">
           <h2 class="font-black text-xl text-pueblo uppercase">Tu Carrito</h2>
-          <button
-            onclick="toggleCarritoMovil()"
-            class="text-gray-400 text-3xl"
-            aria-label="Cerrar"
-          >
+          <button onclick="toggleCarritoMovil()" class="text-gray-400 text-3xl">
             &times;
           </button>
         </div>
@@ -386,24 +420,62 @@
 
     <div
       id="modal-foto"
-      onclick="
-        this.classList.add('hidden');
-        this.classList.remove('flex');
-      "
-      class="fixed inset-0 bg-black/90 hidden z-[70] items-center justify-center p-4"
+      onclick="cerrarModalFoto(event)"
+      class="fixed inset-0 bg-black/95 hidden z-[70] items-center justify-center p-0 md:p-4"
     >
-      <img
-        id="foto-ampliada"
-        class="max-w-full max-h-full rounded-lg"
-        alt="Producto ampliado"
-      />
+      <div
+        class="relative bg-zinc-950 w-full max-w-4xl h-full md:h-auto md:max-h-[90vh] flex flex-col rounded-t-3xl md:rounded-3xl overflow-hidden shadow-2xl"
+        onclick="event.stopPropagation()"
+      >
+        <button
+          onclick="cerrarModalFoto()"
+          class="absolute top-4 right-4 z-[80] text-white/50 hover:text-white text-4xl font-light"
+        >
+          &times;
+        </button>
+
+        <div
+          class="w-full flex-1 flex justify-center items-center p-4 md:p-8 bg-zinc-900/30"
+        >
+          <img
+            id="foto-ampliada"
+            class="max-w-full max-h-[55vh] md:max-h-[60vh] object-contain drop-shadow-2xl"
+            alt="Producto ampliado"
+          />
+        </div>
+
+        <div
+          id="descripcion-producto"
+          class="w-full bg-zinc-950 p-6 border-t border-white/5 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]"
+        >
+          <div
+            class="max-h-[25vh] overflow-y-auto pr-2 scroll-dark text-center space-y-2"
+          >
+            <h4
+              id="desc-titulo"
+              class="text-2xl md:text-3xl font-black uppercase tracking-tight text-white leading-tight"
+            ></h4>
+            <p
+              id="desc-texto"
+              class="text-sm md:text-base text-gray-400 max-w-2xl mx-auto leading-relaxed font-light italic"
+            ></p>
+          </div>
+          <div class="w-full flex justify-center mt-4">
+            <button
+              onclick="cerrarModalFoto()"
+              class="border border-white/20 hover:bg-white hover:text-black transition-all px-8 py-2 rounded-full text-[10px] uppercase tracking-widest text-white font-bold"
+            >
+              Volver a la tienda
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <button
       onclick="volverArriba()"
       id="btn-subir"
-      title="Volver arriba"
-      class="fixed bottom-24 left-4 bg-pueblo text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center z-[50] transition-opacity duration-300 opacity-0 pointer-events-none md:bottom-8"
+      class="fixed bottom-24 left-4 bg-pueblo text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center z-[50] transition-opacity duration-300 opacity-0 pointer-events-none"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -433,7 +505,14 @@
     <script>
       let carrito = JSON.parse(localStorage.getItem("carrito_pueblo")) || [];
       let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-      let categoriaActual = "TODOS";
+      let categoriaActual = localStorage.getItem("categoria_actual") || "TODOS";
+
+      function normalizar(texto) {
+        return texto
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+      }
 
       function precioARS(n) {
         return typeof n === "number" ? n.toLocaleString("es-AR") : n;
@@ -463,52 +542,48 @@
             const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
             const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
             const fotoRuta = p.foto || `fotos/${p.id}.webp`;
-
             const precioHtml =
               p.oferta && p.precioAnterior
-                ? `<div class="flex flex-col">
-                <span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span>
-                <div class="flex items-center gap-2">
-                    <span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span>
-                    <span class="oferta-titilando text-[10px] uppercase">¡Oferta!</span>
-                </div>
-               </div>`
+                ? `<div class="flex flex-col"><span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span><div class="flex items-center gap-2"><span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span><span class="oferta-titilando text-[10px] uppercase">¡Oferta!</span></div></div>`
                 : `<p class="text-base md:text-xl font-black text-pueblo">$${precioARS(p.precio)}</p>`;
 
             return `
-            <div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}">
-              <button onclick="toggleFavorito('${p.id}')" title="Añadir a favoritos" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
-              </button>
-              <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
-                <img src="${fotoRuta}" loading="lazy" alt="${p.nombre}" onclick="ampliar('${fotoRuta}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">
-                ${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}
+          <div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}">
+            <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
+            </button>
+            <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
+              <img src="${fotoRuta}" loading="lazy" onclick="ampliar('${p.id}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">
+              ${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}
+            </div>
+            <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
+            <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
+            ${precioHtml}
+            ${
+              hayStock
+                ? `
+              <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
+                <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
+                <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
+                <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
               </div>
-              <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
-              <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
-              ${precioHtml}
-              ${
-                hayStock
-                  ? `
-                <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border">
-                  <button onclick="cambiarCantCarta('${p.id}', -1)" title="Menos" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
-                  <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
-                  <button onclick="cambiarCantCarta('${p.id}', 1)" title="Más" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
-                </div>
-                <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">${btnTexto}</button>`
-                  : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase">Agotado</button>`
-              }
-            </div>`;
+              <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300">${btnTexto}</button>`
+                : `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase">Agotado</button>`
+            }
+          </div>`;
           })
           .join("");
       }
 
       function aplicarFiltros() {
-        const txt = document.getElementById("buscador").value.toUpperCase();
+        const txtBuscado = normalizar(
+          document.getElementById("buscador").value,
+        );
         let f =
           typeof productos !== "undefined"
             ? JSON.parse(JSON.stringify(productos))
             : [];
+
         if (categoriaActual === "FAVORITOS")
           f = f.filter((p) => favoritos.includes(p.id));
         else if (categoriaActual === "SALE")
@@ -516,43 +591,74 @@
         else if (categoriaActual !== "TODOS")
           f = f.filter((p) => p.cat === categoriaActual);
 
-        if (txt) {
+        if (txtBuscado) {
           f = f.filter(
             (p) =>
-              p.nombre.toUpperCase().includes(txt) ||
-              p.id.toUpperCase().includes(txt),
+              normalizar(p.nombre).includes(txtBuscado) ||
+              normalizar(p.id).includes(txtBuscado),
           );
         }
 
         const orden = document.getElementById("ordenar").value;
         if (orden === "menor") f.sort((a, b) => a.precio - b.precio);
         if (orden === "mayor") f.sort((a, b) => b.precio - a.precio);
+
         mostrarProductos(f);
       }
 
       function filtrar(cat, btn) {
         categoriaActual = cat;
+        localStorage.setItem("categoria_actual", cat);
         document.getElementById("buscador").value = "";
-        document.querySelectorAll(".categoria-btn").forEach((b) => {
-          b.classList.remove("bg-pueblo", "text-white");
-          b.classList.add("bg-white", "text-gray-700");
+
+        // Manejo visual de botones
+        const botones = document.querySelectorAll(".categoria-btn");
+        botones.forEach((b) => {
+          // Si NO es el botón de SALE, resetear a blanco
+          if (!b.getAttribute("onclick").includes("'SALE'")) {
+            b.classList.remove("bg-pueblo", "text-white");
+            b.classList.add("bg-white", "text-gray-700");
+          } else {
+            // SALE siempre rojo
+            b.classList.add("bg-red-600", "text-white");
+          }
         });
-        btn.classList.add("bg-pueblo", "text-white");
-        btn.scrollIntoView({
-          behavior: "smooth",
-          inline: "center",
-          block: "nearest",
-        });
+
+        // Resaltar el botón activo
+        if (cat === "SALE") {
+          btn.classList.add("bg-red-600", "text-white");
+        } else {
+          btn.classList.remove("bg-white", "text-gray-700");
+          btn.classList.add("bg-pueblo", "text-white");
+        }
+
+        if (btn)
+          btn.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest",
+          });
+
         aplicarFiltros();
       }
 
+      // --- El resto de funciones (Carrito, WhatsApp, etc) ---
+
       function prepararAlta(id, btn) {
-        const cantEl = document.getElementById(`cant-${id}`);
-        if (cantEl) {
-          agregarAlCarrito(id, parseInt(cantEl.innerText));
-          btn.classList.add("animar-pop");
-          setTimeout(() => btn.classList.remove("animar-pop"), 300);
+        if (btn.innerText.includes("✓")) {
+          toggleCarritoMovil();
+          return;
         }
+        btn.innerHTML = `<span class="spinner"></span>`;
+        setTimeout(() => {
+          const cantEl = document.getElementById(`cant-${id}`);
+          if (cantEl) {
+            if (navigator.vibrate) navigator.vibrate(50);
+            agregarAlCarrito(id, parseInt(cantEl.innerText));
+            btn.classList.add("animar-pop");
+            setTimeout(() => btn.classList.remove("animar-pop"), 300);
+          }
+        }, 400);
       }
 
       function agregarAlCarrito(id, cantidad) {
@@ -585,14 +691,14 @@
             btn.classList.replace("bg-pueblo", "btn-ya-agregado");
           }
           html += `<div class="flex justify-between items-center border-b py-2 text-xs">
-                    <div class="flex-1 font-bold pr-2">${item.nombre}</div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="modificarEnCarrito('${item.id}', -1)" title="Remover uno" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
-                        <span class="font-bold w-4 text-center">${item.cantidad}</span>
-                        <button onclick="modificarEnCarrito('${item.id}', 1)" title="Sumar uno" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
-                    </div>
-                    <button onclick="eliminar('${item.id}')" title="Quitar" class="text-red-500 font-bold ml-2">✕</button>
-                  </div>`;
+                <div class="flex-1 font-bold pr-2">${item.nombre}</div>
+                <div class="flex items-center gap-2">
+                    <button onclick="modificarEnCarrito('${item.id}', -1)" class="w-5 h-5 border rounded flex items-center justify-center">-</button>
+                    <span class="font-bold w-4 text-center">${item.cantidad}</span>
+                    <button onclick="modificarEnCarrito('${item.id}', 1)" class="w-5 h-5 border rounded flex items-center justify-center">+</button>
+                </div>
+                <button onclick="eliminar('${item.id}')" class="text-red-500 font-bold ml-2">✕</button>
+              </div>`;
         });
 
         if (listaPC)
@@ -657,27 +763,29 @@
         document.getElementById("modal-carrito").classList.toggle("hidden");
       }
 
-      function ampliar(url) {
+      function ampliar(id) {
+        const prod = productos.find((p) => p.id === id);
+        if (!prod) return;
         const modal = document.getElementById("modal-foto");
-        document.getElementById("foto-ampliada").src = url;
+        document.getElementById("foto-ampliada").src =
+          prod.foto || `fotos/${prod.id}.webp`;
+        document.getElementById("desc-titulo").innerText = prod.nombre;
+        document.getElementById("desc-texto").innerText =
+          prod.descripcion || "";
         modal.classList.remove("hidden");
         modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
       }
 
-      function enviarWhatsApp() {
-        if (carrito.length === 0) return;
-        let m = "Hola Tienda Pueblo, mi pedido:\n\n";
-        let t = 0;
-        carrito.forEach((i) => {
-          m += `• [${i.id}] ${i.nombre} (x${i.cantidad}) - $${precioARS(i.precio * i.cantidad)}\n`;
-          t += i.precio * i.cantidad;
-        });
-        m += `\nTOTAL: $${precioARS(t)}`;
-        window.open(
-          `https://wa.me/543413261010?text=${encodeURIComponent(m)}`,
-          "_blank",
-          "noopener noreferrer",
-        );
+      function cerrarModalFoto() {
+        const modal = document.getElementById("modal-foto");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }
+
+      function volverArriba() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
       window.onscroll = function () {
@@ -687,25 +795,31 @@
           document.documentElement.scrollTop > 300
         ) {
           btn.classList.remove("opacity-0", "pointer-events-none");
-          btn.classList.add("opacity-100");
         } else {
           btn.classList.add("opacity-0", "pointer-events-none");
-          btn.classList.remove("opacity-100");
         }
       };
 
-      function volverArriba() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      function enviarWhatsApp() {
+        if (carrito.length === 0) return;
+        let m = "Hola Tienda Pueblo, mi pedido:\n\n";
+        let t = 0;
+        carrito.forEach((i) => {
+          m += `• ${i.cantidad}x ${i.nombre} ($${precioARS(i.precio)})\n`;
+          t += i.precio * i.cantidad;
+        });
+        m += `\n*Total: $${precioARS(t)}*`;
+        window.open(
+          `https://wa.me/543413261010?text=${encodeURIComponent(m)}`,
+          "_blank",
+        );
       }
 
-      window.onload = () => {
-        setTimeout(() => {
-          if (typeof productos !== "undefined") {
-            aplicarFiltros();
-            actualizarCarrito();
-          }
-        }, 500);
-      };
+      // Inicializar al cargar
+      setTimeout(() => {
+        actualizarCarrito();
+        aplicarFiltros();
+      }, 500);
     </script>
   </body>
 </html>

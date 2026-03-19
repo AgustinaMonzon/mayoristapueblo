@@ -13,8 +13,9 @@ const productos = [
 },
   { id: 'BELL02', nombre: 'PLANCHITA DE PELO TITANIO PROFESIONAL', precio: 46000, precioAnterior: 54999, cat: 'BELLEZA', foto: 'fotos/BELLEZA/4.webp', oferta: true, stock: true },
   { id: 'BELL03', nombre: 'CEPILLO SECADOR ALISADOR', precio: 19999, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/cepillo.webp', oferta: false, stock: true },
-  { id: 'BELL06', nombre: 'AFEITADORA ABS DORADA', precio: 5500, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/2.webp', oferta: false, stock: true },
-  { id: 'BELL07', nombre: 'AFEITADORA ABS CROMO', precio: 6000, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/1.webp', oferta: false, stock: true },
+  { id: 'BELL04', nombre: 'AFEITADORA ABS DORADA', precio: 5500, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/2.webp', oferta: false, stock: true },
+  { id: 'BELL05', nombre: 'AFEITADORA ABS CROMO', precio: 6000, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/1.webp', oferta: false, stock: true },
+  { id: 'BELL06', nombre: 'SECADOR DE PELO 1000W', precio: 24000, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/5.webp', oferta: false, stock: true },
   // --- HOGAR ---
   { id: 'HOG01', nombre: 'FREIDORA DE AIRE 1800W 10L', precio: 99999, precioAnterior: 168999, cat: 'HOGAR', foto: 'fotos/HOGAR/1.webp', oferta: true, stock: true },
   { id: 'HOG02', nombre: 'HORNO ELÉCTRICO 1500w 17l', precio: 79999, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/2.webp', oferta: false, stock: true },
@@ -33,6 +34,7 @@ const productos = [
   { id: 'HOG17', nombre: 'SANDWICHERA ANTIADHERENTE ORYX 750W', precio: 28000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/17.webp', oferta: false, stock: true },
   { id: 'HOG18', nombre: 'BALANZA COCINA ACERO INOX', precio: 10000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/18.webp', oferta: false, stock: true },
   { id: 'HOG19', nombre: 'MINI BALANZA GRAMERA PRECISION', precio: 7000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/19.webp', oferta: false, stock: true },
+  { id: 'HOG20', nombre: 'CEPILLO ELÉCTRICO DE LIMPIEZA MULTIUSO', precio: 35000, precioAnterior: 59000, cat: 'HOGAR', foto: 'fotos/HOGAR/21.webp', oferta: true, stock: true },
 
   // --- DECO ---
   { id: 'DEC01', nombre: 'LÁMPARA ATARDECER', precio: 10000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/1.webp', oferta: false, stock: true },
@@ -53,8 +55,13 @@ const productos = [
   { id: 'DEC16', nombre: 'PROYECTOR ASTRONAUTA', precio: 23000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/16.webp', oferta: false, stock: true },
   { id: 'DEC17', nombre: 'PROYECTOR ESTRELLAS', precio: 10000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/17.webp', oferta: false, stock: true },
   { id: 'DEC18', nombre: 'VELADOR CARACOL', precio: 6000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/18.webp', oferta: false, stock: true },
-  { id: 'DEC19', nombre: 'LÁMPARA CARGADOR LUNA', precio: 29000, precioAnterior: 35000, cat: 'DECO', foto: 'fotos/DECO/19.webp', oferta: true, stock: true },
-
+  { id: 'DEC19', nombre: 'LÁMPARA CARGADOR LUNA', precio: 32000, precioAnterior: 58000, cat: 'DECO', foto: 'fotos/DECO/19.webp', oferta: true, stock: true },
+  { id: 'DEC20', nombre: 'PROYECTOR ASTRONAUTA RGB', precio: 28000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/20.webp', oferta: true, stock: true },
+  { id: 'DEC21', nombre: 'HUMIDIFICADOR RGB', precio: 22000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/21.webp', oferta: false, stock: true },
+  { id: 'DEC22', nombre: 'LÁMPARA CLIP', precio: 12000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/22.webp', oferta: false, stock: true },
+  { id: 'DEC23', nombre: 'LÁMPARA LED IMANTADA PORTÁTIL', precio: 15000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/23.webp', oferta: false, stock: true },
+  { id: 'DEC24', nombre: 'LÁMPARA GALAXIA', precio: 20000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/24.webp', oferta: false, stock: true },
+  { id: 'DEC25', nombre: 'LÁMPARA DE ESCRITORIO PORTALÁPICES', precio: 21000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/25.webp', oferta: false, stock: true },
   // --- PARLANTES ---
   { id: 'PAR01', nombre: 'PARLANTE ASTRONAUTA KIDS BLUETOOTH LED', precio: 15000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/1.webp', oferta: false, stock: false },
   { id: 'PAR02', nombre: 'PARLANTE 6,5" 10W BLUETOOTH LED', precio: 28000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/2.webp', oferta: false, stock: true },
@@ -96,7 +103,7 @@ const productos = [
   { id: 'AUR02', nombre: 'AURICULAR VINCHA CABLE 1,2M ', precio: 7000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/2.webp', oferta: false, stock: true },
   { id: 'AUR03', nombre: 'AURICULAR BLUETOOTH ZENIX', precio: 14000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/3.webp', oferta: false, stock: false },
   { id: 'AUR04', nombre: 'AURICULAR KIDS CON CABLE ', precio: 10000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/4.webp', oferta: false, stock: true },
-  { id: 'AUR05', nombre: 'AURICULAR PLUS ACTIVE CON CABLE', precio: 11000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/5.webp', oferta: false, stock: true },
+  { id: 'AUR05', nombre: 'AURICULAR PLUS ACTIVE CON CABLE', precio: 12000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/5.webp', oferta: false, stock: true },
   { id: 'AUR06', nombre: 'AURICULAR GLOW CON CABLE 1,2M', precio: 11000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/6.webp', oferta: false, stock: true },
   { id: 'AUR07', nombre: 'AURICULAR RADIANCE BLUETOOTH + CABLE 1,2M', precio: 50000, precioAnterior: 65000, cat: 'AURICULARES', foto: 'fotos/AURICULARES/7.webp', oferta: true, stock: true },
   { id: 'AUR08', nombre: 'AURICULARES ROMPEOIDOS CABLE', precio: 2000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/8.webp', oferta: false, stock: true },
@@ -113,6 +120,9 @@ const productos = [
   { id: 'AUR19', nombre: 'AURICULARES BLUETOOTH OREJAS GATITO', precio: 10000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/19.webp', oferta: false, stock: true },
   { id: 'AUR21', nombre: 'AURICULARES BLUETOOTH + CABLE', precio: 24000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/20.webp', oferta: false, stock: true },
   { id: 'AUR22', nombre: 'AURICULARES KIDS BLUETOOTH + CABLE', precio: 9000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/21.webp', oferta: false, stock: true },
+{ id: 'AUR23', nombre: 'AURICULARES CON CABLE NOISE', precio: 12000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/22.webp', oferta: false, stock: true },
+{ id: 'AUR24', nombre: 'AURICULARES BLUETOOTH + CABLE', precio: 15000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/23.webp', oferta: false, stock: true },
+{ id: 'AUR25', nombre: 'AURICULARES BOOM BLUETOOTH + CABLE', precio: 20000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/24.webp', oferta: false, stock: true },
 
   // --- INFORMÁTICA ---
   { id: 'INF01', nombre: 'TV BOX 4K ANDROID 14 4-32GB', precio: 66000, precioAnterior: 78000, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/1.webp', oferta: true, stock: true },
@@ -126,7 +136,7 @@ const productos = [
   { id: 'INF09', nombre: 'COMBO TECLADO + MOUSE INALÁMBRICO', precio: 20000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/9.webp', oferta: false, stock: true },
   { id: 'INF14', nombre: 'MOUSE CON CABLE', precio: 5000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/14.webp', oferta: false, stock: true },
   { id: 'INF15', nombre: 'MOUSE INALÁMBRICO', precio: 8000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/15.webp', oferta: false, stock: true },
-{ id: 'INF16', nombre: 'CARGADOR UNIVERSAL PARA NOTEBOOK 8 PINES 90W', precio: 32000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/ACCESORIOS CELULARES/14.webp', oferta: false, stock: true },
+  { id: 'INF16', nombre: 'CARGADOR UNIVERSAL PARA NOTEBOOK 8 PINES 90W', precio: 32000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/CARGADORES/14.webp', oferta: false, stock: true },
   // --- JUGUETES ---
   { id: 'JUG01', nombre: 'CÁMARA DIGITAL INFANTIL', precio: 11000, precioAnterior: 0, cat: 'JUGUETES', foto: 'fotos/JUGUETES/1.webp', oferta: false, stock: true },
   { id: 'JUG02', nombre: 'CAMIÓN DE CONSTRUCCIÓN BLOQUES', precio: 14000, precioAnterior: 0, cat: 'JUGUETES', foto: 'fotos/JUGUETES/2.webp', oferta: false, stock: true },
@@ -142,10 +152,35 @@ const productos = [
   { id: 'LIB04', nombre: 'MOCHILA ESCOLAR ESPACIAL', precio: 28000, precioAnterior: 42000, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/4.webp', oferta: true, stock: true },
   { id: 'LIB05', nombre: 'SET LAPICERAS COLORES X48', precio: 23000, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/5.webp', oferta: false, stock: true },
   { id: 'LIB06', nombre: 'SET MARCADORES DOBLE PUNTA X60', precio: 18000, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/6.webp', oferta: false, stock: true },
+  
+  //---ACCESORIOS CELULARES---
+ 
+  { id: 'ACC01', nombre: 'SOPORTE SELFIE SOPAPA', precio: 1500, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/1.webp', oferta: false, stock: true },
+  { id: 'ACC02', nombre: 'SOPORTE UNIVERSAL PARA DISPOSITIVOS MÓVILES', precio: 4000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/2.webp', oferta: false, stock: true },
+  { id: 'ACC03', nombre: 'HOLDER MAGNÉTICO FIJO', precio: 3000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/3.webp', oferta: false, stock: true },
+  { id: 'ACC04', nombre: 'HOLDER FREE STYLE 360°', precio: 3000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/4.webp', oferta: false, stock: true },
+  { id: 'ACC05', nombre: 'HOLDER CARGADOR INALÁMBRICO 15W PARA AUTO', precio: 15000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/5.webp', oferta: false, stock: true },
+  { id: 'ACC06', nombre: 'CORREA PARA CELULAR SAFE BAND', precio: 8000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/6.webp', oferta: false, stock: true },
+  { id: 'ACC07', nombre: 'HOLDER CARGADOR INALÁMBRICO 15W', precio: 32000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/7.webp', oferta: false, stock: true },
 
   // --- PROYECTORES ---
   { id: 'PRO01', nombre: 'PROYECTOR PIXORA', precio: 150000, precioAnterior: 269999, cat: 'PROYECTORES', foto: 'fotos/PROYECTORES/1.webp', oferta: true, stock: true },
   { id: 'PRO02', nombre: 'PROYECTOR ORVA', precio:100000, precioAnterior: 0, cat: 'PROYECTORES', foto: 'fotos/PROYECTORES/2.webp', oferta: false, stock: true },
+
+  //---CABLES---
+  { id: 'CAB01', nombre: 'ADAPTADOR HDMI A 2 HDMI', precio: 5000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/1.webp', oferta: false, stock: true },
+  { id: 'CAB02', nombre: 'CABLE USB a C', precio: 2000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/2.webp', oferta: false, stock: true },
+  { id: 'CAB03', nombre: 'CABLE USB a V8', precio: 2000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/3.webp', oferta: false, stock: true },
+  { id: 'CAB04', nombre: 'CABLE USB a C', precio: 2500, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/4.webp', oferta: false, stock: true },
+  { id: 'CAB05', nombre: 'CABLE USB a C', precio: 2500, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/5.webp', oferta: false, stock: true },
+  { id: 'CAB06', nombre: 'CABLE AUX 3,5-2M', precio: 3000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/6.webp', oferta: false, stock: true },
+  { id: 'CAB07', nombre: 'CABLE AUX 3,5-1.8M ESPIRAL', precio: 3000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/7.webp', oferta: false, stock: true },
+  { id: 'CAB08', nombre: 'CABLE HDMI GOMA 3M', precio: 4000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/8.webp', oferta: false, stock: true },
+  { id: 'CAB09', nombre: 'CABLE C a C', precio: 5000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/9.webp', oferta: false, stock: true },
+  { id: 'CAB10', nombre: 'CABLE HDMI a VGA 1.5M', precio: 5000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/10.webp', oferta: false, stock: true },
+  { id: 'CAB11', nombre: 'CABLE C A LIGHTNING', precio: 6000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/11.webp', oferta: false, stock: true },
+  { id: 'CAB12', nombre: 'CABLE 2 PUNTAS LIGHTNING y V8 ', precio: 8000, precioAnterior: 0, cat: 'CABLES', foto: 'fotos/CABLES/12.webp', oferta: false, stock: true },
+
 
   // --- RELOJES ---
   { id: 'REL01', nombre: 'RELOJ KIDS', precio: 3500, precioAnterior: 0, cat: 'RELOJES', foto: 'fotos/RELOJES/1.webp', oferta: false, stock: true },
@@ -166,21 +201,19 @@ const productos = [
   { id: 'REL16', nombre: 'RELOJ FEMENINO 8061', precio: 8000, precioAnterior: 0, cat: 'RELOJES', foto: 'fotos/RELOJES/16.webp', oferta: false, stock: true },
   { id: 'REL17', nombre: 'SMART WATCH A58 + JOYERIA', precio: 34000, precioAnterior: 48000, cat: 'RELOJES', foto: 'fotos/RELOJES/17.webp', oferta: true, stock: true },
 
-  // --- ACCESORIOS CELULARES ---
-  { id: 'CAR01', nombre: 'CARGADOR PARA AUTO 12V POWERED V8 ', precio: 5000, precioAnterior: 11000, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/1.webp', oferta:false, stock: true },
-  
-  { id: 'CAR03', nombre: 'CARGADOR WIRELESS ION / MAGSAFE 15W', precio: 7000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/3.webp', oferta: false, stock: true },
-  { id: 'CAR04', nombre: 'CARGADOR CARGA RÁPIDA 45W TIPO C + PD', precio: 8000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/4.webp', oferta: false, stock: true },
-  { id: 'CAR05', nombre: 'CARGADOR USB CON CABLE V8', precio: 3000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/5.webp', oferta: false, stock: true },
-  
-  { id: 'CAR07', nombre: 'LÁMPARA INALÁMBRICA + CARGA RÁPIDA 15W', precio: 16000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/7.webp', oferta: false, stock: true },
-  { id: 'CAR08', nombre: 'CARGADOR CARGA RÁPIDA 55W 1 USB + 1TIPO C', precio: 18000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/8.webp', oferta: false, stock: true },
-  
-  { id: 'CAR10', nombre: 'CARGADOR WIRELESS 3 EN 1 PARA APPLE 25W', precio: 18000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/10.webp', oferta: false, stock: true },
-  { id: 'CAR13', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 3 EN 1 15W', precio: 32000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/13.webp', oferta: false, stock: true },
-  { id: 'VAR14', nombre: 'CARGADOR CARGA RÁPIDA 65W 1 USB + 2TIPO C ', precio: 21000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/11.webp', oferta: false, stock: true },
-  { id: 'CAR15', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 4 EN 1 15W', precio: 40000, precioAnterior: 56000, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/15.webp', oferta: true, stock: true },
-  { id: 'CAR16', nombre: 'CARGADOR DE AUTO V8', precio: 4000, precioAnterior: 0, cat: 'ACCESORIOS CELULARES', foto: 'fotos/ACCESORIOS CELULARES/16.webp', oferta: false, stock: true },
+  // --- CARGADORES---
+  { id: 'CAR01', nombre: 'CARGADOR PARA AUTO 12V POWERED V8 ', precio: 5000, precioAnterior: 11000, cat: 'CARGADORES', foto: 'fotos/CARGADORES/1.webp', oferta:false, stock: true },
+  { id: 'CAR03', nombre: 'CARGADOR WIRELESS ION / MAGSAFE 15W', precio: 7000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/3.webp', oferta: false, stock: true },
+  { id: 'CAR04', nombre: 'CARGADOR CARGA RÁPIDA 45W TIPO C + PD', precio: 8000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/4.webp', oferta: false, stock: true },
+  { id: 'CAR05', nombre: 'CARGADOR USB CON CABLE V8', precio: 3000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/5.webp', oferta: false, stock: true },
+  { id: 'CAR07', nombre: 'LÁMPARA INALÁMBRICA + CARGA RÁPIDA 15W', precio: 16000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/7.webp', oferta: false, stock: true },
+  { id: 'CAR08', nombre: 'CARGADOR CARGA RÁPIDA 55W 1 USB + 1TIPO C', precio: 18000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/8.webp', oferta: false, stock: true },
+  { id: 'CAR10', nombre: 'CARGADOR WIRELESS 3 EN 1 PARA APPLE 25W', precio: 18000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/10.webp', oferta: false, stock: true },
+  { id: 'CAR13', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 3 EN 1 15W', precio: 32000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/13.webp', oferta: false, stock: true },
+  { id: 'VAR14', nombre: 'CARGADOR CARGA RÁPIDA 65W 1 USB + 2TIPO C ', precio: 21000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/11.webp', oferta: false, stock: true },
+  { id: 'CAR15', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 4 EN 1 15W', precio: 40000, precioAnterior: 56000, cat: 'CARGADORES', foto: 'fotos/CARGADORES/15.webp', oferta: true, stock: true },
+  { id: 'CAR16', nombre: 'CARGADOR DE AUTO V8', precio: 4000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/16.webp', oferta: false, stock: true },
+  { id: 'CAR16', nombre: 'CARGADOR WIRELESS 20W', precio: 9000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/17.webp', oferta: false, stock: true },
 
   // --- CELULARES ---
   { id: 'CEL01', nombre: 'NOKIA 106', precio: 48000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/1.webp', oferta: false, stock: true },
@@ -213,11 +246,13 @@ const productos = [
   { id: 'VAR10', nombre: 'BOTELLA INFANTIL 640ML', precio: 11000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/2.webp', oferta: false, stock: true },
   { id: 'VAR11', nombre: 'ORGANIZADOR DE CABLES CHICO', precio: 5000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/5.webp', oferta: false, stock: true },
   { id: 'VAR12', nombre: 'ORGANIZADOR DE CABLES GRANDE', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/3.webp', oferta: false, stock: true },
-{ id: 'VAR13', nombre: 'CARGADOR DE PILAS CUÁDRUPLE TIPO C', precio: 14000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/6.webp', oferta: false, stock: true },
-
-{ id: 'VAR15', nombre: 'CARGADOR PARA 4 PILAS CON USB', precio: 21000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/12.webp', oferta: false, stock: true },
-{ id: 'VAR16', nombre: 'CARGADOR DE PILAS DOBLE USB-C', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/2.webp', oferta: false, stock: true },
-{ id: 'VAR17', nombre: 'CARGADOR DE PILAS DOBLE', precio: 16000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/ACCESORIOS CELULARES/9.webp', oferta: false, stock: true },
+  { id: 'VAR13', nombre: 'CARGADOR DE PILAS CUÁDRUPLE TIPO C', precio: 14000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/CARGADORES/6.webp', oferta: false, stock: true },
+  { id: 'VAR15', nombre: 'CARGADOR PARA 4 PILAS CON USB', precio: 21000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/CARGADORES/12.webp', oferta: false, stock: true },
+  { id: 'VAR16', nombre: 'CARGADOR DE PILAS DOBLE USB-C', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/CARGADORES/2.webp', oferta: false, stock: true },
+  { id: 'VAR17', nombre: 'CARGADOR DE PILAS DOBLE', precio: 16000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/CARGADORES/9.webp', oferta: false, stock: true },
+  { id: 'VAR18', nombre: 'INFLADOR AUTOMÁTICO PORTÁTIL', precio: 38000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/14.webp', oferta: false, stock: true },
+  { id: 'VAR19', nombre: 'ADAPTADOR UNIVERSAL GLOBALINK', precio: 5000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/15.webp', oferta: false, stock: true },
+  { id: 'VAR20', nombre: 'ADAPTADOR MICROSD A USB', precio: 3000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/16.webp', oferta: false, stock: true },
 
 
 ];
