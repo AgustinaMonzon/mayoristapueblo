@@ -1,152 +1,117 @@
-/* --- VARIABLES Y COLORES PUEBLO --- */
-.bg-pueblo {
-  background: #1a5d37;
-}
-.text-pueblo {
-  color: #1a5d37;
-}
-.border-pueblo {
-  border-color: #1a5d37;
+/* =========================================
+   ESTILOS PERSONALIZADOS - TIENDA PUEBLO
+   =========================================
+*/
+
+/* --- 1. VARIABLES Y COLORES --- */
+:root {
+  --verde-pueblo: #1a5d37;
+  --verde-hover: #2d6a4f;
+  --whatsapp: #25d366;
+  --borde-suave: #e5e7eb;
+  --bg-placeholder: #f9fafb;
 }
 
-/* --- BOTONES Y ESTADOS --- */
+/* --- 2. LOGOTIPO (Control de Escala) --- */
+/* Mobile: Evita que el logo desborde la pantalla */
+@media (max-width: 768px) {
+    .logo-container img, 
+    header img {
+        max-width: 140px !important; 
+        height: auto;
+        margin: 10px auto;
+        display: block;
+    }
+}
+
+/* Desktop: Tamaño equilibrado y elegante */
+@media (min-width: 769px) {
+    .logo-container img, 
+    header img {
+        max-width: 180px !important;
+    }
+}
+
+/* --- 3. FILTROS Y NAVEGACIÓN (Simetría) --- */
+.filtros-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap; 
+    padding: 10px;
+}
+
+.filtros-container button, 
+.filtros-container select {
+    flex: 1;            /* Ambos ocupan el mismo ancho */
+    height: 48px;       /* Área táctil cómoda */
+    border-radius: 12px;
+    border: 1px solid var(--borde-suave);
+    background: white;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- 4. COMPONENTES DE PRODUCTO --- */
+/* Botón de estado "Ya Agregado" al carrito */
 .btn-ya-agregado {
-  background-color: #2da44e !important;
-  transform: scale(0.98);
+  background-color: var(--whatsapp) !important;
+  color: white !important;
+  border: none !important;
 }
 
-.btn-whatsapp-flotante {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25d366;
-  color: white;
-  border-radius: 50px;
-  padding: 10px 18px;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+/* Placeholder para productos sin selector de cantidad (Consulta) */
+.placeholder-cantidad {
+    height: 48px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-placeholder);
+    border-radius: 12px;
+    border: 1px solid var(--borde-suave);
+    margin-top: 8px; 
 }
 
-.btn-whatsapp-flotante:active {
-  transform: scale(0.9);
+/* --- 5. CARRITO DE COMPRAS --- */
+/* Botones grandes para facilitar el uso con el pulgar */
+.carrito-item .btn-cantidad, 
+.carrito-item .btn-eliminar {
+    padding: 12px; 
+    font-size: 1.3rem;
+    font-weight: bold;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* --- ANIMACIONES --- */
-@keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-.animar-pop {
-  animation: pop 0.3s ease-out;
+/* --- 6. UTILIDADES Y ANIMACIONES --- */
+.bg-pueblo { 
+    background: var(--verde-pueblo); 
+    color: white; 
+    transition: all 0.3s ease; 
 }
 
-@keyframes titileo {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+/* Hover interactivo (solo para dispositivos con mouse) */
+@media (min-width: 1024px) {
+  .bg-pueblo:hover {
+    background-color: var(--verde-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
 }
+
+/* Animación para ofertas destacadas */
 .oferta-titilando {
   animation: titileo 1s infinite;
   color: #e11d48;
   font-weight: 800;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.spinner {
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top: 2px solid #fff;
-  width: 14px;
-  height: 14px;
-  animation: spin 0.8s linear infinite;
-  display: inline-block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.animate-fadeIn {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* --- SCROLLBARS --- */
-.scroll-hidden::-webkit-scrollbar {
-  display: none;
-}
-.scroll-hidden {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scroll-dark::-webkit-scrollbar {
-  width: 5px;
-}
-.scroll-dark::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-}
-.scroll-dark::-webkit-scrollbar-thumb {
-  background: #1a5d37; /* Verde Pueblo */
-  border-radius: 10px;
-}
-
-/* --- MODAL Y DETALLES --- */
-#foto-ampliada {
-  user-select: none;
-  -webkit-user-drag: none;
-}
-
-#modal-foto .close-btn {
-  position: sticky;
-  top: 10px;
-  right: 10px;
-  z-index: 50;
-  background: rgba(0,0,0,0.5);
-  border-radius: 50%;
-}
-
-/* --- CONTENEDORES --- */
-#contenedor-productos {
-  padding-bottom: 150px;
-}
-
-/* --- VISTA TABLET/PC --- */
-@media (min-width: 768px) {
-  #contenedor-productos {
-    padding-bottom: 20px;
-  }
-}
-#desc-texto {
-  display: block;
-  margin-top: 12px;
-  line-height: 1.5; /* Separa las líneas para que no sea un bloque compacto */
-  color: #d1d5db;   /* Un gris un poco más claro (gray-300) para que resalte más sobre el negro */
-}
-/* --- VISTA MÓVIL --- */
-@media (max-width: 768px) {
-  .btn-whatsapp-flotante {
-    bottom: 85px; 
-    z-index: 90;
-    padding: 8px 14px;
-    font-size: 11px;
-  }
-
-  /* Ajuste para que el modal no se corte y sea scrolleable */
-  #modal-foto > div {
-    max-height: 95vh;
-    overflow-y: auto;
-  }
-
-  #barra-carrito {
-    z-index: 100 !important;
-  }
+@keyframes titileo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }

@@ -213,16 +213,41 @@ const productos = [
   { id: 'VAR14', nombre: 'CARGADOR CARGA RÁPIDA 65W 1 USB + 2TIPO C ', precio: 21000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/11.webp', oferta: false, stock: true },
   { id: 'CAR15', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 4 EN 1 15W', precio: 40000, precioAnterior: 56000, cat: 'CARGADORES', foto: 'fotos/CARGADORES/15.webp', oferta: true, stock: true },
   { id: 'CAR16', nombre: 'CARGADOR DE AUTO V8', precio: 4000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/16.webp', oferta: false, stock: true },
-  { id: 'CAR16', nombre: 'CARGADOR WIRELESS 20W', precio: 9000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/17.webp', oferta: false, stock: true },
+  { id: 'CAR17', nombre: 'CARGADOR WIRELESS 20W', precio: 9000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/17.webp', oferta: false, stock: true },
 
   // --- CELULARES ---
   { id: 'CEL01', nombre: 'NOKIA 106', precio: 48000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/1.webp', oferta: false, stock: true },
   { id: 'CEL02', nombre: 'NOKIA 2660 FLIP', precio: 98000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/2.webp', oferta: false, stock: true },
-  { id: 'CEL03', nombre: 'LÍNEA IPHONE (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/3.webp', oferta: false, stock: true },
-  { id: 'CEL04', nombre: 'LÍNEA SAMSUNG (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/4.webp', oferta: false, stock: true },
-  { id: 'CEL05', nombre: 'LÍNEA XIAOMI (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/5.webp', oferta: false, stock: true },
-  { id: 'CEL06', nombre: 'LÍNEA MOTOROLA (Todos los modelos)', precio: 'Consultar', precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/6.webp', oferta: false, stock: true },
-
+{ 
+  id: 'CEL03', 
+  nombre: 'LÍNEA IPHONE', 
+  precio: 0, 
+  precioConsultar: true, 
+  cat: 'CELULARES', 
+  foto: 'fotos/CELULARES/3.webp', 
+  oferta: false, 
+  stock: true 
+},
+  { 
+  id: 'CEL05', 
+  nombre: 'LÍNEA XIAOMI', 
+  precio: 0, 
+  precioConsultar: true, 
+  cat: 'CELULARES', 
+  foto: 'fotos/CELULARES/5.webp', 
+  oferta: false, 
+  stock: true 
+},
+{ 
+  id: 'CEL06', 
+  nombre: 'LÍNEA MOTOROLA', 
+  precio: 0, 
+  precioConsultar: true, 
+  cat: 'CELULARES', 
+  foto: 'fotos/CELULARES/6.webp', 
+  oferta: false, 
+  stock: true 
+},
   // --- DEPORTIVO ---
   { id: 'DEP01', nombre: 'RIÑONERA + PORTABOTELLA', precio: 6000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/1.webp', oferta: false, stock: true },
   { id: 'DEP02', nombre: 'RIÑONERA ELÁSTICA', precio: 5000, precioAnterior: 0, cat: 'DEPORTIVO', foto: 'fotos/DEPORTIVO/2.webp', oferta: false, stock: true },
