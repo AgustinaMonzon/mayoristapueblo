@@ -77,32 +77,106 @@ header .flex.items-center.justify-center.gap-6 a img:hover { transform: scale(1.
 #buscador:focus { box-shadow: 0 0 0 3px rgba(26, 93, 55, 0.2); border-color: var(--verde-hover); }
 
 /* =========================================
-   FILTROS 50%/50%
+   FILTROS 50%/50% - CORREGIDO MÓVIL
    ========================================= */
-.filtros-container { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; padding: 10px 0; }
-.filtros-container button, .filtros-container #ordenar {
-  flex: 0 0 calc(50% - 6px); width: calc(50% - 6px); height: 48px; border-radius: 12px;
-  border: 2px solid var(--borde-suave); background: white; font-size: 0.9rem; font-weight: 600;
-  display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;
-  transition: all 0.2s ease; white-space: nowrap;
+.filtros-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; /* Forzar que no se apilen */
+  padding: 10px 0;
 }
-.filtros-container button:hover { border-color: var(--verde-pueblo); transform: translateY(-1px); }
+
+.filtros-container button,
+.filtros-container #ordenar {
+  flex: 1 1 calc(50% - 6px);
+  min-width: calc(50% - 6px);
+  max-width: calc(50% - 6px);
+  width: calc(50% - 6px);
+  height: 48px;
+  border-radius: 12px;
+  border: 2px solid var(--borde-suave);
+  background: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filtros-container button:hover {
+  border-color: var(--verde-pueblo);
+  transform: translateY(-1px);
+}
 
 #ordenar {
-  padding: 0 40px 0 16px; color: #4b5563; cursor: pointer; appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231a5d37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 14px center; background-size: 18px;
+  padding: 0 40px 0 16px;
+  color: #4b5563;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%231a5d37'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
 }
-#ordenar:hover { border-color: var(--verde-pueblo); }
-#ordenar:focus { outline: none; border-color: var(--verde-pueblo); box-shadow: 0 0 0 3px rgba(26, 93, 55, 0.15); }
 
-@media (max-width: 768px) {
-  .filtros-container { flex-direction: row; align-items: stretch; }
-  .filtros-container button, .filtros-container #ordenar { flex: 0 0 calc(50% - 6px); width: calc(50% - 6px); }
+#ordenar:hover {
+  border-color: var(--verde-pueblo);
 }
+
+#ordenar:focus {
+  outline: none;
+  border-color: var(--verde-pueblo);
+  box-shadow: 0 0 0 3px rgba(26, 93, 55, 0.15);
+}
+
+/* Responsive: Desktop */
+@media (min-width: 769px) {
+  .filtros-container {
+    flex-wrap: wrap;
+  }
+}
+
+/* Responsive: Móvil - FORZAR 50%/50% */
+@media (max-width: 768px) {
+  .filtros-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .filtros-container button,
+  .filtros-container #ordenar {
+    flex: 1 1 calc(50% - 4px);
+    min-width: calc(50% - 4px);
+    max-width: calc(50% - 4px);
+    width: calc(50% - 4px);
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive: Móvil muy chico */
 @media (max-width: 480px) {
-  .filtros-container { gap: 8px; }
-  .filtros-container button, .filtros-container #ordenar { flex: 0 0 calc(50% - 4px); width: calc(50% - 4px); font-size: 0.8rem; }
+  .filtros-container {
+    gap: 6px;
+  }
+  
+  .filtros-container button,
+  .filtros-container #ordenar {
+    flex: 1 1 calc(50% - 3px);
+    min-width: calc(50% - 3px);
+    max-width: calc(50% - 3px);
+    width: calc(50% - 3px);
+    font-size: 0.8rem;
+    padding: 0 8px;
+  }
 }
 
 /* =========================================
@@ -330,18 +404,52 @@ button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible
 }
 
 /* =========================================
-   BOTÓN SUBIR
+   BOTÓN SUBIR - POSICIÓN Y Z-INDEX CORREGIDOS
    ========================================= */
 #btn-subir {
   transition: opacity 0.3s ease, transform 0.2s ease;
-  z-index: 100 !important; opacity: 0; pointer-events: none;
+  z-index: 130 !important; /* MÁS ALTO QUE WHATSAPP (120) */
+  opacity: 0;
+  pointer-events: none;
+  /* Más transparente */
+  background: rgba(26, 93, 55, 0.6) !important;
+  backdrop-filter: blur(4px);
 }
-#btn-subir:not(.opacity-0) { opacity: 1 !important; pointer-events: auto !important; }
-#btn-subir:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(26, 93, 55, 0.4); }
-#btn-subir:active { transform: translateY(-1px); }
 
-@media (max-width: 768px) { #btn-subir { bottom: 150px !important; } }
+#btn-subir:not(.opacity-0) {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
 
+#btn-subir:hover {
+  transform: translateY(-3px);
+  background: rgba(26, 93, 55, 0.8) !important;
+  box-shadow: 0 8px 25px rgba(26, 93, 55, 0.4);
+}
+
+#btn-subir:active {
+  transform: translateY(-1px);
+}
+
+/* Desktop: posición normal (izquierda) */
+@media (min-width: 769px) {
+  #btn-subir {
+    bottom: 24px !important;
+    left: 16px !important;
+    right: auto !important;
+  }
+}
+
+/* Móvil: ARRIBA del WhatsApp (derecha) */
+@media (max-width: 768px) {
+  #btn-subir {
+    bottom: 150px !important; /* Más arriba del WhatsApp */
+    right:30px !important; /* Alineado con WhatsApp */
+    left: auto !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
 /* =========================================
    TARJETAS DE PRODUCTO
    ========================================= */
