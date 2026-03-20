@@ -141,3 +141,25 @@
     height: 28px;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
+/* =========================================
+   8. CORRECCIÓN DE SUPERPOSICIÓN EN MÓVIL (FUERZA BRUTA)
+   =========================================
+*/
+
+@media (max-width: 768px) {
+  /* Forzamos al botón de WhatsApp a subir SIEMPRE en móviles */
+  /* Buscamos el enlace que contiene el icono de WhatsApp */
+  a[href*="wa.me"], 
+  .whatsapp-float,
+  [class*="whatsapp"] {
+    bottom: 90px !important; /* Lo subimos para que libre la barra del carrito */
+    z-index: 9999 !important;
+  }
+
+  /* Si querés que solo suba cuando hay productos, pero el anterior no funcionó, 
+     probamos con este que es más general: */
+  #btn-flotante-container:not(.hidden) ~ * a[href*="wa.me"],
+  #btn-flotante-container:not(.hidden) + a[href*="wa.me"] {
+    bottom: 100px !important;
+  }
+}
