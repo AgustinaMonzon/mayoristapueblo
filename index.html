@@ -8,6 +8,7 @@
     <link rel="icon" href="logo.webp" />
     <link rel="apple-touch-icon" href="logo.webp" />
     <link rel="manifest" href="manifest.json" />
+    <!-- webhint-ignore-next-line compat-api/html -->
     <meta name="theme-color" content="#1a5d37" />
 
     <meta
@@ -22,12 +23,12 @@
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- WhatsApp Flotante -->
     <a
-      href="https://wa.me/543413261010?text=Hola!%20Tengo%20una%20consulta"
+      href="https://wa.me/543413261010?text=Hola%20Tienda%20Pueblo!%20Tengo%20una%20consulta"
       target="_blank"
       rel="noopener noreferrer"
-      class="fixed bottom-6 right-6 z-[120] bg-[#25D366] text-white flex items-center justify-center gap-2 p-3 rounded-full shadow-2xl hover:scale-110 transition-all duration-300"
-      style="width: 60px; height: 60px"
+      class="fixed bottom-6 right-6 z-[120] bg-[#25D366] text-white flex items-center justify-center gap-2 p-3 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 btn-whatsapp-float"
     >
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
@@ -36,6 +37,7 @@
       />
     </a>
 
+    <!-- Header -->
     <header
       class="bg-white shadow-sm flex flex-col items-center pt-2 pb-4 px-4"
     >
@@ -83,9 +85,11 @@
       </div>
     </header>
 
+    <!-- Main Content -->
     <main
       class="flex flex-col md:flex-row flex-1 p-4 gap-4 max-w-[1400px] mx-auto w-full"
     >
+      <!-- Sidebar Categorías -->
       <aside class="w-full md:w-48 space-y-2">
         <div
           id="lista-categorias"
@@ -208,6 +212,7 @@
         </div>
       </aside>
 
+      <!-- Productos -->
       <section class="flex-1">
         <div class="mb-3">
           <input
@@ -226,12 +231,11 @@
           >
             <span class="text-yellow-500">⭐</span> <span>Favoritos</span>
           </button>
-
           <select
             id="ordenar"
             onchange="aplicarFiltros()"
             title="Seleccionar orden de precios"
-            class="p-3 rounded-xl border-2 outline-none bg-white font-bold text-gray-600 shadow-sm text-center"
+            class="p-3 rounded-xl border-2 outline-none bg-white font-bold text-gray-600 shadow-sm text-center min-w-[180px] cursor-pointer hover:border-pueblo transition-colors"
           >
             <option value="predeterminado">Ordenar por</option>
             <option value="menor">Menor Precio</option>
@@ -245,6 +249,7 @@
         ></div>
       </section>
 
+      <!-- Carrito Desktop -->
       <aside class="hidden md:block w-72">
         <div class="bg-white p-6 rounded-3xl shadow-xl sticky top-4 border">
           <h2 class="font-black text-xl mb-4 text-pueblo uppercase">
@@ -269,26 +274,40 @@
       </aside>
     </main>
 
+    <!-- Carrito Móvil Flotante -->
     <div
       id="btn-flotante-container"
       class="fixed bottom-6 left-4 right-4 md:hidden z-50 hidden"
     >
       <button
-  onclick="toggleCarritoMovil()"
-  class="w-full bg-pueblo text-white py-4 rounded-2xl font-bold shadow-2xl flex justify-between px-6 items-center"
->
-  <div class="flex items-center gap-3">
-    <div class="flotante-icon-container">
-  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-  </svg>
-  <span class="flotante-badge" id="cantidad-flotante">0</span>
-</div>
-    <span class="text-lg">Ver Mi Carrito</span>
-  </div>
-  <span id="total-flotante" class="text-xl font-black">$0</span>
-</button>
+        onclick="toggleCarritoMovil()"
+        class="w-full bg-pueblo text-white py-4 rounded-2xl font-bold shadow-2xl flex justify-between px-6 items-center"
+      >
+        <div class="flex items-center gap-3">
+          <div class="flotante-icon-container">
+            <svg
+              class="w-7 h-7 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              ></path>
+            </svg>
+            <span class="flotante-badge" id="cantidad-flotante">0</span>
+          </div>
+          <span class="text-lg">Ver Mi Carrito</span>
+        </div>
+        <span id="total-flotante" class="text-xl font-black">$0</span>
+      </button>
+    </div>
 
+    <!-- Modal Carrito Móvil -->
     <div
       id="modal-carrito"
       class="fixed inset-0 bg-black/60 hidden z-[60] p-4 items-center justify-center"
@@ -320,6 +339,7 @@
       </div>
     </div>
 
+    <!-- Modal Foto Ampliada -->
     <div
       id="modal-foto"
       onclick="cerrarModalFoto(event)"
@@ -374,11 +394,12 @@
       </div>
     </div>
 
+    <!-- Botón Volver Arriba -->
     <button
       onclick="volverArriba()"
       id="btn-subir"
       title="Volver arriba"
-      class="fixed bottom-24 left-4 bg-pueblo text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center z-[50] transition-opacity duration-300 opacity-0 pointer-events-none"
+      class="fixed bottom-24 left-4 bg-pueblo text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center z-[100] transition-opacity duration-300 opacity-0 pointer-events-none"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -396,6 +417,27 @@
       </svg>
     </button>
 
+    <!-- Loading Overlay -->
+    <div
+      id="loading-overlay"
+      class="fixed inset-0 bg-white z-[200] flex items-center justify-center"
+    >
+      <img
+        src="logo.webp"
+        alt="Tienda Pueblo"
+        class="logo-tienda loading-logo"
+      />
+      <div class="flex flex-col items-center gap-4">
+        <div
+          class="w-16 h-16 border-4 border-pueblo border-t-transparent rounded-full animate-spin"
+        ></div>
+        <p class="text-pueblo font-bold text-lg animate-pulse">
+          Cargando tienda...
+        </p>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
       (function () {
         const v = Date.now();
@@ -412,8 +454,6 @@
       let categoriaActual = localStorage.getItem("categoria_actual") || "TODOS";
 
       // --- UTILIDADES ---
-
-      /** Elimina tildes y pasa a minúsculas para búsquedas precisas */
       function normalizar(texto) {
         return texto
           .toLowerCase()
@@ -421,14 +461,11 @@
           .replace(/[\u0300-\u036f]/g, "");
       }
 
-      /** Formatea números al formato de moneda Argentina */
       function precioARS(n) {
         return typeof n === "number" ? n.toLocaleString("es-AR") : n;
       }
 
-      // --- GESTIÓN DE PRODUCTOS Y VISTA ---
-
-      /** Renderiza la lista de productos en el HTML */
+      // --- GESTIÓN DE PRODUCTOS ---
       function mostrarProductos(lista) {
         const cont = document.getElementById("contenedor-productos");
         if (!cont) return;
@@ -446,24 +483,15 @@
             const cantidadAMostrar = yaEsta ? yaEsta.cantidad : 1;
             const fotoRuta = p.foto || `fotos/${p.id}.webp`;
 
-            // Lógica de Precios
             let precioHtml = "";
             if (p.precioConsultar) {
               precioHtml = `<p class="text-sm font-bold text-emerald-600 italic h-[40px] flex items-center"></p>`;
             } else if (p.oferta && p.precioAnterior > 0) {
-              precioHtml = `
-                <div class="flex flex-col h-[40px] justify-center">
-                  <span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span>
-                  <div class="flex items-center gap-2">
-                    <span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span>
-                    <span class="oferta-titilando text-[10px] uppercase">¡Oferta!</span>
-                  </div>
-                </div>`;
+              precioHtml = `<div class="flex flex-col h-[40px] justify-center"><span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span><div class="flex items-center gap-2"><span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span><span class="oferta-titilando">OFERTA!</span></div></div>`;
             } else {
               precioHtml = `<p class="text-base md:text-xl font-black text-pueblo h-[40px] flex items-center">$${precioARS(p.precio)}</p>`;
             }
 
-            // Lógica de Botones Dinámicos
             let botonesHtml = "";
             if (!hayStock) {
               botonesHtml = `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase h-[100px]">Agotado</button>`;
@@ -471,46 +499,19 @@
               const infoExtra = p.nombre.includes("(")
                 ? p.nombre.split("(")[1].replace(")", "")
                 : "Modelos disponibles";
-              botonesHtml = `
-                <div class="flex items-center justify-center mt-2 bg-gray-50 rounded-lg border h-[46px] text-[10px] text-gray-500 font-medium px-2 text-center leading-tight">${infoExtra}</div>
-                <a href="https://wa.me/5493413261010?text=Hola! Me interesa: ${p.nombre} (Ref: ${p.id})" target="_blank" 
-                   class="w-full mt-2 bg-pueblo text-white py-2.5 rounded-xl font-bold text-[10px] text-center uppercase block shadow-sm hover:bg-emerald-800 transition-colors">
-                   Consultar Precio
-                </a>`;
+              botonesHtml = `<div class="flex items-center justify-center mt-2 bg-gray-50 rounded-lg border h-[46px] text-[10px] text-gray-500 font-medium px-2 text-center leading-tight">${infoExtra}</div><a href="https://wa.me/5493413261010?text=Hola! Me interesa: ${p.nombre} (Ref: ${p.id})" target="_blank" class="w-full mt-2 bg-pueblo text-white py-2.5 rounded-xl font-bold text-[10px] text-center uppercase block shadow-sm hover:bg-emerald-800 transition-colors">Consultar Precio</a>`;
             } else {
               const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
               const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
-              botonesHtml = `
-                <div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border h-[46px]">
-                  <button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
-                  <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
-                  <button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
-                </div>
-                <button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300 shadow-sm">${btnTexto}</button>`;
+              botonesHtml = `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border h-[46px]"><button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button><span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span><button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button></div><button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300 shadow-sm">${btnTexto}</button>`;
             }
 
-            return `
-              <div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}">
-                <button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                  </svg>
-                </button>
-                <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
-                  <img src="${fotoRuta}" loading="lazy" onclick="ampliar('${p.id}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">
-                  ${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}
-                </div>
-                <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
-                <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
-                ${precioHtml}${botonesHtml}
-              </div>`;
+            return `<div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}"><button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg></button><div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative"><img src="${fotoRuta}" loading="lazy" onclick="ampliar('${p.id}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}</div><p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p><h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>${precioHtml}${botonesHtml}</div>`;
           })
           .join("");
       }
 
       // --- FILTROS Y BÚSQUEDA ---
-
-      /** Filtra, ordena y muestra los productos según el estado actual */
       function aplicarFiltros() {
         const txtBuscado = normalizar(
           document.getElementById("buscador").value,
@@ -520,19 +521,19 @@
             ? JSON.parse(JSON.stringify(productos))
             : [];
 
-        if (categoriaActual === "FAVORITOS")
-          f = f.filter((p) => favoritos.includes(p.id));
-        else if (categoriaActual === "SALE")
-          f = f.filter((p) => p.oferta === true);
-        else if (categoriaActual !== "TODOS")
-          f = f.filter((p) => p.cat === categoriaActual);
-
         if (txtBuscado) {
           f = f.filter(
             (p) =>
               normalizar(p.nombre).includes(txtBuscado) ||
               normalizar(p.id).includes(txtBuscado),
           );
+        } else {
+          if (categoriaActual === "FAVORITOS")
+            f = f.filter((p) => favoritos.includes(p.id));
+          else if (categoriaActual === "SALE")
+            f = f.filter((p) => p.oferta === true);
+          else if (categoriaActual !== "TODOS")
+            f = f.filter((p) => p.cat === categoriaActual);
         }
 
         const orden = document.getElementById("ordenar").value;
@@ -542,7 +543,6 @@
         mostrarProductos(f);
       }
 
-      /** Cambia la categoría activa y actualiza la UI de botones */
       function filtrar(cat, btn) {
         window.scrollTo({ top: 0, behavior: "smooth" });
         categoriaActual = cat;
@@ -572,9 +572,7 @@
         aplicarFiltros();
       }
 
-      // --- GESTIÓN DEL CARRITO ---
-
-      /** Maneja la animación y validación previa antes de agregar al carrito */
+      // --- CARRITO ---
       function prepararAlta(id, btn) {
         if (btn.innerText.includes("✓")) {
           if (window.innerWidth < 768) toggleCarritoMovil();
@@ -591,7 +589,6 @@
         }, 200);
       }
 
-      /** Agrega o actualiza un item en el array de carrito */
       function agregarAlCarrito(id, cantidad) {
         const prod = productos.find((p) => p.id === id);
         if (!prod) return;
@@ -602,7 +599,6 @@
         actualizarCarrito();
       }
 
-      /** Actualiza toda la UI del carrito (PC, Móvil y totales) */
       function actualizarCarrito() {
         const listaPC = document.getElementById("items-carrito");
         const listaMovil = document.getElementById("items-carrito-movil");
@@ -625,16 +621,7 @@
             btn.classList.remove("bg-pueblo");
             btn.classList.add("btn-ya-agregado");
           }
-          html += `
-            <div class="flex justify-between items-center border-b py-3 text-xs">
-              <div class="flex-1 font-bold pr-2 text-gray-700">${item.nombre}</div>
-              <div class="flex items-center gap-2 bg-gray-100 rounded-lg px-2 py-1">
-                <button onclick="modificarEnCarrito('${item.id}', -1)" class="btn-cantidad font-black text-pueblo">-</button>
-                <span class="font-bold w-4 text-center">${item.cantidad}</span>
-                <button onclick="modificarEnCarrito('${item.id}', 1)" class="btn-cantidad font-black text-pueblo">+</button>
-              </div>
-              <button onclick="eliminar('${item.id}')" class="btn-eliminar text-red-500 font-bold ml-4 hover:scale-110 transition-transform">✕</button>
-            </div>`;
+          html += `<div class="flex justify-between items-center border-b py-3 text-xs"><div class="flex-1 font-bold pr-2 text-gray-700">${item.nombre}</div><div class="flex items-center gap-2 bg-gray-100 rounded-lg px-2 py-1"><button onclick="modificarEnCarrito('${item.id}', -1)" class="btn-cantidad font-black text-pueblo">-</button><span class="font-bold w-4 text-center">${item.cantidad}</span><button onclick="modificarEnCarrito('${item.id}', 1)" class="btn-cantidad font-black text-pueblo">+</button></div><button onclick="eliminar('${item.id}')" class="btn-eliminar text-red-500 font-bold ml-4 hover:scale-110 transition-transform">✕</button></div>`;
         });
 
         const emptyMsg =
@@ -655,28 +642,48 @@
         localStorage.setItem("carrito_pueblo", JSON.stringify(carrito));
       }
 
-      /** Genera el mensaje de pedido y abre WhatsApp */
+      // --- WHATSAPP - FUNCIÓN ÚNICA ---
       function enviarWhatsApp() {
-        if (carrito.length === 0) return;
-        let m = "Hola *Mayorista Pueblo*, mi pedido es:\n\n";
+        if (carrito.length === 0) {
+          alert("El carrito está vacío");
+          return;
+        }
+
+        let m = "*NUEVO PEDIDO - TIENDA PUEBLO*\n";
+        m += `Fecha: ${new Date().toLocaleDateString("es-AR")}\n`;
+        m += "─────────────────\n\n";
+
         let t = 0;
+
         carrito.forEach((i) => {
-          m += `✅ *${i.cantidad}* x ${i.nombre} _($${precioARS(i.precio)})_\n`;
-          t += i.precio * i.cantidad;
+          const subtotal = i.precio * i.cantidad;
+          if (i.precioConsultar) {
+            m += `*${i.cantidad}* x [${i.id}] ${i.nombre} (A CONSULTAR)\n`;
+          } else {
+            m += `*${i.cantidad}* x [${i.id}] ${i.nombre} ($${precioARS(i.precio)}) = *$${precioARS(subtotal)}*\n`;
+          }
+          t += subtotal;
         });
-        m += `\n💰 *Total a pagar: $${precioARS(t)}*`;
-        window.open(
-          `https://wa.me/543413261010?text=${encodeURIComponent(m)}`,
-          "_blank",
-        );
+
+        m += `\n─────────────────\n`;
+        m += `*TOTAL A PAGAR: $${precioARS(t)}*\n\n`;
+        m += `Nota: Los precios y stock están sujetos a confirmación.`;
+
+        // ✅ SIN ESPACIOS en la URL
+        const url = `https://wa.me/543413261010?text=${encodeURIComponent(m)}`;
+        window.open(url, "_blank");
+
+        // Cerrar modal móvil si está abierto
+        const modalMovil = document.getElementById("modal-carrito");
+        if (modalMovil && !modalMovil.classList.contains("hidden")) {
+          toggleCarritoMovil();
+        }
       }
 
-      // --- FUNCIONES DE INTERFAZ (MODALES Y SCROLL) ---
-
+      // --- INTERFAZ ---
       function buscar() {
         aplicarFiltros();
       }
-
       function toggleFavorito(id) {
         if (favoritos.includes(id))
           favoritos = favoritos.filter((f) => f !== id);
@@ -684,7 +691,6 @@
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
         aplicarFiltros();
       }
-
       function cambiarCantCarta(id, c) {
         const el = document.getElementById(`cant-${id}`);
         if (!el) return;
@@ -698,7 +704,6 @@
           }
         }
       }
-
       function toggleCarritoMovil() {
         const modal = document.getElementById("modal-carrito");
         modal.classList.toggle("hidden");
@@ -713,7 +718,6 @@
         document.getElementById("desc-titulo").innerText = prod.nombre;
         const descTexto = document.getElementById("desc-texto");
         const separador = document.getElementById("separador-modal");
-
         if (prod.descripcion && prod.descripcion.trim() !== "") {
           descTexto.innerText = prod.descripcion;
           descTexto.classList.remove("hidden");
@@ -734,18 +738,15 @@
           .classList.replace("flex", "hidden");
         document.body.style.overflow = "auto";
       }
-
       function volverArriba() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-
       function eliminar(id) {
         carrito = carrito.filter((i) => i.id !== id);
         const cantTxt = document.getElementById(`cant-${id}`);
         if (cantTxt) cantTxt.innerText = "1";
         actualizarCarrito();
       }
-
       function modificarEnCarrito(id, c) {
         const item = carrito.find((i) => i.id === id);
         if (item) {
@@ -759,19 +760,38 @@
         }
       }
 
-      // --- EVENTOS INICIALES ---
-      window.onscroll = function () {
+      // --- EVENTOS ---
+      window.addEventListener("scroll", function () {
         const btn = document.getElementById("btn-subir");
-        if (document.documentElement.scrollTop > 300)
-          btn.classList.remove("opacity-0", "pointer-events-none");
-        else btn.classList.add("opacity-0", "pointer-events-none");
-      };
+        if (btn) {
+          if (
+            document.documentElement.scrollTop > 300 ||
+            document.body.scrollTop > 300
+          ) {
+            btn.classList.remove("opacity-0", "pointer-events-none");
+          } else {
+            btn.classList.add("opacity-0", "pointer-events-none");
+          }
+        }
+      });
 
-      /** Carga inicial de datos después de un pequeño delay para asegurar que productos.js cargó */
       setTimeout(() => {
         actualizarCarrito();
         aplicarFiltros();
       }, 500);
+
+      // Ocultar loading
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          const overlay = document.getElementById("loading-overlay");
+          if (overlay) {
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+              overlay.style.display = "none";
+            }, 500);
+          }
+        }, 800);
+      });
     </script>
   </body>
 </html>
