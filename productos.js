@@ -11,11 +11,11 @@ const productos = [
   stock: true,
   descripcion: 'Potencia profesional de 2000W para un secado ultra rápido.\n\n• Motor AC de larga duración.\n• 2 velocidades y 2 niveles de calor.\n• Botón de aire frío para fijar el peinado.\n• Incluye 2 boquillas concentradoras.\n• Cable reforzado de 1,8 metros.'
 },
-  { id: 'BELL02', nombre: 'PLANCHITA DE PELO TITANIO PROFESIONAL', precio: 46000, precioAnterior: 54999, cat: 'BELLEZA', foto: 'fotos/BELLEZA/4.webp', oferta: true, stock: true },
+  { id: 'BELL02', nombre: 'PLANCHITA DE PELO TITANIO PROFESIONAL', precio: 46000, precioAnterior: 54999, cat: 'BELLEZA', foto: 'fotos/BELLEZA/4.webp', oferta: true, stock: true, descripcion: "Tecnología de titanio para un alisado rápido y uniforme hasta 230°C. Cuenta con pantalla LCD de temperatura, botones de ajuste preciso y traba de seguridad. Potencia de 60W con cable giratorio de 1,8 metros para un acabado profesional.",},
   { id: 'BELL03', nombre: 'CEPILLO SECADOR ALISADOR', precio: 19999, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/cepillo.webp', oferta: false, stock: true },
   { id: 'BELL04', nombre: 'AFEITADORA ABS DORADA', precio: 5500, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/2.webp', oferta: false, stock: true },
   { id: 'BELL05', nombre: 'AFEITADORA ABS CROMO', precio: 6000, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/1.webp', oferta: false, stock: true },
-  { id: 'BELL06', nombre: 'SECADOR DE PELO 1000W', precio: 24000, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/5.webp', oferta: false, stock: true },
+  { id: 'BELL06', nombre: 'SECADOR DE PELO 1000W', precio: 24000, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/5.webp', oferta: false, stock: true, descripcion: "Secador profesional iónico marca Hytoshy de 1000W y 220V. Cuenta con 3 niveles de temperatura, 2 velocidades, boquilla de conducción y gancho para colgar. Incluye cable de 1.4m para un secado con volumen y brillo.", },
   // --- HOGAR ---
   { id: 'HOG01', nombre: 'FREIDORA DE AIRE 1800W 10L', precio: 99999, precioAnterior: 168999, cat: 'HOGAR', foto: 'fotos/HOGAR/1.webp', oferta: true, stock: true },
   { id: 'HOG02', nombre: 'HORNO ELÉCTRICO 1500w 17l', precio: 79999, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/2.webp', oferta: false, stock: true },
@@ -40,7 +40,7 @@ const productos = [
   { id: 'DEC01', nombre: 'LÁMPARA ATARDECER', precio: 10000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/1.webp', oferta: false, stock: true },
   { id: 'DEC02', nombre: 'HUMIDIFICADOR LLAMA', precio: 21000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/2.webp', oferta: false, stock: true },
   { id: 'DEC03', nombre: 'HUMIDIFICADOR HONGO', precio: 9000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/3.webp', oferta: false, stock: true },
-  { id: 'DEC04', nombre: 'VELADOR GATITO FLEXIBLE', precio: 7000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/4.webp', oferta: false, stock: false },
+  { id: 'DEC04', nombre: 'VELADOR GATITO FLEXIBLE', precio: 7000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/4.webp', oferta: false, stock: true },
   { id: 'DEC05', nombre: 'LÁMPARA ESCRITORIO ASTRONAUTA LUNA', precio: 7500, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/5.webp', oferta: false, stock: true },
   { id: 'DEC06', nombre: 'MINI LÁMPARA RGB CILINDRO', precio: 13000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/6.webp', oferta: false, stock: true },
   { id: 'DEC07', nombre: 'PROYECTOR ASTRONAUTA GALAXIA', precio: 16000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/7.webp', oferta: false, stock: true },
@@ -88,6 +88,8 @@ const productos = [
   { id: 'PAR23', nombre: 'PARLANTE GAMER CON MAG SAFE 3W', precio: 12000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/23.webp', oferta: false, stock: true },
   { id: 'PAR24', nombre: 'PARLANTE SMALL 6W ', precio: 12000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/24.webp', oferta: false, stock: true },
   { id: 'PAR25', nombre: 'PARLANTE 2" 3W BLUETOOTH LED ', precio: 10000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/25.webp', oferta: false, stock: true },
+  { id: 'PAR26', nombre: 'PARLANTE BLUETOOTH 3" GROOVE', precio: 16000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/26.webp', oferta: false, stock: true },
+
 
   // --- MICROFONOS ---
   { id: 'MIC01', nombre: 'MICRÓFONO CORBATERO CLIP TIPO C', precio: 4000, precioAnterior: 0, cat: 'MICROFONOS', foto: 'fotos/MICROFONOS/1.webp', oferta: false, stock: true },
@@ -162,6 +164,8 @@ const productos = [
   { id: 'ACC05', nombre: 'HOLDER CARGADOR INALÁMBRICO 15W PARA AUTO', precio: 15000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/5.webp', oferta: false, stock: true },
   { id: 'ACC06', nombre: 'CORREA PARA CELULAR SAFE BAND', precio: 8000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/6.webp', oferta: false, stock: true },
   { id: 'ACC07', nombre: 'HOLDER CARGADOR INALÁMBRICO 15W', precio: 32000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/7.webp', oferta: false, stock: true },
+  { id: 'ACC08', nombre: 'SOPORTE 360° PARA ESCRITORIO METÁLICO REFORZADO', precio: 7000, precioAnterior: 0, cat: 'ACCESORIOS_CELULARES', foto: 'fotos/ACCESORIOSCELULARES/8.webp', oferta: false, stock: true, descripcion: "Soporte estable de aluminio fundido con detalles en silicona. Diseño giratorio, altura ajustable y estructura plegable para adaptar el ángulo y posición ideal con máxima comodidad en el uso diario.", },
+
 
   // --- PROYECTORES ---
   { id: 'PRO01', nombre: 'PROYECTOR PIXORA', precio: 150000, precioAnterior: 269999, cat: 'PROYECTORES', foto: 'fotos/PROYECTORES/1.webp', oferta: true, stock: true },
@@ -278,6 +282,10 @@ const productos = [
   { id: 'VAR18', nombre: 'INFLADOR AUTOMÁTICO PORTÁTIL', precio: 38000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/14.webp', oferta: false, stock: true },
   { id: 'VAR19', nombre: 'ADAPTADOR UNIVERSAL GLOBALINK', precio: 5000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/15.webp', oferta: false, stock: true },
   { id: 'VAR20', nombre: 'ADAPTADOR MICROSD A USB', precio: 3000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/16.webp', oferta: false, stock: true },
+  { id: 'VAR21', nombre: 'ADAPTADOR HUB USB MULTIPUERTOS x 4 ONLY', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/17.webp', oferta: false, stock: true },
+  { id: 'VAR22', nombre: 'ADAPTADOR HUB USB MULTIPUERTOS x 7 ONLY', precio: 7000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/18.webp', oferta: false, stock: true },
+  { id: 'VAR23', nombre: 'LINTERNA TRIPLE LED VINCHA MINERA ', precio: 11000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/19.webp', oferta: false, stock: true },
+  { id: 'VAR24', nombre: 'SOPORTE ANTIDESLIZANTE PARA NOTEBOOK / TABLETS', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/20.webp', oferta: false, stock: true,descripcion: "Potencia tu espacio de trabajo. Compatible con dispositivos de 4 a 14\", fabricado en aleación y silicona para máxima estabilidad. Diseño giratorio 360°, ajustable y plegable para un uso cómodo y portátil. Incluye llave Allen y de ajuste.", },
 
 
 ];
