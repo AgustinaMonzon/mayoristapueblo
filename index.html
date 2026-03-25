@@ -61,6 +61,7 @@
     <meta http-equiv="pragma" content="no-cache" />
 
     <!-- ✅ SCHEMA.ORG - DATOS ESTRUCTURADOS -->
+    <!-- ✅ SCHEMA.ORG - DATOS ESTRUCTURADOS (CORREGIDO) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -74,7 +75,7 @@
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "AR",
-          "addressRegion": "Santa Fe"
+          "addressRegion": "Santa Fe",
           "addressLocality": "Rosario"
         },
         "geo": {
@@ -83,7 +84,14 @@
         },
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
           "opens": "09:00",
           "closes": "18:00"
         },
@@ -100,19 +108,19 @@
               "@type": "OfferCatalog",
               "name": "Tecnología",
               "itemListElement": [
-                {"@type": "Product", "name": "Auriculares"},
-                {"@type": "Product", "name": "Parlantes"},
-                {"@type": "Product", "name": "Celulares"},
-                {"@type": "Product", "name": "Accesorios"}
+                { "@type": "Product", "name": "Auriculares" },
+                { "@type": "Product", "name": "Parlantes" },
+                { "@type": "Product", "name": "Celulares" },
+                { "@type": "Product", "name": "Accesorios" }
               ]
             },
             {
               "@type": "OfferCatalog",
               "name": "Hogar",
               "itemListElement": [
-                {"@type": "Product", "name": "Electrodomésticos"},
-                {"@type": "Product", "name": "Decoración"},
-                {"@type": "Product", "name": "Cocina"}
+                { "@type": "Product", "name": "Electrodomésticos" },
+                { "@type": "Product", "name": "Decoración" },
+                { "@type": "Product", "name": "Cocina" }
               ]
             }
           ]
