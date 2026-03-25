@@ -1,6 +1,20 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- ✅ Google Analytics 4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GN6M72BYVX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-GN6M72BYVX");
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -21,7 +35,7 @@
     <meta name="language" content="es" />
     <meta name="geo.region" content="AR" />
 
-    <!-- ✅ OPEN GRAPH (Para compartir en redes) -->
+    <!-- ✅ OPEN GRAPH -->
     <meta property="og:title" content="Tienda Pueblo | Tecnología y Hogar" />
     <meta
       property="og:description"
@@ -60,7 +74,7 @@
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="pragma" content="no-cache" />
 
-    <!-- ✅ SCHEMA.ORG - DATOS ESTRUCTURADOS (SIMPLIFICADO) -->
+    <!-- ✅ SCHEMA.ORG - JSON-LD VÁLIDO -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -882,6 +896,29 @@
           }
         }, 800);
       });
+    </script>
+    <!-- ✅ Aviso de cookies simple -->
+    <div
+      id="cookie-banner"
+      class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 text-center text-sm z-[200] hidden"
+    >
+      Este sitio usa cookies para mejorar tu experiencia.
+      <button
+        onclick="aceptarCookies()"
+        class="ml-4 bg-pueblo px-4 py-1 rounded hover:bg-green-900"
+      >
+        Aceptar
+      </button>
+    </div>
+
+    <script>
+      function aceptarCookies() {
+        localStorage.setItem("cookies-aceptadas", "true");
+        document.getElementById("cookie-banner").classList.add("hidden");
+      }
+      if (!localStorage.getItem("cookies-aceptadas")) {
+        document.getElementById("cookie-banner").classList.remove("hidden");
+      }
     </script>
   </body>
 </html>
