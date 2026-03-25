@@ -24,7 +24,7 @@ const productos = [
   { id: 'HOG05', nombre: 'SET DESCORCHADOR 3 PIEZAS', precio: 9999, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/5.webp', oferta: false, stock: true },
   { id: 'HOG06', nombre: 'SET DESCORCHADOR 5 PIEZAS CON AJEDREZ', precio: 14500, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/6.webp', oferta: false, stock: true },
   { id: 'HOG07', nombre: 'SET DESCORCHADOR Y VERTEDOR', precio: 11000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/7.webp', oferta: false, stock: true },
-  { id: 'HOG10', nombre: 'CAFETERA DE FILTRO 900W 650ML', precio: 26000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/10.webp', oferta: false, stock: true },
+  { id: 'HOG10', nombre: 'CAFETERA DE FILTRO 900W 650ML', precio: 28000, precioAnterior: 40000, cat: 'HOGAR', foto: 'fotos/HOGAR/10.webp', oferta: true, stock: true },
   { id: 'HOG11', nombre: 'CAFETERA DE FILTRO 1200W 1.25L', precio: 32000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/11.webp', oferta: false, stock: true },
   { id: 'HOG12', nombre: 'CAFETERA DE FILTRO 1500W 1.5L', precio: 38000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/12.webp', oferta: false, stock: true },
   { id: 'HOG13', nombre: 'CAFETERA PRENSA FRANCESA 350ML', precio: 13000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/13.webp', oferta: false, stock: true },
