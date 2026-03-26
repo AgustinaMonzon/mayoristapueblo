@@ -101,7 +101,7 @@ const productos = [
   { id: 'MIC07', nombre: 'MICRÓFONO CON PARLANTE RECARGABLE', precio: 12000, precioAnterior: 0, cat: 'MICROFONOS', foto: 'fotos/MICROFONOS/7.webp', oferta: false, stock: true },
 
   // --- AURICULARES ---
-  { id: 'AUR01', nombre: 'AURICULAR BLUETOOTH SWEET', precio: 8000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/1.webp', oferta: false, stock: true },
+  { id: 'AUR01', nombre: 'AURICULAR BLUETOOTH SWEET', precio: 8000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/1.webp', oferta: false, stock: false },
   { id: 'AUR02', nombre: 'AURICULAR VINCHA CABLE 1,2M ', precio: 7000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/2.webp', oferta: false, stock: true },
   { id: 'AUR03', nombre: 'AURICULAR BLUETOOTH ZENIX', precio: 14000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/3.webp', oferta: false, stock: false },
   { id: 'AUR04', nombre: 'AURICULAR KIDS CON CABLE ', precio: 10000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/4.webp', oferta: false, stock: true },
@@ -150,7 +150,7 @@ const productos = [
   // --- LIBRERÍA ---
   { id: 'LIB01', nombre: 'SET RESALTADORES FRAGANCIA', precio: 4500, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/1.webp', oferta: false, stock: true },
   { id: 'LIB02', nombre: 'MOCHILA INFANTIL DINO', precio: 18000, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/2.webp', oferta: false, stock: true },
-  { id: 'LIB03', nombre: 'MOCHILA INFANTIL LECHUZA', precio: 12000, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/3.webp', oferta: false, stock: true },
+  { id: 'LIB03', nombre: 'MOCHILA INFANTIL LECHUZA', precio: 12000, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/3.webp', oferta: false, stock: false},
   { id: 'LIB04', nombre: 'MOCHILA ESCOLAR ESPACIAL', precio: 28000, precioAnterior: 42000, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/4.webp', oferta: true, stock: true },
   { id: 'LIB05', nombre: 'SET LAPICERAS COLORES X48', precio: 23000, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/5.webp', oferta: false, stock: true },
   { id: 'LIB06', nombre: 'SET MARCADORES DOBLE PUNTA X60', precio: 18000, precioAnterior: 0, cat: 'LIBRERIA', foto: 'fotos/LIBRERIA/6.webp', oferta: false, stock: true },
