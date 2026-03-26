@@ -62,6 +62,9 @@ const productos = [
   { id: 'DEC23', nombre: 'LÁMPARA LED IMANTADA PORTÁTIL', precio: 15000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/23.webp', oferta: false, stock: true },
   { id: 'DEC24', nombre: 'LÁMPARA GALAXIA', precio: 20000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/24.webp', oferta: false, stock: true },
   { id: 'DEC25', nombre: 'LÁMPARA DE ESCRITORIO PORTALÁPICES', precio: 21000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/25.webp', oferta: false, stock: true },
+  {id: 'DEC26', nombre: 'LUZ DE TACTO ANIMALITOS', precio: 6000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/25.webp', oferta: false, stock: true , descripcion: "Cuenta con tres modos de iluminación: luz fija azul, amarilla o parpadeo. Viene en presentación de bolsita individual", },
+  
+
   // --- PARLANTES ---
   { id: 'PAR01', nombre: 'PARLANTE ASTRONAUTA KIDS BLUETOOTH LED', precio: 15000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/1.webp', oferta: false, stock: false },
   { id: 'PAR02', nombre: 'PARLANTE 6,5" 10W BLUETOOTH LED', precio: 28000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/2.webp', oferta: false, stock: true },
@@ -122,9 +125,9 @@ const productos = [
   { id: 'AUR19', nombre: 'AURICULARES BLUETOOTH OREJAS GATITO', precio: 10000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/19.webp', oferta: false, stock: true },
   { id: 'AUR21', nombre: 'AURICULARES BLUETOOTH + CABLE', precio: 24000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/20.webp', oferta: false, stock: true },
   { id: 'AUR22', nombre: 'AURICULARES KIDS BLUETOOTH + CABLE', precio: 9000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/21.webp', oferta: false, stock: true },
-{ id: 'AUR23', nombre: 'AURICULARES CON CABLE NOISE', precio: 12000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/22.webp', oferta: false, stock: true },
-{ id: 'AUR24', nombre: 'AURICULARES BLUETOOTH + CABLE', precio: 15000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/23.webp', oferta: false, stock: true },
-{ id: 'AUR25', nombre: 'AURICULARES BOOM BLUETOOTH + CABLE', precio: 20000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/24.webp', oferta: false, stock: true },
+  { id: 'AUR23', nombre: 'AURICULARES CON CABLE NOISE', precio: 12000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/22.webp', oferta: false, stock: true },
+  { id: 'AUR24', nombre: 'AURICULARES BLUETOOTH + CABLE', precio: 15000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/23.webp', oferta: false, stock: true },
+  { id: 'AUR25', nombre: 'AURICULARES BOOM BLUETOOTH + CABLE', precio: 20000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/24.webp', oferta: false, stock: true },
 
   // --- INFORMÁTICA ---
   { id: 'INF01', nombre: 'TV BOX 4K ANDROID 14 4-32GB', precio: 66000, precioAnterior: 78000, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/1.webp', oferta: true, stock: true },
@@ -218,6 +221,9 @@ const productos = [
   { id: 'CAR15', nombre: 'ESTACIÓN DE CARGA INALÁMBRICA 4 EN 1 15W', precio: 40000, precioAnterior: 56000, cat: 'CARGADORES', foto: 'fotos/CARGADORES/15.webp', oferta: true, stock: true },
   { id: 'CAR16', nombre: 'CARGADOR DE AUTO V8', precio: 4000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/16.webp', oferta: false, stock: true },
   { id: 'CAR17', nombre: 'CARGADOR WIRELESS 20W', precio: 9000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/17.webp', oferta: false, stock: true },
+  { id: 'CAR18', nombre: 'CARGADOR 12V+CABLE C MINI CON CABLE FSJ-089 ', precio: 30000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/18.webp', oferta: false, stock: true , descripcion: "Cargador rápido para Starlink Mini (12V-24V) con cable de 3 metros embutido para máxima estabilidad. Salida DC de 100W dedicada, puerto USB QC (18W) y Tipo C (hasta 55W PPS). Ideal para alimentar la antena y cargar dispositivos en simultáneo, con pantalla LED para monitoreo de voltaje en tiempo real." },
+  { id: 'CAR19', nombre: 'CARGADOR 12V+CABLE C MINI CON CABLE FSJ-088 ', precio: 40000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/19.webp', oferta: false, stock: true, descripcion: "Kit Premium para Starlink Mini (12V-24V) con cable de 3 metros desmontable y conector impermeable. Cargador metálico reforzado con salida DC de 100W, puerto USB QC (18W) y Tipo C (hasta 55W PPS). Su diseño desmoldable facilita el guardado y protege los conectores, ideal para uso en camionetas, motorhomes y náutica." },
+  { id: 'CAR20', nombre: 'CARGADOR 220V - 4.8A RUSH - 1USB ', precio: 4000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/20.webp', oferta: false, stock: true},
 
   // --- CELULARES ---
   { id: 'CEL01', nombre: 'NOKIA 106', precio: 48000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/1.webp', oferta: false, stock: true },
@@ -286,6 +292,7 @@ const productos = [
   { id: 'VAR22', nombre: 'ADAPTADOR HUB USB MULTIPUERTOS x 7 ONLY', precio: 7000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/18.webp', oferta: false, stock: true },
   { id: 'VAR23', nombre: 'LINTERNA TRIPLE LED VINCHA MINERA ', precio: 11000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/19.webp', oferta: false, stock: true },
   { id: 'VAR24', nombre: 'SOPORTE ANTIDESLIZANTE PARA NOTEBOOK / TABLETS', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/20.webp', oferta: false, stock: true,descripcion: "Potencia tu espacio de trabajo. Compatible con dispositivos de 4 a 14\", fabricado en aleación y silicona para máxima estabilidad. Diseño giratorio 360°, ajustable y plegable para un uso cómodo y portátil. Incluye llave Allen y de ajuste.", },
+  { id: 'VAR25', nombre: 'MODULADOR FM ALS-A09', precio: 15000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/21.webp', oferta: false, stock: true, descripcion: "Modulador transmisor FM con Bluetooth v5.0 para autos. Incluye pantalla digital con display de voltaje, doble puerto USB para carga rápida (salida 3.1A) y función de manos libres para llamadas. Compatible con lectura de pendrive (disco U) para reproducir música directo al estéreo del vehículo.", },
 
 
 ];
