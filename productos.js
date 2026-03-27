@@ -62,7 +62,7 @@ const productos = [
   { id: 'DEC23', nombre: 'LÁMPARA LED IMANTADA PORTÁTIL', precio: 15000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/23.webp', oferta: false, stock: true },
   { id: 'DEC24', nombre: 'LÁMPARA GALAXIA', precio: 20000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/24.webp', oferta: false, stock: true },
   { id: 'DEC25', nombre: 'LÁMPARA DE ESCRITORIO PORTALÁPICES', precio: 21000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/25.webp', oferta: false, stock: true },
-  {id: 'DEC26', nombre: 'LUZ DE TACTO ANIMALITOS', precio: 6000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/25.webp', oferta: false, stock: true , descripcion: "Cuenta con tres modos de iluminación: luz fija azul, amarilla o parpadeo. Viene en presentación de bolsita individual", },
+  {id: 'DEC26', nombre: 'LUZ DE TACTO ANIMALITOS', precio: 6000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/26.webp', oferta: false, stock: true , descripcion: "Cuenta con tres modos de iluminación: luz fija azul, amarilla o parpadeo. Viene en presentación de bolsita individual", },
   
 
   // --- PARLANTES ---
