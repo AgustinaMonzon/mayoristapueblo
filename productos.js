@@ -1,16 +1,6 @@
 const productos = [
   // --- BELLEZA ---
-  { 
-  id: 'BELL01', 
-  nombre: 'SECADOR DE PELO PROFESIONAL ZAFIRE', 
-  precio: 49000, 
-  precioAnterior: 64999, 
-  cat: 'BELLEZA', 
-  foto: 'fotos/BELLEZA/3.webp', 
-  oferta: true, 
-  stock: true,
-  descripcion: 'Potencia profesional de 2000W para un secado ultra rápido.\n\n• Motor AC de larga duración.\n• 2 velocidades y 2 niveles de calor.\n• Botón de aire frío para fijar el peinado.\n• Incluye 2 boquillas concentradoras.\n• Cable reforzado de 1,8 metros.'
-},
+  { id: 'BELL01', nombre: 'SECADOR DE PELO PROFESIONAL ZAFIRE',  precio: 49000, precioAnterior: 64999, cat: 'BELLEZA', foto: 'fotos/BELLEZA/3.webp',  oferta: true,  stock: true, descripcion: 'Potencia profesional de 2000W para un secado ultra rápido.\n\n• Motor AC de larga duración.\n• 2 velocidades y 2 niveles de calor.\n• Botón de aire frío para fijar el peinado.\n• Incluye 2 boquillas concentradoras.\n• Cable reforzado de 1,8 metros.'},
   { id: 'BELL02', nombre: 'PLANCHITA DE PELO TITANIO PROFESIONAL', precio: 46000, precioAnterior: 54999, cat: 'BELLEZA', foto: 'fotos/BELLEZA/4.webp', oferta: true, stock: true, descripcion: "Tecnología de titanio para un alisado rápido y uniforme hasta 230°C. Cuenta con pantalla LCD de temperatura, botones de ajuste preciso y traba de seguridad. Potencia de 60W con cable giratorio de 1,8 metros para un acabado profesional.",},
   { id: 'BELL03', nombre: 'CEPILLO SECADOR ALISADOR', precio: 19999, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/cepillo.webp', oferta: false, stock: true },
   { id: 'BELL04', nombre: 'AFEITADORA ABS DORADA', precio: 5500, precioAnterior: 0, cat: 'BELLEZA', foto: 'fotos/BELLEZA/2.webp', oferta: false, stock: true },

@@ -607,10 +607,15 @@
             } else {
               const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
               const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
-              botonesHtml = `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border h-[46px]"><button onclick="cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button><span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span><button onclick="cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button></div><button id="btn-add-${p.id}" onclick="prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300 shadow-sm">${btnTexto}</button>`;
+              botonesHtml = `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border h-[46px]">
+              <button onclick="event.stopPropagation(); cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
+              <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
+              <button onclick="event.stopPropagation(); cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
+            </div>
+            <button id="btn-add-${p.id}" onclick="event.stopPropagation(); prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300 shadow-sm">${btnTexto}</button>`;
             }
 
-            return `<div class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}"><button onclick="toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg></button><div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative"><img src="${fotoRuta}" loading="lazy" onclick="ampliar('${p.id}')" onerror="this.src='logo.webp'" class="w-full h-full object-contain cursor-zoom-in">${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}</div><p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p><h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>${precioHtml}${botonesHtml}</div>`;
+            return `<div onclick="window.location.href='producto.html?id=${p.id}'" class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}" style="cursor:pointer;"><button onclick="event.stopPropagation();toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg></button><div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative"><img src="${fotoRuta}" loading="lazy" onerror="this.src='logo.webp'" class="w-full h-full object-contain">${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}</div><p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p><h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>${precioHtml}${botonesHtml}</div>`;
           })
           .join("");
       }
@@ -710,12 +715,14 @@
         let total = 0;
         let cantTotal = 0;
 
+        // Resetear estados de botones de la lista
         document.querySelectorAll("[id^='btn-add-']").forEach((b) => {
           b.innerText = "AGREGAR";
           b.classList.remove("btn-ya-agregado");
           b.classList.add("bg-pueblo");
         });
 
+        // Calcular totales y generar HTML
         carrito.forEach((item) => {
           total += item.precio * item.cantidad;
           cantTotal += item.cantidad;
@@ -725,7 +732,15 @@
             btn.classList.remove("bg-pueblo");
             btn.classList.add("btn-ya-agregado");
           }
-          html += `<div class="flex justify-between items-center border-b py-3 text-xs"><div class="flex-1 font-bold pr-2 text-gray-700">${item.nombre}</div><div class="flex items-center gap-2 bg-gray-100 rounded-lg px-2 py-1"><button onclick="modificarEnCarrito('${item.id}', -1)" class="btn-cantidad font-black text-pueblo">-</button><span class="font-bold w-4 text-center">${item.cantidad}</span><button onclick="modificarEnCarrito('${item.id}', 1)" class="btn-cantidad font-black text-pueblo">+</button></div><button onclick="eliminar('${item.id}')" class="btn-eliminar text-red-500 font-bold ml-4 hover:scale-110 transition-transform">✕</button></div>`;
+          html += `<div class="flex justify-between items-center border-b py-3 text-xs">
+                    <div class="flex-1 font-bold pr-2 text-gray-700">${item.nombre}</div>
+                    <div class="flex items-center gap-2 bg-gray-100 rounded-lg px-2 py-1">
+                        <button onclick="modificarEnCarrito('${item.id}', -1)" class="btn-cantidad font-black text-pueblo">-</button>
+                        <span class="font-bold w-4 text-center">${item.cantidad}</span>
+                        <button onclick="modificarEnCarrito('${item.id}', 1)" class="btn-cantidad font-black text-pueblo">+</button>
+                    </div>
+                    <button onclick="eliminar('${item.id}')" class="btn-eliminar text-red-500 font-bold ml-4 hover:scale-110 transition-transform">✕</button>
+                 </div>`;
         });
 
         const emptyMsg =
@@ -740,12 +755,41 @@
         document.getElementById("total-flotante").innerText = totalStr;
         document.getElementById("cantidad-flotante").innerText = cantTotal;
 
-        document
-          .getElementById("btn-flotante-container")
-          .classList.toggle("hidden", carrito.length === 0);
+        // --- LÓGICA DE MOVIMIENTO (VALORES AJUSTADOS) ---
+        const btnCarritoContainer = document.getElementById(
+          "btn-flotante-container",
+        );
+        const btnWsp =
+          document.querySelector(".btn-whatsapp-float") ||
+          document.querySelector('a[href*="wa.me"].fixed');
+        const btnSubir = document.getElementById("btn-subir");
+
+        // Si el carrito NO está oculto (tiene productos)
+        if (carrito.length > 0) {
+          btnCarritoContainer.classList.remove("hidden");
+
+          // Empujamos WhatsApp bien arriba de la barra verde
+          if (btnWsp) {
+            btnWsp.style.setProperty("bottom", "120px", "important");
+          }
+          // Empujamos el botón Subir aún más arriba
+          if (btnSubir && window.innerWidth <= 768) {
+            btnSubir.style.setProperty("bottom", "195px", "important");
+          }
+        } else {
+          btnCarritoContainer.classList.add("hidden");
+
+          // Volver a la posición normal pegada abajo
+          if (btnWsp) {
+            btnWsp.style.setProperty("bottom", "20px", "important");
+          }
+          if (btnSubir && window.innerWidth <= 768) {
+            btnSubir.style.setProperty("bottom", "95px", "important");
+          }
+        }
+
         localStorage.setItem("carrito_pueblo", JSON.stringify(carrito));
       }
-
       // --- WHATSAPP - FUNCIÓN ÚNICA ---
       function enviarWhatsApp() {
         if (carrito.length === 0) {
