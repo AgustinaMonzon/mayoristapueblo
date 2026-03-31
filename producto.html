@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Producto - Tienda Pueblo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .bg-pueblo {
+        background-color: #1a5d37;
+      }
+      .text-pueblo {
+        color: #1a5d37;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
+      <a href="index.html" class="inline-block mb-6 text-pueblo font-bold"
+        >← Volver a la tienda</a
+      >
+
+      <div
+        id="detalle-producto"
+        class="bg-white rounded-3xl shadow-xl overflow-hidden border"
+      >
+        <div class="p-20 text-center text-gray-400">Cargando producto...</div>
+      </div>
+    </div>
+
+    <script src="productos.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const idBuscado = params.get("id");
+      const producto = productos.find((p) => p.id === idBuscado);
+
+      const contenedor = document.getElementById("detalle-producto");
+
+      if (!producto) {
+        contenedor.innerHTML = `<div class="p-20 text-center">
+                <h1 class="text-2xl font-bold mb-4">Producto no encontrado</h1>
+                <a href="index.html" class="bg-pueblo text-white px-6 py-2 rounded-full">Ir al inicio</a>
+            </div>`;
+      } else {
+        const precioFinal = producto.precio.toLocaleString("es-AR");
+        const fotoRuta = producto.foto || `fotos/${producto.id}.webp`;
+
+        contenedor.innerHTML = `
+                <div class="flex flex-col md:flex-row">
+                    <div class="w-full md:w-1/2 bg-white p-8 flex items-center justify-center">
+                        <img src="${fotoRuta}" class="max-w-full h-auto object-contain" alt="${producto.nombre}">
+                    </div>
+                    <div class="w-full md:w-1/2 p-8 md:p-12 bg-gray-50 border-l">
+                        <span class="text-xs font-mono text-gray-400 uppercase">${producto.id}</span>
+                        <h1 class="text-3xl font-black text-gray-800 my-4 uppercase leading-tight">${producto.nombre}</h1>
+                        <div class="text-3xl font-black text-pueblo mb-6">$${precioFinal}</div>
+                        <p class="text-gray-600 leading-relaxed mb-8 italic">
+                            ${producto.descripcion || producto.desc || "Sin descripción detallada disponible."}
+                        </p>
+                        <a href="https://wa.me/543413261010?text=Hola! Me interesa el producto: ${producto.nombre} (ID: ${producto.id})" 
+                           class="block w-full bg-pueblo text-white text-center py-4 rounded-2xl font-bold shadow-lg hover:bg-green-900 transition-all uppercase">
+                           Consultar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+      }
+    </script>
+  </body>
+</html>
