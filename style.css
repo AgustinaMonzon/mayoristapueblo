@@ -151,10 +151,7 @@ header .flex.items-center.justify-center.gap-6 a img:hover { transform: scale(1.
 
 /* REEMPLAZO TOTAL - BOTONES FLOTANTES */
 
-/* Espacio preventivo para que el carrito no tape el último producto */
-body {
-    padding-bottom: 120px !important;
-}
+
 
 /* WhatsApp: Siempre abajo a la derecha */
 .btn-whatsapp-float, 
@@ -207,4 +204,275 @@ a[href*="wa.me"].fixed {
 }
 #foto-ampliada {
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08)) !important;
+}
+footer {
+  font-size: 0.875rem;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+/* =========================================
+   BOTONES FLOTANTES - POSICIÓN CORREGIDA
+   ========================================= */
+
+/* WhatsApp: Siempre abajo a la derecha */
+.btn-whatsapp-float, 
+a[href*="wa.me"].fixed {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important; 
+    width: 60px !important;
+    height: 60px !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    transition: bottom 0.3s ease !important;
+}
+
+/* Subir: Siempre arriba de WhatsApp en móvil */
+#btn-subir {
+    position: fixed !important;
+    right: 25px !important; 
+    bottom: 95px !important;
+    width: 50px !important;
+    height: 50px !important;
+    z-index: 9998 !important;
+    background: var(--verde-pueblo) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: bottom 0.3s ease !important;
+}
+
+/* Carrito móvil flotante */
+#btn-flotante-container {
+    z-index: 9997 !important;
+}
+
+/* En PC el botón subir se va a la izquierda */
+@media (min-width: 769px) {
+    #btn-subir {
+        left: 20px !important;
+        right: auto !important;
+        bottom: 20px !important;
+    }
+}
+
+/* =========================================
+   FOOTER - MÁS COMPACTO (MENOS ESPACIO)
+   ========================================= */
+footer {
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+/* Reducir padding general del footer */
+footer .py-8, footer .py-10 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+/* Reducir espacio entre columnas */
+footer .grid {
+  gap: 1.5rem !important;
+}
+
+/* Reducir espacio interno de cada columna */
+footer .space-y-3 {
+  gap: 0.5rem !important;
+}
+
+footer .space-y-1, footer .space-y-1\.5 {
+  gap: 0.2rem !important;
+}
+
+/* Títulos más compactos */
+footer h3 {
+  font-size: 0.85rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+footer h3::after {
+  content: '';
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: var(--verde-pueblo);
+  margin-top: 2px !important;
+  border-radius: 1px;
+}
+
+/* Textos más chicos */
+footer p, footer span {
+  font-size: 0.75rem !important;
+  line-height: 1.3 !important;
+}
+
+/* Badges de pago más compactos */
+footer .bg-white {
+  padding: 0.2rem 0.4rem !important;
+  font-size: 0.65rem !important;
+}
+
+/* Íconos de redes más chicos */
+footer .w-10, footer .h-10 {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+footer .w-5, footer .h-5 {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+
+/* Botón WhatsApp más chico */
+footer .inline-flex.items-center.gap-1\.5 {
+  padding: 0.3rem 0.6rem !important;
+  font-size: 0.7rem !important;
+}
+
+/* Divider más compacto */
+footer .my-6 {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Copyright y links */
+footer .text-xs {
+  font-size: 0.65rem !important;
+}
+
+/* Badge de seguridad */
+footer .rounded-full {
+  padding: 0.2rem 0.5rem !important;
+  font-size: 0.6rem !important;
+}
+
+/* En móvil: mínimo espacio */
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 20px !important;
+  }
+  
+  footer .px-4 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* =========================================
+   BOTONES FLOTANTES - SIN CAMBIOS
+   ========================================= */
+.btn-whatsapp-float, 
+a[href*="wa.me"].fixed {
+    position: fixed !important;
+    right: 20px !important;
+    bottom: 20px !important; 
+    width: 60px !important;
+    height: 60px !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    transition: bottom 0.3s ease !important;
+}
+
+#btn-subir {
+    position: fixed !important;
+    right: 25px !important; 
+    bottom: 95px !important;
+    width: 50px !important;
+    height: 50px !important;
+    z-index: 9998 !important;
+    background: var(--verde-pueblo) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: bottom 0.3s ease !important;
+}
+
+#btn-flotante-container {
+    z-index: 9997 !important;
+}
+
+@media (min-width: 769px) {
+    #btn-subir {
+        left: 20px !important;
+        right: auto !important;
+        bottom: 20px !important;
+    }
+}/* =========================================
+   FOOTER - CENTRADO EN MÓVIL (CORREGIDO)
+   ========================================= */
+@media (max-width: 768px) {
+  footer {
+    text-align: center !important;
+  }
+  
+  /* Centrar todas las columnas */
+  footer .grid > div {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Centrar títulos */
+  footer h3 {
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  /* Centrar línea decorativa de títulos */
+  footer h3::after {
+    margin: 3px auto 0 !important;
+  }
+  
+  /* Centrar botón de WhatsApp */
+  footer a[href*="wa.me"].inline-flex {
+    margin: 0 auto !important;
+    display: inline-flex !important;
+  }
+  
+  /* Centrar íconos de redes */
+  footer .flex.items-center.gap-3 {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  
+  /* Centrar badges de pago */
+  footer .flex.flex-wrap.gap-1\.5 {
+    justify-content: center !important;
+  }
+  
+  /* Centrar items de horarios/envíos */
+  footer .space-y-1\.5 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Centrar copyright y links */
+  footer .flex.flex-col.md\:flex-row {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  
+  /* Centrar badge de seguridad */
+  footer .mt-4.flex.justify-center {
+    justify-content: center !important;
+  }
+  
+  /* Ajustar padding lateral */
+  footer .px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
 }
