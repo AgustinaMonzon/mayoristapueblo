@@ -476,3 +476,11 @@ a[href*="wa.me"].fixed {
     padding-right: 1rem !important;
   }
 }
+/* Lazy load suave */
+img[loading="lazy"] {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
