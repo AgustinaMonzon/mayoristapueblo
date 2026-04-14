@@ -25,7 +25,28 @@ const productos = [
   { id: 'HOG18', nombre: 'BALANZA COCINA ACERO INOX', precio: 10000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/18.webp', oferta: false, stock: true },
   { id: 'HOG19', nombre: 'MINI BALANZA GRAMERA PRECISION', precio: 7000, precioAnterior: 0, cat: 'HOGAR', foto: 'fotos/HOGAR/19.webp', oferta: false, stock: true },
   { id: 'HOG20', nombre: 'CEPILLO ELÉCTRICO DE LIMPIEZA MULTIUSO', precio: 35000, precioAnterior: 59000, cat: 'HOGAR', foto: 'fotos/HOGAR/21.webp', oferta: true, stock: true },
-
+{ 
+  id: 'HOG22', 
+  nombre: 'PAVA ELÉCTRICA OSR ACERO 1.7L CORTE MATE', 
+  precio: 32000, 
+  precioAnterior: 39500, 
+  cat: 'HOGAR', 
+  foto: 'fotos/HOGAR/22.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: '¡Agua lista para el mate en minutos! Calidad superior en acero inoxidable.\n\n• Selector de temperatura con función CORTE MATE (80°C).\n• Capacidad de 1.7 Litros con visor de agua.\n• Base 360° inalámbrica para mayor comodidad.\n• Sistema de corte automático de seguridad.\n• Cuerpo de acero inoxidable, más duradero e higiénico.', 
+},
+{ 
+  id: 'HOG23', 
+  nombre: 'FREIDORA DE AIRE KIOWA 5L 1500W', 
+  precio: 80000, 
+  precioAnterior: 115000, 
+  cat: 'HOGAR', 
+  foto: 'fotos/HOGAR/23.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: 'Cociná mucho más sano y sin aceite con la calidad de Kiowa. Ideal para familias de 3 a 4 personas.\n\n• Capacidad de 5 Litros y potencia de 1500W.\n• Cocción rápida y uniforme con 95% menos grasa.\n• Temporizador con apagado automático programable.\n• Canasta antiadherente desmontable de fácil limpieza.\n• Multifunción: fríe, hornea, asa y tuesta.', 
+},
   // --- DECO ---
   { id: 'DEC01', nombre: 'LÁMPARA ATARDECER', precio: 10000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/1.webp', oferta: false, stock: true },
   { id: 'DEC02', nombre: 'HUMIDIFICADOR LLAMA', precio: 21000, precioAnterior: 0, cat: 'DECO', foto: 'fotos/DECO/2.webp', oferta: false, stock: true },
@@ -82,7 +103,17 @@ const productos = [
   { id: 'PAR24', nombre: 'PARLANTE SMALL 6W ', precio: 12000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/24.webp', oferta: false, stock: true },
   { id: 'PAR25', nombre: 'PARLANTE 2" 3W BLUETOOTH LED ', precio: 10000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/25.webp', oferta: false, stock: true },
   { id: 'PAR26', nombre: 'PARLANTE BLUETOOTH 3" GROOVE', precio: 16000, precioAnterior: 0, cat: 'PARLANTES', foto: 'fotos/PARLANTES/26.webp', oferta: false, stock: true },
-
+{ 
+  id: 'PAR27', 
+  nombre: 'MINI PARLANTE BLUETOOTH ONLY T5', 
+  precio: 12000, 
+  precioAnterior: 18500, 
+  cat: 'PARLANTES', 
+  foto: 'fotos/PARLANTES/27.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: '¡Tu música a todos lados con el mejor sonido! Compacto, potente y con diseño premium.\n\n• Sonido de 3W potenciado con Bluetooth 5.0.\n• Sistema manos libres con micrófono incorporado.\n• Terminación Rubber Finish y revestimiento en tela.\n• Ultra portátil: medidas de 9x9 cm e incluye correa.\n• Batería recargable (incluye cable micro USB).', 
+},
 
   // --- MICROFONOS ---
   { id: 'MIC01', nombre: 'MICRÓFONO CORBATERO CLIP TIPO C', precio: 4000, precioAnterior: 0, cat: 'MICROFONOS', foto: 'fotos/MICROFONOS/1.webp', oferta: false, stock: true },
@@ -132,6 +163,29 @@ const productos = [
   { id: 'INF14', nombre: 'MOUSE CON CABLE', precio: 5000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/14.webp', oferta: false, stock: true },
   { id: 'INF15', nombre: 'MOUSE INALÁMBRICO', precio: 8000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/INFORMATICA/15.webp', oferta: false, stock: true },
   { id: 'INF16', nombre: 'CARGADOR UNIVERSAL PARA NOTEBOOK 8 PINES 90W', precio: 32000, precioAnterior: 0, cat: 'INFORMÁTICA', foto: 'fotos/CARGADORES/14.webp', oferta: false, stock: true },
+  { 
+  id: 'INF11', 
+  nombre: 'TECLADO BLUETOOTH ULTRA SLIM RECARGABLE', 
+  precio: 15000, 
+  precioAnterior: 22500, 
+  cat: 'INFORMÁTICA', 
+  foto: 'fotos/INFORMATICA/16.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: 'Potenciá tu tablet o celular con este teclado ultra fino y estético. Escritura cómoda en cualquier lugar.\n\n• Conexión Bluetooth universal (Android, iOS y Windows).\n• Batería recargable por USB Tipo C (hasta 40hs de uso).\n• 78 teclas silenciosas con funciones multimedia.\n• Diseño ultra portátil y ligero en ABS resistente.\n• Disponible en varios colores (Blanco, Negro, Rosa y Lila).', 
+},
+{ 
+  id: 'INF12', 
+  nombre: 'TECLADO PLEGABLE BLUETOOTH CON TOUCHPAD XAEA', 
+  precio: 35000, 
+  precioAnterior: 48900, 
+  cat: 'INFORMÁTICA', 
+  foto: 'fotos/INFORMATICA/17.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: 'Tu oficina móvil en el bolsillo. Teclado premium ultra delgado con pad táctil integrado.\n\n• Diseño plegable compacto: ideal para llevar en la mochila o bolsillo.\n• Touchpad lateral para navegar sin necesidad de mouse.\n• Conexión Bluetooth estable compatible con iOS, Android y Windows.\n• Batería de larga duración (hasta 20 días de uso real).\n• Fabricado en ABS de alta resistencia con acabado Gris Espacial.', 
+},
+  
   // --- JUGUETES ---
   { id: 'JUG01', nombre: 'CÁMARA DIGITAL INFANTIL', precio: 11000, precioAnterior: 0, cat: 'JUGUETES', foto: 'fotos/JUGUETES/1.webp', oferta: false, stock: true },
   { id: 'JUG02', nombre: 'CAMIÓN DE CONSTRUCCIÓN BLOQUES', precio: 14000, precioAnterior: 0, cat: 'JUGUETES', foto: 'fotos/JUGUETES/2.webp', oferta: false, stock: true },
@@ -283,6 +337,16 @@ const productos = [
   { id: 'VAR23', nombre: 'LINTERNA TRIPLE LED VINCHA MINERA ', precio: 11000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/19.webp', oferta: false, stock: true },
   { id: 'VAR24', nombre: 'SOPORTE ANTIDESLIZANTE PARA NOTEBOOK / TABLETS', precio: 6000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/20.webp', oferta: false, stock: true,descripcion: "Potencia tu espacio de trabajo. Compatible con dispositivos de 4 a 14\", fabricado en aleación y silicona para máxima estabilidad. Diseño giratorio 360°, ajustable y plegable para un uso cómodo y portátil. Incluye llave Allen y de ajuste.", },
   { id: 'VAR25', nombre: 'MODULADOR FM ALS-A09', precio: 15000, precioAnterior: 0, cat: 'VARIOS', foto: 'fotos/VARIOS/21.webp', oferta: false, stock: true, descripcion: "Modulador transmisor FM con Bluetooth v5.0 para autos. Incluye pantalla digital con display de voltaje, doble puerto USB para carga rápida (salida 3.1A) y función de manos libres para llamadas. Compatible con lectura de pendrive (disco U) para reproducir música directo al estéreo del vehículo.", },
-
+{ 
+  id: 'VAR26', 
+  nombre: 'CABINA UÑAS SUN X5 PLUS 80W UV LED PROFESIONAL', 
+  precio: 21000, 
+  precioAnterior: 29500, 
+  cat: 'VARIOS', 
+  foto: 'fotos/VARIOS/22.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: 'Potencia profesional para un secado ultra rápido y acabado de salón. Ideal para uso hogareño o gabinete.\n\n• Potencia de 80W con 36 potentes LEDs de larga duración.\n• Sensor inteligente infrarrojo: encendido y apagado automático.\n• Display LED digital con temporizador (30s, 60s, 99s).\n• Base desmontable ideal para pedicura y fácil limpieza.\n• Secado uniforme para semipermanente, gel y poligel.', 
+},
 
 ];
