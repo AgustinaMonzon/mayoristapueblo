@@ -127,7 +127,7 @@ const productos = [
   // --- AURICULARES ---
   { id: 'AUR01', nombre: 'AURICULAR BLUETOOTH SWEET', precio: 8000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/1.webp', oferta: false, stock: false },
   { id: 'AUR02', nombre: 'AURICULAR VINCHA CABLE 1,2M ', precio: 7000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/2.webp', oferta: false, stock: true },
-  { id: 'AUR03', nombre: 'AURICULAR BLUETOOTH ZENIX', precio: 14000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/3.webp', oferta: false, stock: false },
+  { id: 'AUR03', nombre: 'AURICULAR BLUETOOTH ZENIX', precio: 15000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/3.webp', oferta: false, stock: true },
   { id: 'AUR04', nombre: 'AURICULAR KIDS CON CABLE ', precio: 10000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/4.webp', oferta: false, stock: true },
   { id: 'AUR05', nombre: 'AURICULAR PLUS ACTIVE CON CABLE', precio: 12000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/5.webp', oferta: false, stock: true },
   { id: 'AUR06', nombre: 'AURICULAR GLOW CON CABLE 1,2M', precio: 11000, precioAnterior: 0, cat: 'AURICULARES', foto: 'fotos/AURICULARES/6.webp', oferta: false, stock: true },
@@ -348,5 +348,37 @@ const productos = [
   stock: true, 
   descripcion: 'Potencia profesional para un secado ultra rápido y acabado de salón. Ideal para uso hogareño o gabinete.\n\n• Potencia de 80W con 36 potentes LEDs de larga duración.\n• Sensor inteligente infrarrojo: encendido y apagado automático.\n• Display LED digital con temporizador (30s, 60s, 99s).\n• Base desmontable ideal para pedicura y fácil limpieza.\n• Secado uniforme para semipermanente, gel y poligel.', 
 },
-
+{ 
+  id: 'VAR27', 
+  nombre: 'TIRA NEÓN LED RGB-IC 1M MAGIC LIGHTS', 
+  precio: 25000, 
+  precioAnterior: 36900, 
+  cat: 'VARIOS', 
+  foto: 'fotos/VARIOS/23.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: '¡Dale vida a tus ambientes con el efecto arcoíris! Tira de neón flexible inteligente con tecnología RGB-IC.\n\n• Control total por APP vía Bluetooth (16 millones de colores).\n• Efecto dinámico RGB-IC: muestra varios colores a la vez.\n• 6 modos audiorítmicos que bailan al ritmo de la música.\n• Silicona flexible e impermeable (IP67) apta para exteriores.\n• Conexión USB 5V e incluye clips para fácil instalación.' 
+},
+{ 
+  id: 'VAR28', 
+  nombre: 'RADIO PORTÁTIL AM/FM CLÁSICA', 
+  precio: 15000, 
+  precioAnterior: 22000, 
+  cat: 'VARIOS', 
+  foto: 'fotos/VARIOS/24.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: 'Radio portátil clásica, liviana y fácil de usar. Ideal para llevar a todas partes y mantenerse siempre informado.\n\n• Sintonizador analógico de alta sensibilidad para AM y FM.\n• Antena telescópica integrada para optimizar la recepción.\n• Salida de audio para auriculares (jack 3.5mm).\n• Funciona con 2 pilas AA (gran autonomía).\n• Incluye correa de seguridad para la muñeca.' 
+},
+{ 
+  id: 'VAR29', 
+  nombre: 'SOPORTE PARA NOTEBOOK P1 PLEGABLE REGULABLE', 
+  precio: 9000, 
+  precioAnterior: 14500, 
+  cat: 'VARIOS', 
+  foto: 'fotos/VARIOS/25.webp', 
+  oferta: true, 
+  stock: true, 
+  descripcion: 'Mejorá tu postura y trabajá con máxima comodidad. Soporte ergonómico ajustable y plegable para llevar a todos lados.\n\n• 6 niveles de inclinación regulables para una postura perfecta.\n• Pads de silicona antideslizantes que brindan máxima estabilidad.\n• Compatible con notebooks (10" a 15.6"), tablets y celulares.\n• Diseño abierto que mejora la ventilación y evita el recalentamiento.\n• Ultra liviano y plegable: incluye bolsa de transporte de regalo.' 
+},
 ];
