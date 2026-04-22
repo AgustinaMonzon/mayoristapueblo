@@ -142,13 +142,21 @@ header .flex.items-center.justify-center.gap-6 a img:hover { transform: scale(1.
    ========================================= */
 #modal-foto { z-index: 2000 !important; }
 #modal-carrito { z-index: 1500 !important; }
-#loading-overlay {
-  position: fixed; inset: 0; background: white;
-  z-index: 9999; display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 24px;
+#loading-overlay .logo-tienda {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  /* El margen de abajo es el único que permitimos para separar del círculo */
+  margin-bottom: 20px !important; 
 }
-#loading-overlay.hidden { opacity: 0; visibility: hidden; }
 
+/* Forzar que el overlay sea realmente pantalla completa */
+#loading-overlay {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 /* REEMPLAZO TOTAL - BOTONES FLOTANTES */
 
 

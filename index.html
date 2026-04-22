@@ -668,21 +668,24 @@
     <!-- Loading Overlay -->
     <div
       id="loading-overlay"
-      class="fixed inset-0 bg-white z-[200] flex items-center justify-center"
+      class="fixed inset-0 bg-white z-[9999] flex items-center justify-center"
     >
-      <img
-        src="logo.webp"
-        alt="Tienda Pueblo"
-        class="logo-tienda loading-logo"
-      />
-      <div class="flex flex-col items-center gap-4">
+      <div class="relative flex items-center justify-center">
+        <img
+          src="logo.webp"
+          alt="Tienda Pueblo"
+          class="logo-tienda loading-logo"
+          style="margin-bottom: 0 !important"
+        />
+
         <div
-          class="w-16 h-16 border-4 border-pueblo border-t-transparent rounded-full animate-spin"
+          class="absolute w-[150px] h-[150px] border-4 border-transparent border-t-emerald-600 rounded-full animate-spin"
         ></div>
-        <p class="text-pueblo font-bold text-lg animate-pulse">
-          Cargando tienda...
-        </p>
       </div>
+
+      <p class="absolute mt-40 text-emerald-800 font-bold animate-pulse">
+        Cargando tienda...
+      </p>
     </div>
 
     <!-- Scripts externos -->
