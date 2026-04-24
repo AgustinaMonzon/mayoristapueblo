@@ -1356,5 +1356,36 @@
         window.history.replaceState({}, document.title, cleanUrl);
       }
     </script>
+    <!-- ✅ SCRIPT DE CARGA SINCRONIZADA -->
+    <script>
+      // 1. Configuración inicial del script externo
+      const v = Date.now(); // Para evitar caché
+      const prodScript = document.createElement("script");
+      prodScript.src = `productos.js?v=${v}`;
+
+      // 2. Definimos qué hacer CUANDO termine de cargar (EL HANDSHAKE)
+      prodScript.onload = function () {
+        // AQUÍ recién llamamos a las funciones que dependen de los datos
+        try {
+          actualizarCarrito();
+          aplicarFiltros();
+
+          // Y recién ahora sacamos el loading
+          const overlay = document.getElementById("loading-overlay");
+          if (overlay) {
+            overlay.style.opacity = "0";
+            setTimeout(() => overlay.remove(), 500);
+          }
+        } catch (error) {}
+      };
+
+      // 3. Manejo de errores si el archivo no existe
+      prodScript.onerror = function () {
+        document.getElementById("loading-overlay").style.display = "none";
+      };
+
+      // 4. Inyectar el script
+      document.body.appendChild(prodScript);
+    </script>
   </body>
 </html>
