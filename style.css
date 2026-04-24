@@ -491,4 +491,4 @@ img[loading="lazy"] {
 }
 img[loading="lazy"].loaded {
   opacity: 1;
-}
+} 
