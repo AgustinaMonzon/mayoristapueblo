@@ -726,7 +726,6 @@
       function precioARS(n) {
         return typeof n === "number" ? n.toLocaleString("es-AR") : n;
       }
-
       // --- GESTIÓN DE PRODUCTOS ---
       function mostrarProductos(lista) {
         const cont = document.getElementById("contenedor-productos");
@@ -741,56 +740,76 @@
             const esFav = favoritos.includes(p.id);
             const yaEsta = carrito.find((item) => item.id === p.id);
             const cantidadAMostrar = yaEsta ? yaEsta.cantidad : 1;
-            // ✅ CORREGIDO: Usa la ruta exacta que definiste en productos.js
             const fotoRuta = p.foto;
+
+            // ✅ Badge NUEVO: Grande, separado y con sombra neón
+            const badgeNuevo = p.nuevo
+              ? `<span class="bg-[#ccff00] text-black text-[11px] px-3 py-1 rounded-md font-black shadow-[0_0_10px_rgba(204,255,0,0.4)] uppercase oferta-titilando ml-3 inline-block">NUEVO!</span>`
+              : "";
+
+            // ✅ Badge OFERTA: Ahora igual de grande y llamativo que el "Nuevo"
+            const badgeOferta = p.oferta
+              ? `<span class="bg-[#ffff00] text-[#ff0000] text-[11px] px-3 py-1 rounded-full font-black shadow-[0_0_10px_rgba(255,255,0,0.5)] uppercase oferta-titilando ml-3 inline-block">OFERTA!</span>`
+              : "";
+
             let precioHtml = "";
             if (p.precioConsultar) {
-              precioHtml = `<p class="text-sm font-bold text-emerald-600 italic h-[40px] flex items-center"></p>`;
+              precioHtml = `<p class="text-sm font-bold text-emerald-600 italic h-[50px] flex items-center"></p>`;
             } else if (p.oferta && p.precioAnterior > 0) {
-              precioHtml = `<div class="flex flex-col h-[40px] justify-center"><span class="text-[10px] text-gray-400 line-through leading-none">$${precioARS(p.precioAnterior)}</span><div class="flex items-center gap-2"><span class="text-base md:text-xl font-black text-red-600">$${precioARS(p.precio)}</span><span class="oferta-titilando">OFERTA!</span></div></div>`;
+              // Estructura cuando hay oferta (Precio tachado arriba, precio rojo y badges al lado)
+              precioHtml = `<div class="flex flex-col h-[50px] justify-center mb-1">
+                              <span class="text-[11px] text-gray-400 line-through leading-none ml-1">$${precioARS(p.precioAnterior)}</span>
+                              <div class="flex items-center">
+                                <span class="text-base md:text-2xl font-black text-red-600 leading-none">$${precioARS(p.precio)}</span>
+                                ${badgeOferta}
+                                ${badgeNuevo} 
+                              </div>
+                            </div>`;
             } else {
-              precioHtml = `<p class="text-base md:text-xl font-black text-pueblo h-[40px] flex items-center">$${precioARS(p.precio)}</p>`;
+              // Estructura precio normal + badge de nuevo[cite: 1]
+              precioHtml = `<div class="h-[50px] flex items-center mb-1">
+                              <p class="text-base md:text-2xl font-black text-pueblo leading-none">$${precioARS(p.precio)}</p>
+                              ${badgeNuevo}
+                            </div>`;
             }
 
             let botonesHtml = "";
             if (!hayStock) {
-              botonesHtml = `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase h-[100px]">Agotado</button>`;
+              botonesHtml = `<button disabled class="w-full mt-2 bg-gray-200 text-gray-400 py-2.5 rounded-xl font-bold text-[10px] uppercase">Agotado</button>`;
             } else if (p.precioConsultar) {
               const infoExtra = p.nombre.includes("(")
                 ? p.nombre.split("(")[1].replace(")", "")
                 : "Modelos disponibles";
-              botonesHtml = `<div class="flex items-center justify-center mt-2 bg-gray-50 rounded-lg border h-[46px] text-[10px] text-gray-500 font-medium px-2 text-center leading-tight">${infoExtra}</div><a href="https://wa.me/5493413261010?text=Hola! Me interesa: ${p.nombre} (Ref: ${p.id})" target="_blank" class="w-full mt-2 bg-pueblo text-white py-2.5 rounded-xl font-bold text-[10px] text-center uppercase block shadow-sm hover:bg-emerald-800 transition-colors">Consultar Precio</a>`;
+              botonesHtml = `<div class="flex items-center justify-center mt-2 bg-gray-50 rounded-lg border h-[40px] text-[10px] text-gray-500 font-medium px-2 text-center leading-tight">${infoExtra}</div><a href="https://wa.me/5493413261010?text=Hola! Me interesa: ${p.nombre} (Ref: ${p.id})" target="_blank" class="w-full mt-2 bg-pueblo text-white py-2.5 rounded-xl font-bold text-[10px] text-center uppercase block shadow-sm transition-colors">Consultar</a>`;
             } else {
               const btnTexto = yaEsta ? "AGREGADO ✓" : "AGREGAR";
               const btnClase = yaEsta ? "btn-ya-agregado" : "bg-pueblo";
-              botonesHtml = `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border h-[46px]">
-              <button onclick="event.stopPropagation(); cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
-              <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
-              <button onclick="event.stopPropagation(); cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
-            </div>
-            <button id="btn-add-${p.id}" onclick="event.stopPropagation(); prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2.5 rounded-xl font-bold text-[10px] uppercase transition-all duration-300 shadow-sm">${btnTexto}</button>`;
+              botonesHtml = `<div class="flex items-center justify-between mt-2 bg-gray-50 rounded-lg p-1 border h-[40px]">
+                <button onclick="event.stopPropagation(); cambiarCantCarta('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">-</button>
+                <span id="cant-${p.id}" class="font-bold text-xs">${cantidadAMostrar}</span>
+                <button onclick="event.stopPropagation(); cambiarCantCarta('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center bg-white rounded shadow-sm text-pueblo font-bold">+</button>
+              </div>
+              <button id="btn-add-${p.id}" onclick="event.stopPropagation(); prepararAlta('${p.id}', this)" class="w-full mt-2 ${btnClase} text-white py-2 rounded-xl font-bold text-[10px] uppercase shadow-sm">${btnTexto}</button>`;
             }
 
-            // ✅ RETURN CORREGIDO CON IMAGEN OPTIMIZADA PARA SEO + CIERRE DEL .map() y .join("")
-            return `<div onclick="window.location.href='producto.html?id=${p.id}'" class="bg-white p-2 md:p-4 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}" style="cursor:pointer;">
+            return `<div onclick="window.location.href='producto.html?id=${p.id}'" class="bg-white p-3 rounded-2xl border shadow-sm flex flex-col relative ${!hayStock ? "opacity-60" : ""}" style="cursor:pointer;">
             <button onclick="event.stopPropagation();toggleFavorito('${p.id}')" class="absolute top-3 left-3 z-10 bg-white/80 p-1.5 rounded-full shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ${esFav ? "fill-red-500 text-red-500" : "text-gray-400"}" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
               </svg>
             </button>
             <div class="w-full aspect-square bg-white rounded-xl mb-2 flex items-center justify-center overflow-hidden relative">
-              <img src="${fotoRuta}" alt="${p.nombre} - ${p.cat} - Tienda Pueblo Rosario" title="${p.nombre}" loading="lazy" width="300" height="300" onerror="this.src='logo.webp'; this.alt='Producto no disponible - Tienda Pueblo'" class="w-full h-full object-contain"/>
-              ${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-widest">Agotado</span></div>` : ""}
+              <img src="${fotoRuta}" alt="${p.nombre} - Tienda Pueblo" loading="lazy" class="w-full h-full object-contain"/>
+              ${!hayStock ? `<div class="absolute inset-0 flex items-center justify-center bg-white/40"><span class="bg-black text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Agotado</span></div>` : ""}
             </div>
-            <p class="text-[9px] font-mono text-gray-400 uppercase">${p.id}</p>
-            <h3 class="font-bold text-gray-800 text-xs md:text-sm min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
+            <p class="text-[8px] font-mono text-gray-400 uppercase">${p.id}</p>
+            <h3 class="font-bold text-gray-800 text-xs min-h-[32px] leading-tight mb-1 line-clamp-2">${p.nombre}</h3>
             ${precioHtml}${botonesHtml}
           </div>`;
           })
           .join("");
         cargarLazyLoad();
       }
-
       // --- FILTROS Y BÚSQUEDA ---
       function aplicarFiltros() {
         const txtBuscado = normalizar(
