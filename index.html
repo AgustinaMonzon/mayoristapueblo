@@ -107,136 +107,136 @@
 
     <!-- ✅ SCHEMA.ORG - JSON-LD CORREGIDO -->
     <script type="application/ld+json">
-            {
-              "@context": "https://schema.org",
-              "@graph": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://tiendapueblo.com.ar/#business",
+            "name": "Tienda Pueblo",
+            "image": "https://tiendapueblo.com.ar/logo.webp",
+            "url": "https://tiendapueblo.com.ar",
+            "telephone": "+543413261010",
+            "priceRange": "$$",
+            "currenciesAccepted": "ARS",
+            "paymentAccepted": "Cash, BankTransfer, MercadoPago",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "",
+              "addressLocality": "Rosario",
+              "addressRegion": "Santa Fe",
+              "postalCode": "",
+              "addressCountry": "AR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -32.9468,
+              "longitude": -60.6393
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "18:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "13:00"
+              }
+            ],
+            "sameAs": [
+              "https://www.instagram.com/mayoristapueblo/",
+              "https://www.facebook.com/profile.php?id=61587995854029",
+              "https://wa.me/543413261010"
+            ],
+            "areaServed": {
+              "@type": "GeoCircle",
+              "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": -32.9468,
+                "longitude": -60.6393
+              },
+              "geoRadius": "500000"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Productos Tienda Pueblo",
+              "itemListElement": [
                 {
-                  "@type": "LocalBusiness",
-                  "@id": "https://tiendapueblo.com.ar/#business",
-                  "name": "Tienda Pueblo",
-                  "image": "https://tiendapueblo.com.ar/logo.webp",
-                  "url": "https://tiendapueblo.com.ar",
-                  "telephone": "+543413261010",
-                  "priceRange": "$$",
-                  "currenciesAccepted": "ARS",
-                  "paymentAccepted": "Cash, BankTransfer, MercadoPago",
-                  "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "",
-                    "addressLocality": "Rosario",
-                    "addressRegion": "Santa Fe",
-                    "postalCode": "",
-                    "addressCountry": "AR"
-                  },
-                  "geo": {
-                    "@type": "GeoCoordinates",
-                    "latitude": -32.9468,
-                    "longitude": -60.6393
-                  },
-                  "openingHoursSpecification": [
-                    {
-                      "@type": "OpeningHoursSpecification",
-                      "dayOfWeek": [
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday"
-                      ],
-                      "opens": "09:00",
-                      "closes": "18:00"
-                    },
-                    {
-                      "@type": "OpeningHoursSpecification",
-                      "dayOfWeek": "Saturday",
-                      "opens": "09:00",
-                      "closes": "13:00"
-                    }
-                  ],
-                  "sameAs": [
-                    "https://www.instagram.com/mayoristapueblo/",
-                    "https://www.facebook.com/profile.php?id=61587995854029",
-                    "https://wa.me/543413261010"
-                  ],
-                  "areaServed": {
-                    "@type": "GeoCircle",
-                    "geoMidpoint": {
-                      "@type": "GeoCoordinates",
-                      "latitude": -32.9468,
-                      "longitude": -60.6393
-                    },
-                    "geoRadius": "500000"
-                  },
-                  "hasOfferCatalog": {
-                    "@type": "OfferCatalog",
-                    "name": "Productos Tienda Pueblo",
-                    "itemListElement": [
-                      {
-                        "@type": "OfferCatalog",
-                        "name": "Auriculares",
-                        "url": "https://tiendapueblo.com.ar/#auriculares"
-                      },
-                      {
-                        "@type": "OfferCatalog",
-                        "name": "Parlantes",
-                        "url": "https://tiendapueblo.com.ar/#parlantes"
-                      },
-                      {
-                        "@type": "OfferCatalog",
-                        "name": "Accesorios Celulares",
-                        "url": "https://tiendapueblo.com.ar/#accesorios"
-                      },
-                      {
-        "@type": "OfferCatalog",
-        "name": "Fundas",
-        "url": "https://tiendapueblo.com.ar/#fundas"
-      },
-                    ]
-                  }
+                  "@type": "OfferCatalog",
+                  "name": "Auriculares",
+                  "url": "https://tiendapueblo.com.ar/#auriculares"
                 },
                 {
-                  "@type": "WebSite",
-                  "@id": "https://tiendapueblo.com.ar/#website",
-                  "url": "https://tiendapueblo.com.ar",
-                  "name": "Tienda Pueblo",
-                  "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://tiendapueblo.com.ar/?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                  }
+                  "@type": "OfferCatalog",
+                  "name": "Parlantes",
+                  "url": "https://tiendapueblo.com.ar/#parlantes"
                 },
                 {
-                  "@type": "FAQPage",
-                  "@id": "https://tiendapueblo.com.ar/#faq",
-                  "mainEntity": [
-                    {
-                      "@type": "Question",
-                      "name": "¿Hacen envíos a todo el país?",
-                      "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Sí, realizamos envíos a domicilio dentro de Rosario y a todo Argentina. Los costos y tiempos se coordinan vía WhatsApp al confirmar tu pedido."
-                      }
-                    },
-                    {
-                      "@type": "Question",
-                      "name": "¿Qué medios de pago aceptan?",
-                      "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Aceptamos efectivo, transferencia bancaria, Mercado Pago y contraentrega (consultar disponibilidad por zona)."
-                      }
-                    },
-                    {
-                      "@type": "Question",
-                      "name": "¿Tienen local para retirar en Rosario?",
-                      "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Sí, contamos con puntos de retiro seguros en Rosario. Coordiná la retirada al confirmar tu pedido por WhatsApp."
-                      }
-                    }
-                  ]
+                  "@type": "OfferCatalog",
+                  "name": "Accesorios Celulares",
+                  "url": "https://tiendapueblo.com.ar/#accesorios"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Fundas",
+                  "url": "https://tiendapueblo.com.ar/#fundas"
                 }
               ]
             }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://tiendapueblo.com.ar/#website",
+            "url": "https://tiendapueblo.com.ar",
+            "name": "Tienda Pueblo",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://tiendapueblo.com.ar/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://tiendapueblo.com.ar/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Hacen envíos a todo el país?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, realizamos envíos a domicilio dentro de Rosario y a todo Argentina. Los costos y tiempos se coordinan vía WhatsApp al confirmar tu pedido."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué medios de pago aceptan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Aceptamos efectivo, transferencia bancaria, Mercado Pago y contraentrega (consultar disponibilidad por zona)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Tienen local para retirar en Rosario?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, contamos con puntos de retiro seguros en Rosario. Coordiná la retirada al confirmar tu pedido por WhatsApp."
+                }
+              }
+            ]
+          }
+        ]
+      }
     </script>
 
     <!-- ✅ TAILWIND Y ESTILOS -->
