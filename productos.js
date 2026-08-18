@@ -297,8 +297,8 @@ const productos = [
   { id: 'CAR19', nombre: 'CARGADOR DE PILAS DOBLE', precio: 16000, precioAnterior: 0, cat: 'CARGADORES', foto: 'fotos/CARGADORES/9.webp', oferta: false, stock: true },
 
   // --- CELULARES ---
-  { id: 'CEL01', nombre: 'NOKIA 106', precio: 39000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/1.webp', oferta: false, stock: true },
-  { id: 'CEL02', nombre: 'NOKIA 2660 FLIP', precio: 79000, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/2.webp', oferta: false, stock: true },
+  { id: 'CEL01', nombre: 'NOKIA 106', precio: 39999, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/1.webp', oferta: false, stock: true },
+  { id: 'CEL02', nombre: 'NOKIA 2660 FLIP', precio: 79999, precioAnterior: 0, cat: 'CELULARES', foto: 'fotos/CELULARES/2.webp', oferta: false, stock: true },
   { id: 'CEL03', nombre: 'LÍNEA IPHONE', precio: 0, precioConsultar: true, cat: 'CELULARES', foto: 'fotos/CELULARES/3.webp', oferta: false, stock: true },
   { id: 'CEL05', nombre: 'TODA LA LINEA XIAOMI DISPONIBLE, CONSULTANOS', precio: 0, precioConsultar: true, cat: 'CELULARES', foto: 'fotos/CELULARES/5.webp', oferta: false, stock: true, descripcion: 'Contamos con toda la línea Xiaomi. Si no encontrás el modelo que buscás publicado en la página, no dudes en consultarnos para que te lo coticemos.' },
   { id: 'CEL06', nombre: 'TODA LA GAMA MOTOROLA DISPONIBLE, CONSULTANOS', precio: 0, precioConsultar: true, cat: 'CELULARES', foto: 'fotos/CELULARES/6.webp', oferta: false, stock: true, descripcion: 'Contamos con toda la línea Motorola. Si no encontrás el modelo que buscás publicado en la página, no dudes en consultarnos para que te lo coticemos.' },
