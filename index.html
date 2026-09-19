@@ -761,7 +761,10 @@
             const badgeOferta = p.oferta
               ? `<span class="bg-[#ffff00] text-[#ff0000] text-[11px] px-3 py-1 rounded-full font-black shadow-[0_0_10px_rgba(255,255,0,0.5)] uppercase oferta-titilando ml-3 inline-block">OFERTA!</span>`
               : "";
-
+            // ✅ Badge ENVÍO GRATIS: Verde neón llamativo con sombra
+            const badgeEnvioGratis = p.envioGratis
+              ? `<span class="bg-[#ff0000] text-white text-[11px] px-3 py-1 rounded-md font-black shadow-[0_0_10px_rgba(255,0,0,0.6)] uppercase oferta-titilando ml-2 inline-block">ENVÍO GRATIS</span>`
+              : "";
             let precioHtml = "";
             if (p.precioConsultar) {
               precioHtml = `<p class="text-sm font-bold text-emerald-600 italic h-[50px] flex items-center"></p>`;
@@ -780,6 +783,7 @@
               precioHtml = `<div class="h-[50px] flex items-center mb-1">
                               <p class="text-base md:text-2xl font-black text-pueblo leading-none">$${precioARS(p.precio)}</p>
                               ${badgeNuevo}
+                              ${badgeEnvioGratis}
                             </div>`;
             }
 
