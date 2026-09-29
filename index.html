@@ -282,84 +282,84 @@
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
-    <!-- BANNER SUPERIOR DE ANUNCIOS FULL-WIDTH -->
-    <!-- TOP ANNOUNCEMENT BANNER CAROUSEL -->
+<!-- BANNER SUPERIOR DE ANUNCIOS FULL-WIDTH -->
+<!-- TOP ANNOUNCEMENT BANNER CAROUSEL -->
+<div
+  id="top-announcement-banner"
+  class="bg-red-600 text-white relative z-50 overflow-hidden shadow-sm w-full"
+>
+  <div class="max-w-7xl mx-auto px-5 py-1.5 sm:px-6 lg:px-8 relative">
+    <!-- Carousel Track Container -->
     <div
-      id="top-announcement-banner"
-      class="bg-red-600 text-white relative z-50 overflow-hidden shadow-sm w-full"
+      class="relative min-h-[28px] sm:h-6 flex items-center justify-center overflow-hidden"
     >
-      <div class="max-w-7xl mx-auto px-4 py-1.5 sm:px-6 lg:px-8 relative">
-        <!-- Carousel Track Container -->
-        <div
-          class="relative h-6 flex items-center justify-center overflow-hidden"
+      <!-- Slide 1 -->
+      <div
+        class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-100 transform translate-x-0 transition-all duration-500 ease-in-out px-4"
+        data-index="0"
+      >
+        <p
+          class="text-[10px] xs:text-[11px] sm:text-xs font-bold tracking-wide leading-tight"
         >
-          <!-- Slide 1 -->
-          <div
-            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-100 transform translate-x-0 transition-all duration-500 ease-in-out px-8"
-            data-index="0"
-          >
-            <p
-              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
-            >
-              🚚 ¡ENVÍOS GRATIS dentro de Rosario en compras superiores a
-              $60.000! 🎁
-            </p>
-          </div>
-
-          <!-- Slide 2 -->
-          <div
-            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-8 pointer-events-none"
-            data-index="1"
-          >
-            <p
-              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
-            >
-              🔥 ¡PRECIOS MAYORISTAS SIN COMPRA MÍNIMA! Pedidos por WhatsApp 💬
-            </p>
-          </div>
-
-          <!-- Slide 3 -->
-          <div
-            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-8 pointer-events-none"
-            data-index="2"
-          >
-            <p
-              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
-            >
-              💳 Aceptamos Efectivo o Transferencia y abonás al recibir tu
-              compra✅ 🛒
-            </p>
-          </div>
-          <!-- Slide 4 -->
-          <div
-            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-8 pointer-events-none"
-            data-index="2"
-          >
-            <p
-              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
-            >
-              📦 Envíos dentro de Rosario $2.500 🛵
-            </p>
-          </div>
-        </div>
-
-        <!-- Carousel Navigation Controls -->
-        <!-- Botones con Flechas Blancas Sencillas (sin fondo de círculo) -->
-        <button
-          id="banner-prev"
-          aria-label="Mensaje anterior"
-          class="absolute left-2 top-1/2 -translate-y-1/2 text-white hover:scale-125 px-2 py-1 text-sm font-bold transition-transform focus:outline-none z-10"
-        >
-          &#10094;
-        </button>
-        <button
-          id="banner-next"
-          aria-label="Mensaje siguiente"
-          class="absolute right-2 top-1/2 -translate-y-1/2 text-white hover:scale-125 px-2 py-1 text-sm font-bold transition-transform focus:outline-none z-10"
-        >
-          &#10095;
-        </button>
+          🚚 ¡ENVÍOS GRATIS dentro de Rosario en compras superiores a $60.000! 🎁
+        </p>
       </div>
+
+      <!-- Slide 2 -->
+      <div
+        class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-4 pointer-events-none"
+        data-index="1"
+      >
+        <p
+          class="text-[10px] xs:text-[11px] sm:text-xs font-bold tracking-wide leading-tight"
+        >
+          🔥 ¡PRECIOS MAYORISTAS SIN COMPRA MÍNIMA! Pedidos por WhatsApp 💬
+        </p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div
+        class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-4 pointer-events-none"
+        data-index="2"
+      >
+        <p
+          class="text-[10px] xs:text-[11px] sm:text-xs font-bold tracking-wide leading-tight"
+        >
+          💳 Aceptamos Efectivo o Transferencia y abonás al recibir tu compra✅ 🛒
+        </p>
+      </div>
+
+      <!-- Slide 4 -->
+      <div
+        class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-4 pointer-events-none"
+        data-index="3"
+      >
+        <p
+          class="text-[10px] xs:text-[11px] sm:text-xs font-bold tracking-wide leading-tight"
+        >
+          📦 Envíos dentro de Rosario $2.500 🛵
+        </p>
+      </div>
+    </div>
+
+    <!-- Carousel Navigation Controls -->
+    <!-- Botones con Flechas Blancas Sencillas -->
+    <button
+      id="banner-prev"
+      aria-label="Mensaje anterior"
+      class="absolute left-0.5 sm:left-2 top-1/2 -translate-y-1/2 text-white hover:scale-125 px-1 py-1 text-xs sm:text-sm font-bold transition-transform focus:outline-none z-10"
+    >
+      &#10094;
+    </button>
+    <button
+      id="banner-next"
+      aria-label="Mensaje siguiente"
+      class="absolute right-0.5 sm:right-2 top-1/2 -translate-y-1/2 text-white hover:scale-125 px-1 py-1 text-xs sm:text-sm font-bold transition-transform focus:outline-none z-10"
+    >
+      &#10095;
+    </button>
+  </div>
+</div>
     </div>
     <!-- H1 oculto para SEO -->
     <h1 class="sr-only">
