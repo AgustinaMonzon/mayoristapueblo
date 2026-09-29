@@ -282,6 +282,85 @@
   </head>
 
   <body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- BANNER SUPERIOR DE ANUNCIOS FULL-WIDTH -->
+    <!-- TOP ANNOUNCEMENT BANNER CAROUSEL -->
+    <div
+      id="top-announcement-banner"
+      class="bg-red-600 text-white relative z-50 overflow-hidden shadow-sm w-full"
+    >
+      <div class="max-w-7xl mx-auto px-4 py-1.5 sm:px-6 lg:px-8 relative">
+        <!-- Carousel Track Container -->
+        <div
+          class="relative h-6 flex items-center justify-center overflow-hidden"
+        >
+          <!-- Slide 1 -->
+          <div
+            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-100 transform translate-x-0 transition-all duration-500 ease-in-out px-8"
+            data-index="0"
+          >
+            <p
+              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
+            >
+              🚚 ¡ENVÍOS GRATIS dentro de Rosario en compras superiores a
+              $60.000! 🎁
+            </p>
+          </div>
+
+          <!-- Slide 2 -->
+          <div
+            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-8 pointer-events-none"
+            data-index="1"
+          >
+            <p
+              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
+            >
+              🔥 ¡PRECIOS MAYORISTAS SIN COMPRA MÍNIMA! Pedidos por WhatsApp 💬
+            </p>
+          </div>
+
+          <!-- Slide 3 -->
+          <div
+            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-8 pointer-events-none"
+            data-index="2"
+          >
+            <p
+              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
+            >
+              💳 Aceptamos Efectivo o Transferencia y abonás al recibir tu
+              compra✅ 🛒
+            </p>
+          </div>
+          <!-- Slide 4 -->
+          <div
+            class="banner-slide absolute inset-0 flex items-center justify-center text-center opacity-0 transform translate-x-full transition-all duration-500 ease-in-out px-8 pointer-events-none"
+            data-index="2"
+          >
+            <p
+              class="text-[11px] sm:text-xs font-bold tracking-wide truncate sm:whitespace-normal"
+            >
+              📦 Envíos dentro de Rosario $2.500 🛵
+            </p>
+          </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <!-- Botones con Flechas Blancas Sencillas (sin fondo de círculo) -->
+        <button
+          id="banner-prev"
+          aria-label="Mensaje anterior"
+          class="absolute left-2 top-1/2 -translate-y-1/2 text-white hover:scale-125 px-2 py-1 text-sm font-bold transition-transform focus:outline-none z-10"
+        >
+          &#10094;
+        </button>
+        <button
+          id="banner-next"
+          aria-label="Mensaje siguiente"
+          class="absolute right-2 top-1/2 -translate-y-1/2 text-white hover:scale-125 px-2 py-1 text-sm font-bold transition-transform focus:outline-none z-10"
+        >
+          &#10095;
+        </button>
+      </div>
+    </div>
     <!-- H1 oculto para SEO -->
     <h1 class="sr-only">
       Tienda Pueblo - Mayorista de Tecnología y Hogar en Rosario, Argentina
@@ -1430,6 +1509,98 @@
 
       // 4. Inyectar el script
       document.body.appendChild(prodScript);
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slides = document.querySelectorAll(".banner-slide");
+        const btnPrev = document.getElementById("banner-prev");
+        const btnNext = document.getElementById("banner-next");
+        const bannerContainer = document.getElementById(
+          "top-announcement-banner",
+        );
+
+        if (!slides.length) return;
+
+        let currentIndex = 0;
+        let autoSlideInterval = null;
+
+        function goToSlide(nextIndex, direction = "next") {
+          if (nextIndex === currentIndex) return;
+
+          const currentSlide = slides[currentIndex];
+          const nextSlide = slides[nextIndex];
+
+          // Resetear clases de posicionamiento previo
+          slides.forEach((slide) => {
+            slide.classList.remove(
+              "translate-x-0",
+              "translate-x-full",
+              "-translate-x-full",
+              "opacity-100",
+            );
+            slide.classList.add("opacity-0", "pointer-events-none");
+          });
+
+          if (direction === "next") {
+            // La diapositiva actual sale hacia la izquierda
+            currentSlide.classList.add("-translate-x-full", "opacity-0");
+            // La siguiente diapositiva entra desde la derecha
+            nextSlide.classList.remove("translate-x-full", "-translate-x-full");
+            nextSlide.classList.add("translate-x-0", "opacity-100");
+          } else {
+            // La diapositiva actual sale hacia la derecha
+            currentSlide.classList.add("translate-x-full", "opacity-0");
+            // La anterior entra desde la izquierda
+            nextSlide.classList.remove("translate-x-full", "-translate-x-full");
+            nextSlide.classList.add("translate-x-0", "opacity-100");
+          }
+
+          nextSlide.classList.remove("pointer-events-none");
+          currentIndex = nextIndex;
+        }
+
+        function nextSlide() {
+          const nextIndex = (currentIndex + 1) % slides.length;
+          goToSlide(nextIndex, "next");
+        }
+
+        function prevSlide() {
+          const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+          goToSlide(prevIndex, "prev");
+        }
+
+        // Event listeners manuales
+        if (btnNext)
+          btnNext.addEventListener("click", () => {
+            nextSlide();
+            resetInterval();
+          });
+        if (btnPrev)
+          btnPrev.addEventListener("click", () => {
+            prevSlide();
+            resetInterval();
+          });
+
+        // Auto-rotación constante
+        function startInterval() {
+          autoSlideInterval = setInterval(nextSlide, 7000);
+        }
+
+        function resetInterval() {
+          clearInterval(autoSlideInterval);
+          startInterval();
+        }
+
+        // Pausar rotación cuando el usuario pasa el cursor por encima
+        if (bannerContainer) {
+          bannerContainer.addEventListener("mouseenter", () =>
+            clearInterval(autoSlideInterval),
+          );
+          bannerContainer.addEventListener("mouseleave", () => startInterval());
+        }
+
+        startInterval();
+      });
     </script>
   </body>
 </html>
